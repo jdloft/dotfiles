@@ -15,28 +15,32 @@ function _dotfiles-ps1-exit_code() {
 # MacOSX default PS1: '\h:\W \u\$'
 function _dotfiles-ps1-setup() {
 	local ec="$?"
-	local host="$KDF_CANONICAL_HOST"
+	local host="$DOTFILES_HOST"
 	local clr_user="$CLR_CYAN"
 	local clr_host="$CLR_CYAN"
 	local prompt="\$"
 	local supportcolor
 
-	if [ "$KDF_HOST_TYPE" = "KrinkleMac" ]; then
+	# Local machine special case
+	if [ "$DOTFILES_HOST" = "hydrogen" ]; then
 		clr_host="$CLR_MAGENTA"
-		host="KrinkleMac"
-	elif echo $KDF_CANONICAL_HOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
+	# WMF servers (including labs and wmnet)
+	elif echo $DOTFILES_HOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
 		clr_host="$CLR_GREEN"
 	fi
 
+	# Root is special
 	if [ "$LOGNAME" = "root" ]; then
 		clr_user="$CLR_RED"
 		prompt="#"
 	fi
 
+	# Test for color support
 	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 		supportcolor=1
 	fi
 
+	# Actual prompt code
 	if [[ -n $supportcolor ]]; then
 		PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$clr_host\]$host\[$CLR_WHITE\] in \[$CLR_YELLOW\]\w\$(_dotfiles-git-ps1)\[$CLR_NONE\]\n$(_dotfiles-ps1-exit_code $ec)$prompt "
 	else
