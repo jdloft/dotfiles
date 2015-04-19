@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+# Script is originally from "Cowboy" Ben Alman (https://github.com/cowboy/dotfiles)
+# Copyright (c) 2014 "Cowboy" Ben Alman
+# Licensed under the MIT license.
+# http://benalman.com/about/license/
+# Edited for use by jdloft
+
 [[ "$1" == "source" ]] || \
 
 echo 'jdloft - dotfiles'
@@ -6,11 +13,6 @@ echo 'jdloft - dotfiles'
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
 
 Usage: $(basename "$0")
-
-Taken from https://github.com/cowboy/dotfiles:
-Copyright (c) 2014 "Cowboy" Ben Alman
-Licensed under the MIT license.
-http://benalman.com/about/license/
 HELP
 exit; fi
 
