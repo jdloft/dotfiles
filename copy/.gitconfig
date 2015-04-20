@@ -18,6 +18,7 @@
   rb = rbranch
   rv = review
   st = status
+  sub = !"echo 'Sync'; git submodule sync; echo 'Update'; git submodule update --init --recursive"
 [branch "master"]
   remote = origin
   merge = refs/heads/master
