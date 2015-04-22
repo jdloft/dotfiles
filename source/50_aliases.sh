@@ -6,6 +6,8 @@ alias ls='ls --color=auto'
 alias ll='ls -ahlF'
 alias l='ll'
 
+alias df='df -h'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
