@@ -29,7 +29,7 @@ function _dotfiles-ps1-setup() {
 		clr_host="$CLR_GREEN"
 	# WMF labs servers
 	elif echo $DOTFILES_HOST | grep -q -E '\.wmflabs'; then
-		clr_host="$CLR_YELLOW"
+		clr_host="$CLR_RED"
 	fi
 
 	# Root is special
