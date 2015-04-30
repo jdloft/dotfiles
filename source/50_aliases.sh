@@ -12,6 +12,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias -- -='cd -'
 
+alias parts='cat /proc/partitions'
+
 alias nit='npm install && npm test'
 alias jsonhint='jshint --extra-ext .json'
 alias dsize='du -hs'
