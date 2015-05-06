@@ -19,6 +19,7 @@
   rv = review
   st = status
   sub = !"echo 'Sync'; git submodule sync; echo 'Update'; git submodule update --init --recursive"
+  ff = merge --ff-only @{u}
 [color]
   ui = auto
 [color "branch"]
