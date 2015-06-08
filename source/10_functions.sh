@@ -45,7 +45,7 @@ function _dotfiles-ps1-setup() {
 
 	# Actual prompt code
 	if [[ -n $supportcolor ]]; then
-		PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$clr_host\]$host\[$CLR_WHITE\] in \[$CLR_YELLOW\]\w\$(_dotfiles-git-ps1)\[$CLR_NONE\]\n$(_dotfiles-ps1-exit_code $ec)$prompt "
+                PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$clr_host\]$host\[$CLR_WHITE\] in \[$CLR_YELLOW\]\w\$(_dotfiles-git-ps1)\[$CLR_NONE\]\n$(_dotfiles-ps1-exit_code $ec)\[$CLR_WHITE\]$prompt\[$CLR_NONE\] "
 	else
 		PS1="[\$(date +%H:%M\ %Z)] \u@$host:\w$prompt "
 	fi
