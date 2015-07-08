@@ -7,6 +7,7 @@ Plug 'arnar/vim-matchopen'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
+Plug 'tpope/vim-commentary'
 
 call plug#end()
 
