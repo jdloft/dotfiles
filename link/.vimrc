@@ -48,3 +48,6 @@ if !exists('g:airline_symbols')
   let g:airline_symbols.paste = 'P'
   " let g:airline_symbols.paste = '∥'
   let g:airline_symbols.whitespace = 'Ξ'
+
+" fast out of insert
+set timeoutlen=50
