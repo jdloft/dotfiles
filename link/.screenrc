@@ -1,13 +1,19 @@
+# 256 color
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
+
 startup_message off
 altscreen on
 vbell off
-termcapinfo xterm* ti@:te@
 
 # hardstatus
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{= KW} %-Lw%{= bW}%n%f %t%{-}%+Lw"
+
 # Hide hardstatus: ctrl-a f
 bind f eval "hardstatus ignore"
+
 # Show hardstatus: ctrl-a F
 bind F eval "hardstatus alwayslastline"

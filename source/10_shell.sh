@@ -72,3 +72,6 @@ export GREP_OPTIONS='--color=auto'
 #
 
 PROMPT_COMMAND="_dotfiles-ps1-setup"
+
+# 256 color
+export TERM=xterm-256color
