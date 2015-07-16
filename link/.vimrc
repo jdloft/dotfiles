@@ -66,5 +66,18 @@ set noshowmode
 
 " Maps
 let mapleader=","
+
+
+" fast vimrc editing and sourcing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+
+" wrapped lines nav
+nnoremap k gk
+nnoremap j gj
+
+
+nmap :Wq :wq
+nmap :Q :q
+nmap :Q! :q!
