@@ -63,3 +63,8 @@ set timeoutlen=1000 ttimeoutlen=10
 
 " don't show mode, vim-airline does it
 set noshowmode
+
+" Maps
+let mapleader=","
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
