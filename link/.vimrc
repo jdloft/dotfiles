@@ -59,7 +59,7 @@ match ErrorMsg '\s\+$'
 
 
 " fast out of insert
-set timeoutlen=50
+set timeoutlen=1000 ttimeoutlen=10
 
 " don't show mode, vim-airline does it
 set noshowmode
