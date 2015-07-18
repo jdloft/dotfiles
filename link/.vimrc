@@ -53,11 +53,17 @@ let g:airline_symbols.whitespace = 'Ξ'
 " Configs
 " tabs for dummies
 set smarttab
+" set tabstop=4
+" set softtabstop=4
+" set expandtab
 
 
 " mark trailing whitespace
 match ErrorMsg '\s\+$'
 
+
+" line numbering
+set number
 
 " fast out of insert
 set timeoutlen=1000 ttimeoutlen=10
@@ -88,3 +94,7 @@ nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
+
+" paste mappings
+nnoremap <leader>sp :set paste<cr>
+nnoremap <leader>np :set nopaste<cr>
