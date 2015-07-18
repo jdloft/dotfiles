@@ -25,7 +25,7 @@ if [[ ! -z $PS1 ]]; then
 
         function session-tools {
             tmux new-session -d -s tools
-            tmux new-window -d -t main:9 -n dotfiles 'dotfiles'
+            tmux new-window -d -t tools:9 -n dotfiles 'dotfiles'
         }
 
         # Do stuff
