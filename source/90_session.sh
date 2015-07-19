@@ -5,8 +5,6 @@ if [[ ! -z $PS1 ]]; then
     if [[ -z $TMUX ]]; then
         if [ "$DOTFILES_HOST" = "hydrogen" ]; then
             SESSIONS="main"
-        elif [ "$DOTFILES_HOST" = "tools-bastion-01.tools.eqiad.wmflabs" ]; then
-            SESSIONS="tools"
         fi
 
         function go-session {
@@ -21,11 +19,6 @@ if [[ ! -z $PS1 ]]; then
         function session-main {
             tmux new-session -d -s main
             tmux new-window -d -t main:9 -n dotfiles 'dotfiles'
-        }
-
-        function session-tools {
-            tmux new-session -d -s tools
-            tmux new-window -d -t tools:9 -n dotfiles 'dotfiles'
         }
 
         # Do stuff
