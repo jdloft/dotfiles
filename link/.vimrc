@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-sleuth'
 
 call plug#end()
 
@@ -51,16 +52,8 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 
 " Configs
-" tabs for dummies
-set smarttab
-" set tabstop=4
-" set softtabstop=4
-" set expandtab
-
-
 " mark trailing whitespace
 match ErrorMsg '\s\+$'
-
 
 " line numbering
 set number
@@ -70,6 +63,7 @@ set timeoutlen=1000 ttimeoutlen=10
 
 " don't show mode, vim-airline does it
 set noshowmode
+
 
 " Maps
 let mapleader=","
