@@ -9,3 +9,6 @@ if [[ ! -z $PS1 ]]; then
     fi
   fi
 fi
+
+# ssh configs
+alias ssh='cat ~/.ssh.d/* > ~/.ssh/config; ssh'
