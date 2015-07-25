@@ -26,6 +26,7 @@ function _dotfiles-ps1-setup() {
                 clr_host="$CLR_BLUE"
         elif [ "$DOTFILES_HOST" = "jdloft" ]; then
                 host="koding"
+                clr_host="$CLR_GREEN"
         # WMF production like servers
         elif echo $DOTFILES_HOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
                 clr_host="$CLR_MAGENTA"
