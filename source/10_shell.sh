@@ -30,9 +30,9 @@ export PATH=$PATH:$HOME/bin
 export LC_COLLATE="C"
 
 # Fix gem/ruby errors about "unable to convert U+3002 from UTF-8 to US-ASCII for lib/shortener.rb, skipping"
-export LC_CTYPE="en_US.UTF-8"
-export LANG="en_US.UTF-8"
-unset LC_ALL
+# export LC_CTYPE="en_US.UTF-8"
+# export LANG="en_US.UTF-8"
+# unset LC_ALL
 
 #
 # Colors
