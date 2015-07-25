@@ -24,6 +24,8 @@ function _dotfiles-ps1-setup() {
         # Local machine special case
         if [ "$DOTFILES_HOST" = "hydrogen" ]; then
                 clr_host="$CLR_BLUE"
+        elif [ "$DOTFILES_HOST" = "jdloft" ]; then
+                host="koding"
         # WMF production like servers
         elif echo $DOTFILES_HOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
                 clr_host="$CLR_MAGENTA"
