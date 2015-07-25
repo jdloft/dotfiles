@@ -3,7 +3,7 @@
 
 if [[ ! -z $PS1 ]]; then
     if [[ -z $TMUX ]]; then
-        if [ "$DOTFILES_HOST" = "hydrogen" ] || [ "$DOTFILES_HOST" = "jdloft" ]; then
+        if [ "$DOTFILES_HOST" = "hydrogen" ]; then
             SESSIONS="main"
         fi
 
