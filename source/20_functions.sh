@@ -21,9 +21,11 @@ function _dotfiles-ps1-setup() {
         local prompt="\$"
         local supportcolor
 
-        # Local machine special case
+        # Special cases
         if [ "$DOTFILES_HOST" = "hydrogen" ]; then
                 clr_host="$CLR_BLUE"
+        elif [ "$DOTFILES_HOST" = "titanium" ]; then
+                clr_host="$CLR_YELLOW"
         elif [ "$DOTFILES_HOST" = "jdloft" ]; then
                 host="neon"
                 clr_host="$CLR_GREEN"
