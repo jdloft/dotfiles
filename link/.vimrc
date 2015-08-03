@@ -90,5 +90,4 @@ nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 
 " paste mappings
-nnoremap <leader>sp :set paste<cr>
-nnoremap <leader>np :set nopaste<cr>
+nnoremap <leader>p :set paste!<cr>
