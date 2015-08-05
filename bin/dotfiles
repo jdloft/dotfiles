@@ -6,15 +6,16 @@
 # http://benalman.com/about/license/
 # Edited for use by jdloft
 
-[[ "$1" == "source" ]] || \
-
-echo 'jdloft - dotfiles'
+if [[ "$1" != "-s" && "$1" != "--source" ]]; then
+  echo 'jdloft - dotfiles'
+fi
 
 if [[ "$1" == "-h" || "$1" == "--help" ]]; then cat <<HELP
 
 Usage: $(basename "$0")
 HELP
-exit; fi
+  exit
+fi
 
 ###########################################
 # GENERAL PURPOSE EXPORTED VARS / FUNCTIONS
@@ -153,7 +154,9 @@ function setdiff() {
 }
 
 # If this file was being sourced, exit now.
-[[ "$1" == "source" ]] && return
+if [[ "$1" == "-s" || "$1" == "--source" ]]; then
+  return
+fi
 
 
 ###########################################
@@ -287,7 +290,7 @@ if [[ ! -d $DOTFILES ]]; then
   e_header "Downloading dotfiles"
   git clone --recursive https://github.com/jdloft/dotfiles.git $DOTFILES
   cd $DOTFILES
-elif [[ "$1" != "restart" ]]; then
+elif [[ "$1" != "--restart" && "$1" != "-a" && "$1" != "--auto" ]]; then
   # Make sure we have the latest files.
   e_header "Updating dotfiles"
   cd $DOTFILES
@@ -296,7 +299,7 @@ elif [[ "$1" != "restart" ]]; then
   git submodule update --init --recursive --quiet
   if [[ "$(git rev-parse HEAD)" != "$prev_head" ]]; then
     e_header "Changes detected, restarting script"
-    exec "$0" "restart"
+    exec "$0" "--restart"
   fi
 fi
 
@@ -318,7 +321,9 @@ backup=
 # Execute code for each file in these subdirectories.
 do_stuff "copy"
 do_stuff "link"
-do_stuff "init"
+if [[ "$1" != "-a" && "$1" != "--auto" ]]; then
+  do_stuff "init"
+fi
 
 # Alert if backups were made.
 if [[ "$backup" ]]; then
