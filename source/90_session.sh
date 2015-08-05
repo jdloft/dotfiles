@@ -18,7 +18,7 @@ if [[ ! -z $PS1 ]]; then
         # Sessions
         function session-main {
             tmux new-session -d -s main
-            tmux new-window -d -t main:9 -n dotfiles 'dotfiles'
+            tmux split-window -t main:0 -h -l 60 'dotfiles'
         }
 
         # Do stuff
