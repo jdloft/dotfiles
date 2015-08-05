@@ -64,21 +64,24 @@ set timeoutlen=1000 ttimeoutlen=10
 " don't show mode, vim-airline does it
 set noshowmode
 
+" modeline
+set modeline
+let modelines=5
+
 
 " Maps
 let mapleader=","
-
 
 " fast vimrc editing and sourcing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
-
 " wrapped lines nav
 nnoremap k gk
 nnoremap j gj
 
-
+" Common mis-types
+nmap :W :w
 nmap :Wq :wq
 nmap :Q :q
 nmap :Q! :q!
