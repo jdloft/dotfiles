@@ -121,3 +121,12 @@ function dotfiles-pull() {
 
 # Set prompt
 PROMPT_COMMAND="_dotfiles-ps1-setup"
+
+function open-keys() {
+    if [[ -e ~/.ssh/id_rsa || -e ~/.ssh/id_dsa ]]; then
+        if [ -z "$SSH_AUTH_SOCK" ]; then
+            eval `ssh-agent -s`
+            ssh-add
+        fi
+    fi
+}
