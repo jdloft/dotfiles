@@ -24,4 +24,4 @@ if which ack-grep > /dev/null 2>&1; then
 fi
 
 # SSH command opens keys, compiles config file, and starts
-alias ssh='open-keys; cat ~/.ssh/config.d/* > ~/.ssh/config; ssh'
+alias ssh='open-keys; cat ~/.sshconfigs/* > ~/.ssh/config; ssh'
