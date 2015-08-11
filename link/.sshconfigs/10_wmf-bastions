@@ -2,12 +2,10 @@
 # vim: syntax=sshconfig
 
 Host bastion.wmflabs.org
-    VisualHostKey yes
     IdentitiesOnly yes
     ForwardAgent yes
 
 Host bastion2.wmflabs.org
-    VisualHostKey yes
     IdentitiesOnly yes
     ForwardAgent yes
 
@@ -19,6 +17,5 @@ Host bastion-02.eqiad.wmflabs
 
 # Tools
 Host tools-bastion-01.tools.eqiad.wmflabs
-    VisualHostKey yes
     Hostname login.tools.wmflabs.org
 
