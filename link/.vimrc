@@ -68,6 +68,9 @@ set noshowmode
 set modeline
 let modelines=5
 
+" Execution commands
+autocmd FileType python nmap <leader>ex :!python %<cr>
+autocmd FileType ruby nmap <leader>ex :!ruby %<cr>
 
 " Maps
 let mapleader=","
