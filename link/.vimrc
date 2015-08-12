@@ -97,3 +97,15 @@ nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 
 " paste mappings
 nnoremap <leader>p :set paste!<cr>
+
+" Vim. Live it.
+" https://tylercipriani.com/vim.html
+inoremap <up> <nop>
+vnoremap <up> <nop>
+inoremap <down> <nop>
+vnoremap <down> <nop>
+inoremap <left> <nop>
+vnoremap <right> <nop>
+vnoremap <left> <nop>
+inoremap <right> <nop>
+" B-A-<start>
