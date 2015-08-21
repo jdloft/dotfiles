@@ -47,9 +47,9 @@ function _dotfiles-prompt() {
     # Actual prompt code
     if [[ -n $supportcolor ]]; then
         if [ "$labshost" = true ]; then
-            PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$CLR_RED\]$host.\[$CLR_BOLD\]$project\[$CLR_NONE\]\[$CLR_RED\].\[$CLR_LINE\]$cluster\[$CLR_NONE\]\[$CLR_RED\].$site\[$CLR_WHITE\] in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_WHITE\]$prompt\[$CLR_NONE\] "
+            PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$CLR_RED\]$host.\[$CLR_BOLD\]$project\[$CLR_NONE\]\[$CLR_RED\].\[$CLR_LINE\]$cluster\[$CLR_NONE\]\[$CLR_RED\].$site\[$CLR_WHITE\] in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_WHITE\]$prompt\[$CLR_NONE\] "
         else
-            PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$clr_host\]$host\[$CLR_WHITE\] in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_WHITE\]$prompt\[$CLR_NONE\] "
+            PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$clr_host\]$host\[$CLR_WHITE\] in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_WHITE\]$prompt\[$CLR_NONE\] "
         fi
     else
         PS1="[\$(date +%H:%M\ %Z)] \u@$host:\w$prompt "
@@ -69,10 +69,10 @@ function _dotfiles-git-prompt() {
     local branch
 
     CLR_GITST_CLS="$CLR_GREEN" # Clear state
-    CLR_GITST_SC="$CLR_YELLOW" # Staged changes
-    CLR_GITST_USC="$CLR_RED" # Unstaged changes
-    CLR_GITST_UT="$CLR_WHITE" # Untracked files
-    CLR_GITST_BR="$CLR_GREEN"
+    CLR_GITST_SC="$CLR_YELLOW" # Staged changes indicator
+    CLR_GITST_USC="$CLR_RED" # Unstaged changes indicator
+    CLR_GITST_UT="$CLR_WHITE" # Untracked files indicator
+    CLR_GITST_BR="$CLR_GREEN" # Branch
 
     if [[ -z "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]]; then
         return 1
@@ -91,7 +91,20 @@ function _dotfiles-git-prompt() {
     fi
 
     branch="`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`"
-    echo -en "${CLR_GITST_BR} ($branch$indicator${CLR_GITST_BR})"
+    echo -en "${CLR_GITST_CLS} (${CLR_GITST_BR}$branch$indicator${CLR_GITST_CLS})"
+}
+
+function _dotfiles-virtualenv-prompt() {
+    CLR_VE_CLS="$CLR_YELLOW"
+    CLR_VE_ENV="$CLR_YELLOW"
+
+    if [[ $VIRTUAL_ENV != "" ]]; then
+        environment="${VIRTUAL_ENV##*/}"
+    else
+        return 1
+    fi
+
+    echo -en "${CLR_VE_CLS} (${CLR_VE_ENV}$environment${CLR_VE_CLS})"
 }
 
 # Password generation
