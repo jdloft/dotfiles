@@ -10,6 +10,8 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sleuth'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 
 call plug#end()
 
@@ -88,6 +90,10 @@ nmap :W :w
 nmap :Wq :wq
 nmap :Q :q
 nmap :Q! :q!
+nmap :Dl :dl
+
+" trailing whitespace removal
+nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
 " tmux navigator arrow key bindings
 nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
