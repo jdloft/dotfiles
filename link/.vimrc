@@ -53,6 +53,11 @@ let g:airline_symbols.paste = 'P'
 " let g:airline_symbols.paste = '∥'
 let g:airline_symbols.whitespace = 'Ξ'
 
+" show buffers
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Configs
 " mark trailing whitespace
@@ -92,6 +97,10 @@ nmap :Wq :wq
 nmap :Q :q
 nmap :Q! :q!
 nmap :Dl :dl
+
+" Buffer navigation
+nnoremap <Leader>gt :bn<CR>
+nnoremap <Leader>gT :bp<CR>
 
 " trailing whitespace removal
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
