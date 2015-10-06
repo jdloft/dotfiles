@@ -12,6 +12,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sleuth'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 
@@ -103,6 +104,9 @@ nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 
 " paste mappings
 nnoremap <leader>p :set paste!<cr>
+
+" NERDTree shortcut
+nnoremap <leader>sf :NERDTree<cr>
 
 " Vim. Live it.
 " https://tylercipriani.com/vim.html
