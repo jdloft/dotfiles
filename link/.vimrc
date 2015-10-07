@@ -98,7 +98,8 @@ nmap :Q :q
 nmap :Q! :q!
 nmap :Dl :dl
 
-" Buffer navigation
+" Buffers
+set hidden
 nnoremap <Leader>gt :bn<CR>
 nnoremap <Leader>gT :bp<CR>
 

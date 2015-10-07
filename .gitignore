@@ -22,3 +22,6 @@
 # Vim stuff
 *.swp
 link/.vim/.netrwhist
+
+# Vim plug
+link/.vim/autoload/plug.vim.old
