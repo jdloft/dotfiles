@@ -1,2 +1,2 @@
 #!/bin/bash
-vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
+vim +PlugInstall +PlugUpdate +PlugClean +qall
