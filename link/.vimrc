@@ -118,14 +118,8 @@ nnoremap <leader>p :set paste!<cr>
 " NERDTree shortcut
 nnoremap <leader>sf :NERDTree<cr>
 
-" Vim. Live it.
-" https://tylercipriani.com/vim.html
-inoremap <up> <nop>
-vnoremap <up> <nop>
-inoremap <down> <nop>
-vnoremap <down> <nop>
-inoremap <left> <nop>
-vnoremap <right> <nop>
-vnoremap <left> <nop>
-inoremap <right> <nop>
-" B-A-<start>
+" Vim's hard mode
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
