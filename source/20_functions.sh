@@ -76,7 +76,7 @@ function _dotfiles-git-prompt() {
     CLR_GITST_CLS="$CLR_GREEN" # Clear state
     CLR_GITST_SC="$CLR_YELLOW" # Staged changes indicator
     CLR_GITST_USC="$CLR_RED" # Unstaged changes indicator
-    CLR_GITST_UT="$CLR_WHITE" # Untracked files indicator
+    CLR_GITST_UT="$CLR_CYAN" # Untracked files indicator
     CLR_GITST_BR="$CLR_GREEN" # Branch
 
     if [[ -z "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]]; then
@@ -92,7 +92,7 @@ function _dotfiles-git-prompt() {
         indicator="$indicator${CLR_GITST_USC}*" # Unstaged changes
     fi
     if [[ -n "$(git ls-files --others --exclude-standard 2> /dev/null)" ]]; then
-        indicator="$indicator${CLR_GITST_UT}%" # Untracked files
+        indicator="$indicator${CLR_GITST_UT}?" # Untracked files
     fi
 
     branch="`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`"
