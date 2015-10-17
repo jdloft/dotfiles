@@ -17,6 +17,8 @@ alias .5='cd ../../../../../'
 alias .6='cd ../../../../../../'
 alias -- -='cd -'
 
+alias mkdir='mkdir -p'
+
 alias parts='cat /proc/partitions'
 
 alias nit='npm install && npm test'
