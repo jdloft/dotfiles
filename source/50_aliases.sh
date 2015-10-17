@@ -19,6 +19,8 @@ alias -- -='cd -'
 
 alias mkdir='mkdir -p'
 
+alias wget='wget -c'
+
 alias parts='cat /proc/partitions'
 
 alias nit='npm install && npm test'
