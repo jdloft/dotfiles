@@ -1,3 +1,8 @@
 # Personal machines
 # vim: syntax=sshconfig
 
+Host titanium
+    Hostname jdltitanium.ml
+    User jamison
+    IdentityFile ~/.ssh/id_rsa
+    IdentitiesOnly yes
