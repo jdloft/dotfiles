@@ -1,5 +1,5 @@
 # jdloft: dotfiles
-My Stuff
+My stuff
 
 ## Install
 HTTPS
@@ -13,5 +13,3 @@ git clone git@github.com:jdloft/dotfiles.git ~/.dotfiles && ~/.dotfiles/bin/dotf
 
 ## Credit
 dotfiles script is from Cowboy (<https://github.com/cowboy/dotfiles>)
-
-and almost all dotfiles from Krinkle (<https://github.com/krinkle/dotfiles>)
