@@ -9,10 +9,14 @@ export PATH
 function src() {
   local file
   for file in $DOTFILES/source/*; do
-    source "$file"
+    if [ -f "$file" ]; then
+      source "$file"
+    fi
   done
   for file in $DOTFILES/source/bash/*; do
-    source "$file"
+    if [ -f "$file" ]; then
+      source "$file"
+    fi
   done
 }
 
