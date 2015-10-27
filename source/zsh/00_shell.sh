@@ -9,10 +9,12 @@ setopt completealiases
 
 setopt HIST_IGNORE_DUPS
 
+setopt PROMPT_SUBST
+
 path=(~/bin $path[@])
 
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward # command searching (from Arch wiki)
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
+[[ -n "${key[PageUp]}" ]] && bindkey "${key[PageUp]}" history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]] && bindkey "${key[PageDown]}" history-beginning-search-forward
 
 # Colors!
 autoload -U colors
