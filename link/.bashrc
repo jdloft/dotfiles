@@ -8,13 +8,12 @@ export PATH
 # Source all files in "source"
 function src() {
   local file
-  if [[ "$1" ]]; then
-    source "$DOTFILES/source/bash/$1.sh"
-  else
-    for file in $DOTFILES/source/bash/*; do
-      source "$file"
-    done
-  fi
+  for file in $DOTFILES/source/bash/*; do
+    source "$file"
+  done
+  for file in $DOTFILES/source/*; do
+    source "$file"
+  done
 }
 
 # Run dotfiles script, then source.
