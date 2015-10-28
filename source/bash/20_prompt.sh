@@ -1,8 +1,3 @@
-function _dotfiles-exit_code() {
-    [[ $1 != 0 ]] && echo "\[$CLR_RED\]$1\[$CLR_NONE\] "
-}
-
-# MacOSX default PS1: '\h:\W \u\$'
 function _dotfiles-prompt() {
     local ec="$?"
     local host="$DOTFILES_HOST"
@@ -61,6 +56,10 @@ function _dotfiles-prompt() {
     fi
 }
 
+function _dotfiles-exit_code() {
+    [[ $1 != 0 ]] && echo "\[$CLR_RED\]$1\[$CLR_NONE\] "
+}
+
 #
 # Git status
 # Based on the "official" git-completion.bash
@@ -110,21 +109,4 @@ function _dotfiles-virtualenv-prompt() {
     fi
 
     echo -en "${CLR_VE_CLS} (${CLR_VE_ENV}$environment${CLR_VE_CLS})"
-}
-
-# Password generation
-# Courtesy of @tstarling
-function genpass() {
-    tr -cd [:alnum:] < /dev/urandom | head -c10
-    echo
-}
-
-# Open keys
-function open-keys() {
-    if [[ -e ~/.ssh/id_rsa || -e ~/.ssh/id_dsa ]]; then
-        if [ -z "$SSH_AUTH_SOCK" ]; then
-            eval `ssh-agent -s`
-            ssh-add
-        fi
-    fi
 }
