@@ -1,23 +1,20 @@
-setopt PROMPT_SUBST
 function _dotfiles-prompt() {
-    local ec="$?"
     local host="$DOTFILES_HOST"
-    local clr_user="$fg[cyan]"
-    local clr_host="$fg[cyan]"
+    local clr_user="%F{cyan}"
+    local clr_host="%F{cyan}"
     local promptchar="\$"
-    local supportcolor
 
     # Special cases
     if [ "$DOTFILES_HOST" = "hydrogen" ]; then
-        clr_host="$fg[blue]"
+        clr_host="%F{blue}"
     elif [ "$DOTFILES_HOST" = "titanium" ]; then
-        clr_host="$fg[yellow]"
+        clr_host="%F{yellow}"
     elif [ "$DOTFILES_HOST" = "jdloft" ]; then
         host="neon"
-        clr_host="$fg[green]"
+        clr_host="%F{green}"
     # WMF production like servers
     elif echo $DOTFILES_HOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
-        clr_host="$fg[magenta]"
+        clr_host="%F{magenta}"
     # WMF labs servers
     elif echo $DOTFILES_HOST | grep -q -E '\.wmflabs'; then
         labshost=true
@@ -31,13 +28,8 @@ function _dotfiles-prompt() {
 
     # Root is special
     if [ "$LOGNAME" = "root" ]; then
-        clr_user="$fg[red]"
+        clr_user="%F{red}"
         promptchar="#"
-    fi
-
-    # Test for color support
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        supportcolor=1
     fi
 
     # Chroot info
@@ -49,13 +41,12 @@ function _dotfiles-prompt() {
     if [ "$labshost" = true ]; then
         echo "%{$reset_color%}[$(date +%H:%M\ %Z)] %{$clr_user%}\u%{$reset_color%} at \[$CLR_RED\]$host.\[$CLR_BOLD\]$project\[$CLR_NONE\]\[$CLR_RED\].\[$CLR_LINE\]$cluster\[$CLR_NONE\]\[$CLR_RED\].$site%{$reset_color%}${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)%{$reset_color%}$promptchar\[$CLR_NONE\] "
     else
-        echo "%{$reset_color%}[$(date +%H:%M\ %Z)] $clr_user%n$reset_color at $clr_host$host$reset_color${debian_chroot:+$fg[yellow] ($debian_chroot)$reset_color} in $fg[yellow]${PWD/#$HOME/~}$(_dotfiles-git-prompt)$(_dotfiles-virtualenv-prompt)$reset_color
-$(_dotfiles-exit_code)$promptchar$reset_color "
+        echo "%f[$(date +%H:%M\ %Z)] $clr_user%n%f at $clr_host$host%f${debian_chroot:+"%F{yellow} ($debian_chroot)%f"} in %F{yellow}${PWD/#$HOME/~}$(_dotfiles-git-prompt)$(_dotfiles-virtualenv-prompt)%f\n$(_dotfiles-exit_code)$promptchar%f "
     fi
 }
 
 function _dotfiles-exit_code() {
-    echo "%(?..$fg[red]%? )$reset_color"
+    echo "%(?..%F{red}%?%f )"
 }
 
 # Git status
@@ -66,11 +57,11 @@ function _dotfiles-git-prompt() {
     local indicator
     local branch
 
-    CLR_GITST_CLS="$fg[green]" # Clear state
-    CLR_GITST_SC="$fg[yellow]" # Staged changes indicator
-    CLR_GITST_USC="$fg[red]" # Unstaged changes indicator
-    CLR_GITST_UT="$fg[cyan]" # Untracked files indicator
-    CLR_GITST_BR="$fg[green]" # Branch
+    CLR_GITST_CLS="%F{green}" # Clear state
+    CLR_GITST_SC="%F{yellow}" # Staged changes indicator
+    CLR_GITST_USC="%F{red}" # Unstaged changes indicator
+    CLR_GITST_UT="%F{cyan}" # Untracked files indicator
+    CLR_GITST_BR="%F{green}" # Branch
 
     if [[ -z "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]]; then
         return 1
@@ -89,12 +80,12 @@ function _dotfiles-git-prompt() {
     fi
 
     branch="`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`"
-    echo -en "${CLR_GITST_CLS} (${CLR_GITST_BR}$branch$indicator${CLR_GITST_CLS})$reset_color"
+    echo -en "${CLR_GITST_CLS} (${CLR_GITST_BR}$branch$indicator${CLR_GITST_CLS})%f"
 }
 
 function _dotfiles-virtualenv-prompt() {
-    CLR_VE_CLS="$fg[yellow]"
-    CLR_VE_ENV="$fg[yellow]"
+    CLR_VE_CLS="%F{yellow}"
+    CLR_VE_ENV="%F{yellow}"
 
     if [[ $VIRTUAL_ENV != "" ]]; then
         environment="${VIRTUAL_ENV##*/}"
@@ -102,7 +93,7 @@ function _dotfiles-virtualenv-prompt() {
         return 1
     fi
 
-    echo -en "${CLR_VE_CLS} (${CLR_VE_ENV}$environment${CLR_VE_CLS})$reset_color"
+    echo -en "${CLR_VE_CLS} (${CLR_VE_ENV}$environment${CLR_VE_CLS})%f"
 }
 
 PROMPT='$(_dotfiles-prompt)'
