@@ -6,7 +6,7 @@ function genpass() {
 }
 
 # Open keys
-function open-keys() {
+function unlock-keys() {
     if [[ -e ~/.ssh/id_rsa || -e ~/.ssh/id_dsa ]]; then
         if [ -z "$SSH_AUTH_SOCK" ]; then
             eval `ssh-agent -s`
