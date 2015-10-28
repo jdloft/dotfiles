@@ -22,8 +22,10 @@ setopt PROMPT_SUBST
 
 path=(~/bin $path[@])
 
-[[ -n "${key[PageUp]}" ]] && bindkey "${key[PageUp]}" history-beginning-search-backward
-[[ -n "${key[PageDown]}" ]] && bindkey "${key[PageDown]}" history-beginning-search-forward
+if [[ -n "${key[PageUp]}" && -n "${key[PageDown]}" ]]; then
+    bindkey "${key[PageUp]}" history-beginning-search-backward
+    bindkey "${key[PageDown]}" history-beginning-search-forward
+fi
 
 #
 # Colors
