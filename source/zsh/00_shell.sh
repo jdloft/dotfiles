@@ -31,6 +31,7 @@ fi
 # Colors
 #
 
+export TERM=screen-256color
 autoload -U colors
 colors
 
