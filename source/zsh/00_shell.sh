@@ -11,6 +11,8 @@ setopt completealiases
 
 setopt autocd
 
+export LANG="en_US.UTF-8"
+
 # History
 export HISTSIZE=1000
 export HISTFILE="$HOME/.history"
