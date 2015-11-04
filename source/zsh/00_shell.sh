@@ -44,3 +44,5 @@ colors
 export EDITOR=vim
 
 export GREP_OPTIONS='--color=auto'
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
