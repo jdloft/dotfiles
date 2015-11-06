@@ -3,6 +3,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'puppetlabs/puppet-syntax-vim'
+Plug 'ekalinin/Dockerfile.vim'
 Plug 'arnar/vim-matchopen'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
