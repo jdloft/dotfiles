@@ -4,3 +4,6 @@
 [submodule "link/.arc/libphutil"]
 	path = link/.arc/libphutil
 	url = https://github.com/phacility/libphutil.git
+[submodule "lib/desk"]
+	path = lib/desk
+	url = https://github.com/jamesob/desk.git
