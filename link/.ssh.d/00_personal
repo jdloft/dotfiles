@@ -2,7 +2,7 @@
 # vim: syntax=sshconfig
 
 Host titanium
-    Hostname jdltitanium.ml
+    Hostname titanium.jdloft.com
     User jamison
     IdentityFile ~/.ssh/id_rsa
     IdentitiesOnly yes
