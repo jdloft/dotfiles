@@ -1,4 +1,5 @@
-# Description: desk for working on Bot24
+# Description: desk for running Bot24
+# For use on tools
 
 cd ~/bot24
 source env/bin/activate
