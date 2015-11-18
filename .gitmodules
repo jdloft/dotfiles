@@ -1,4 +1,4 @@
-[submodule "link/.arc/arcanist"]
+[submodule "lib/arc/arcanist"]
 	path = lib/arc/arcanist
 	url = https://github.com/phacility/arcanist.git
 [submodule "lib/arc/libphutil"]
