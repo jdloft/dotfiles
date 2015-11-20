@@ -7,3 +7,6 @@
 [submodule "lib/desk"]
 	path = lib/desk
 	url = https://github.com/jamesob/desk.git
+[submodule "link/.i3/fancy-lockscreen/i3lock-color"]
+	path = link/.i3/fancy-lockscreen/i3lock-color
+	url = https://github.com/eBrnd/i3lock-color.git
