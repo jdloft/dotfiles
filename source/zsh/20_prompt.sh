@@ -13,10 +13,12 @@ function _dotfiles-prompt() {
         host="neon"
         clr_host="%F{green}"
     # WMF production like servers
-    elif echo $DOTFILES_HOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
+    elif echo $DOTFILES_LHOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
+        host="$DOTFILES_LHOST"
         clr_host="%F{magenta}"
     # WMF labs servers
-    elif echo $DOTFILES_HOST | grep -q -E '\.wmflabs'; then
+    elif echo $DOTFILES_LHOST | grep -q -E '\.wmflabs'; then
+        host="$DOTFILE_LHOST"
         labshost=true
         site=${host##*.}
         host=${host%.*}
