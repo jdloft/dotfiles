@@ -1,7 +1,7 @@
 #!/usr/bin/zsh
 
 # Prompt
-autoload -U promptinit compinit # autoload prompt and completion
+autoload -U promptinit compinit compdef # autoload prompt and completion
 promptinit
 
 # Completion

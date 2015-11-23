@@ -1,12 +1,12 @@
 # Source all files in "source"
 function src() {
     local file
-    for file in $DOTFILES/source/*; do
+    for file in $DOTFILES/source/zsh/*; do
         if [[ -f "$file" ]]; then
             source "$file"
         fi
     done
-    for file in $DOTFILES/source/zsh/*; do
+    for file in $DOTFILES/source/*; do
         if [[ -f "$file" ]]; then
             source "$file"
         fi
