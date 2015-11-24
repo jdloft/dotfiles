@@ -1,4 +1,9 @@
-# Ruby version manager
-export PATH="$PATH:$DOTFILE/lib/rvm/bin" # Add RVM to PATH for scripting
+# Setup PATH
 
-[[ -s "$DOTFILE/lib/rvm/scripts/rvm" ]] && source "$DOTFILE/lib/rvm/scripts/rvm"
+# Add binaries into the path
+PATH="$DOTFILES/bin:$PATH"
+
+# Ruby version manager
+PATH="$DOTFILES/lib/rvm/bin:$PATH" # Add RVM to PATH for scripting
+
+export PATH

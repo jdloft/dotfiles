@@ -22,8 +22,6 @@ setopt HIST_IGNORE_SPACE
 
 setopt PROMPT_SUBST
 
-path=(~/bin $path[@])
-
 if [[ -n "${key[PageUp]}" && -n "${key[PageDown]}" ]]; then
     bindkey "${key[PageUp]}" history-beginning-search-backward
     bindkey "${key[PageDown]}" history-beginning-search-forward
@@ -33,7 +31,7 @@ fi
 # Colors
 #
 
-export TERM=screen-256color
+export TERM=xterm-256color
 autoload -U colors
 colors
 

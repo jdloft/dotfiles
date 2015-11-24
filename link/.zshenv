@@ -1,6 +1,5 @@
 # Where the magic happens.
 export DOTFILES=~/.dotfiles
 
-# Add binaries into the path
+# Don't keep duplicates in path
 typeset -U path
-path=($DOTFILES/bin $path[@])
