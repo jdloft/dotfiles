@@ -25,3 +25,8 @@ link/.vim/.netrwhist
 
 # Vim plug
 link/.vim/autoload/plug.vim.old
+
+# rbenv
+/link/.rbenv/shims/
+/link/.rbenv/versions/
+/link/.rbenv/version
