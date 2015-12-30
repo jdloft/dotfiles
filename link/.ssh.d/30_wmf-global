@@ -1,10 +1,6 @@
 # WMF global settings
 # vim: syntax=sshconfig
 
-# Internal -> External
-Host *.eqiad.wmflabs !bastion*
-    ProxyCommand ssh -a -W %h:%p bastion.wmflabs.org
-
 # Internal
 Host *.wmflabs
     User negative24

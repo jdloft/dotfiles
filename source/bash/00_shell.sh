@@ -9,6 +9,7 @@ shopt -s hostcomplete >/dev/null 2>&1
 shopt -s interactive_comments >/dev/null 2>&1
 shopt -u mailwarn >/dev/null 2>&1
 shopt -s no_empty_cmd_completion >/dev/null 2>&1
+shopt -s extglob
 
 test -f /etc/bash_completion && . /etc/bash_completion
 

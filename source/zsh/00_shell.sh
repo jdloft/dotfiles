@@ -27,6 +27,8 @@ if [[ -n "${key[PageUp]}" && -n "${key[PageDown]}" ]]; then
     bindkey "${key[PageDown]}" history-beginning-search-forward
 fi
 
+setopt extended_glob
+
 #
 # Colors
 #
