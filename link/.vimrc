@@ -106,6 +106,12 @@ nnoremap <Leader>gT :bp<CR>
 " trailing whitespace removal
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
+" searching shortcuts
+set hlsearch
+nnoremap <Leader>sh :set hlsearch!<CR>
+nnoremap <Leader>cs :let @/ = ""<CR>
+nnoremap <Leader>* :let curwd='\<<C-R>=expand("<cword>")<CR>\>'<CR>:let @/=curwd<CR>:call histadd("search", curwd)<CR>
+
 " tmux navigator arrow key bindings
 nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
