@@ -4,11 +4,6 @@
 autoload -U promptinit compinit compdef # autoload prompt and completion
 promptinit
 
-# Completion
-compinit
-zstyle ':completion:*' menu select # fancy tab completion menu
-setopt completealiases
-
 setopt autocd
 
 export LANG="en_US.UTF-8"
