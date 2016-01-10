@@ -5,6 +5,7 @@ alias ls='ls --color=auto'
 
 alias ll='ls -ahlF'
 alias l='ll'
+alias sl='ls'
 
 alias df='df -h'
 
