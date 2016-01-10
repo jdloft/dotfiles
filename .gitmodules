@@ -16,3 +16,6 @@
 [submodule "link/.rbenv/plugins/ruby-build"]
 	path = link/.rbenv/plugins/ruby-build
 	url = https://github.com/rbenv/ruby-build
+[submodule "lib/zsh-syntax-highlighting"]
+	path = lib/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
