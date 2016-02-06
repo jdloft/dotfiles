@@ -15,6 +15,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'scrooloose/nerdtree'
+Plug 'ervandew/supertab'
 
 call plug#end()
 
