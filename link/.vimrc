@@ -136,3 +136,8 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" Scrolling
+set scrolloff=5
+set sidescrolloff=5
+set sidescroll=1
