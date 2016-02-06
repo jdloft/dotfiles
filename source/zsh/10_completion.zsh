@@ -270,6 +270,7 @@ grmlcomp() {
 
 if is42; then
     grmlcomp
+    zstyle ':completion:*' menu select # fancy tab completion menu
 else
     zstyle ':completion:*' menu select # fancy tab completion menu
     setopt completealiases
