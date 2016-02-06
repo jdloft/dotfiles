@@ -107,6 +107,14 @@ set sidescrolloff=5
 set sidescroll=1
 
 "-----------------------------------------------------------------------------
+" Searching
+"
+set hlsearch " highlight searches
+set incsearch " incremental searching
+set ignorecase " case insensitive search
+set smartcase " except for one capital letter
+
+"-----------------------------------------------------------------------------
 " Maps
 "
 let mapleader=","
@@ -130,7 +138,6 @@ nmap :Dl :dl
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
 " searching shortcuts
-set hlsearch
 nnoremap <Leader>sh :set hlsearch!<CR>
 nnoremap <Leader>cs :let @/ = ""<CR>
 nnoremap <Leader>* :let curwd='\<<C-R>=expand("<cword>")<CR>\>'<CR>:let @/=curwd<CR>:call histadd("search", curwd)<CR>
