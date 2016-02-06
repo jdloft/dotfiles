@@ -1,5 +1,6 @@
+"-----------------------------------------------------------------------------
 " Plug-ins
-" vim-plug
+"
 call plug#begin('~/.vim/plugged')
 
 Plug 'puppetlabs/puppet-syntax-vim'
@@ -16,6 +17,7 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 Plug 'scrooloose/nerdtree'
 Plug 'ervandew/supertab'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
@@ -61,7 +63,17 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
-" Configs
+"-----------------------------------------------------------------------------
+" Basic
+"
+set number
+set noshowmode
+syntax enable
+set encoding=utf-8
+
+" remove insert delay
+set timeoutlen=1000 ttimeoutlen=10
+
 " mark trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -70,24 +82,33 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-" line numbering
-set number
-
-" fast out of insert
-set timeoutlen=1000 ttimeoutlen=10
-
-" don't show mode, vim-airline does it
-set noshowmode
-
 " modeline
 set modeline
 let modelines=5
 
+"-----------------------------------------------------------------------------
 " Execution commands
+"
 autocmd FileType python nmap <leader>ex :!python %<cr>
 autocmd FileType ruby nmap <leader>ex :!ruby %<cr>
 
+"-----------------------------------------------------------------------------
+" Buffers
+"
+set hidden
+nnoremap <Leader>gt :bn<CR>
+nnoremap <Leader>gT :bp<CR>
+
+"-----------------------------------------------------------------------------
+" Scrolling
+"
+set scrolloff=5
+set sidescrolloff=5
+set sidescroll=1
+
+"-----------------------------------------------------------------------------
 " Maps
+"
 let mapleader=","
 
 " fast vimrc editing and sourcing
@@ -98,17 +119,12 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap k gk
 nnoremap j gj
 
-" Common mis-types
+" common mis-types
 nmap :W :w
 nmap :Wq :wq
 nmap :Q :q
 nmap :Q! :q!
 nmap :Dl :dl
-
-" Buffers
-set hidden
-nnoremap <Leader>gt :bn<CR>
-nnoremap <Leader>gT :bp<CR>
 
 " trailing whitespace removal
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
@@ -136,8 +152,3 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-
-" Scrolling
-set scrolloff=5
-set sidescrolloff=5
-set sidescroll=1
