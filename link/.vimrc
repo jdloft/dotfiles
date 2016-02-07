@@ -86,6 +86,9 @@ autocmd BufWinLeave * call clearmatches()
 set modeline
 let modelines=5
 
+" easier to reach mapleader
+let mapleader=","
+
 "-----------------------------------------------------------------------------
 " Execution commands
 "
@@ -117,7 +120,6 @@ set smartcase " except for one capital letter
 "-----------------------------------------------------------------------------
 " Maps
 "
-let mapleader=","
 
 " fast vimrc editing and sourcing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
