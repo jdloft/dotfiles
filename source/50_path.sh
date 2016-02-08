@@ -1,9 +1,12 @@
 # Setup PATH
 
-# Add binaries into the path
-PATH="$DOTFILES/bin:$PATH"
+# Add ~/bin to PATH
+if [ -d "~/bin" ]; then
+    path_prepend "~/bin"
+fi
+
+# Add dotfiles bin dir
+path_prepend "$DOTFILES/bin"
 
 # rbenv
-PATH="$PATH:$DOTFILES/lib/rbenv/bin"
-
-export PATH
+path_append "$DOTFILES/lib/rbenv/bin"
