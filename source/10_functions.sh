@@ -25,6 +25,20 @@ function go-session {
     fi
 }
 
+# Yes no prompt
+function yn-prompt {
+    if [ "${SHELL##*/}" = "bash" ]; then
+        read -p "Would you like to proceed? " -n 1 -r
+    elif [ "${SHELL##*/}" = "zsh" ]; then
+        read "REPLY?Would you like to proceed? "
+    fi
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 # PATH manipulation
 # http://stackoverflow.com/questions/370047/what-is-the-most-elegant-way-to-remove-a-path-from-the-path-variable-in-bash
 path_append()  { path_remove $1; export PATH="$PATH:$1"; }
