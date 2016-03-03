@@ -20,8 +20,9 @@ function go-session {
     tmux has-session -t $1 > /dev/null 2>&1
     if [ "$?" -eq 1 ]; then
         tmux new -s $1
+    else
+        tmux attach -t $1
     fi
-    tmux attach -t $1 && exit
 }
 
 # PATH manipulation
