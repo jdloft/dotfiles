@@ -15,6 +15,15 @@ function unlock-keys() {
     fi
 }
 
+# Tmux session
+function go-session {
+    tmux has-session -t $1 > /dev/null 2>&1
+    if [ "$?" -eq 1 ]; then
+        session-$1
+    fi
+    tmux attach -t $1 && exit
+}
+
 # PATH manipulation
 # http://stackoverflow.com/questions/370047/what-is-the-most-elegant-way-to-remove-a-path-from-the-path-variable-in-bash
 path_append()  { path_remove $1; export PATH="$PATH:$1"; }
