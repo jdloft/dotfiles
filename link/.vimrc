@@ -89,6 +89,10 @@ let modelines=5
 " easier to reach mapleader
 let mapleader=","
 
+" tab autocompletion
+set wildmode=longest,list,full
+set wildmenu
+
 "-----------------------------------------------------------------------------
 " Execution commands
 "
