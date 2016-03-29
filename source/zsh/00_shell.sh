@@ -28,7 +28,6 @@ setopt extended_glob
 # Colors
 #
 
-export TERM=xterm-256color
 autoload -U colors
 colors
 

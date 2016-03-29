@@ -70,6 +70,3 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 #
 
 PROMPT_COMMAND="_dotfiles-prompt"
-
-# 256 color
-export TERM=xterm-256color
