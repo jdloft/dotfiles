@@ -102,14 +102,11 @@ if $TERM == "xterm-256color"
   colorscheme solarized
   let g:airline_theme = 'solarized'
 
-  " set $DOTFILES_SOLARIZED if terminal solarized colors are supported
-  " else, will use 256 color fallback
-  " (see source/40_color.sh)
-  let enable_solarized=$DOTFILES_SOLARIZED
-  if enable_solarized == '0'
+  function g:SolarizedFallback()
     let g:solarized_termcolors=256
     colorscheme solarized
-  endif
+  endfunction
+  nnoremap <Leader>sf :call SolarizedFallback()<CR>
 else
   " TODO: should be replaced with a proper 8/16 bit theme
   let g:airline_theme = 'simple'
@@ -181,7 +178,7 @@ nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 nnoremap <leader>p :set paste!<cr>
 
 " NERDTree shortcut
-nnoremap <leader>sf :NERDTree<cr>
+nnoremap <leader>ls :NERDTree<cr>
 
 " Vim's hard mode
 noremap <Up> <NOP>
