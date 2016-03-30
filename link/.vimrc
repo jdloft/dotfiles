@@ -18,6 +18,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
+Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
