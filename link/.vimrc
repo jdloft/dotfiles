@@ -3,21 +3,21 @@
 "
 call plug#begin('~/.vim/plugged')
 
-Plug 'puppetlabs/puppet-syntax-vim'
-Plug 'ekalinin/Dockerfile.vim'
+Plug 'altercation/vim-colors-solarized'
 Plug 'arnar/vim-matchopen'
-Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-commentary'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'ervandew/supertab'
+Plug 'puppetlabs/puppet-syntax-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
-Plug 'scrooloose/nerdtree'
-Plug 'ervandew/supertab'
-Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
