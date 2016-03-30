@@ -49,9 +49,9 @@ function _dotfiles-prompt() {
     # Actual prompt code
     if [[ -n $supportcolor ]]; then
         if [ "$labshost" = true ]; then
-            PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$CLR_RED\]$host.\[$CLR_BOLD\]$project\[$CLR_NONE\]\[$CLR_RED\].\[$CLR_LINE\]$cluster\[$CLR_NONE\]\[$CLR_RED\].$site\[$CLR_WHITE\]${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_WHITE\]$prompt\[$CLR_NONE\] "
+            PS1="\[$CLR_NONE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_NONE\] at \[$CLR_RED\]$host.\[$CLR_BOLD\]$project\[$CLR_NONE\]\[$CLR_RED\].\[$CLR_LINE\]$cluster\[$CLR_NONE\]\[$CLR_RED\].$site\[$CLR_NONE\]${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_NONE\]$prompt\[$CLR_NONE\] "
         else
-            PS1="\[$CLR_WHITE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_WHITE\] at \[$clr_host\]$host\[$CLR_WHITE\]${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_WHITE\]$prompt\[$CLR_NONE\] "
+            PS1="\[$CLR_NONE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_NONE\] at \[$clr_host\]$host\[$CLR_NONE\]${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_NONE\]$prompt\[$CLR_NONE\] "
         fi
     else
         PS1="[\$(date +%H:%M\ %Z)] \u@$host:\w$prompt "
