@@ -3,10 +3,12 @@
 "
 call plug#begin('~/.vim/plugged')
 
+Plug 'Yggdroot/indentLine'
 Plug 'altercation/vim-colors-solarized'
 Plug 'arnar/vim-matchopen'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
 Plug 'puppetlabs/puppet-syntax-vim'
@@ -18,7 +20,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
-Plug 'Yggdroot/indentLine'
 
 call plug#end()
 
@@ -57,6 +58,24 @@ let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '±'
 let g:airline_symbols.paste = 'P'
 let g:airline_symbols.whitespace = 'Ξ'
+
+" tmuxline
+let g:tmuxline_separators = {
+  \ 'left' : '',
+  \ 'left_alt': '',
+  \ 'right' : '',
+  \ 'right_alt' : '',
+  \ 'space' : ' '}
+
+let g:tmuxline_preset = {
+  \ 'a': '#S',
+  \ 'win': '#I: #W#F',
+  \ 'cwin': '#I: #W#F',
+  \ 'x': '%H:%M',
+  \ 'y': '%a %d-%b-%y',
+  \ 'z': '#h',
+  \ 'options': {
+  \ 'status-justify': 'left'}}
 
 " show buffers
 " Enable the list of buffers
