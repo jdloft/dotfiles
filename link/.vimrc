@@ -37,7 +37,7 @@ let g:syntastic_python_flake8_args = "--ignore=E501"
 
 " vim-airline
 set laststatus=2
-let g:airline_theme = 'simple'
+" theme set in color section
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
 
@@ -93,11 +93,33 @@ let mapleader=","
 set wildmode=longest,list,full
 set wildmenu
 
+" colors
+set background=dark
+
+if $TERM == "xterm-256color"
+  set t_Co=256
+  colorscheme solarized
+  let g:airline_theme = 'solarized'
+
+  " set $DOTFILES_SOLARIZED if terminal solarized colors are supported
+  " else, will use 256 color fallback
+  " (see source/40_color.sh)
+  let enable_solarized=$DOTFILES_SOLARIZED
+  if enable_solarized == '0'
+    let g:solarized_termcolors=256
+    colorscheme solarized
+  endif
+else
+  " TODO: should be replaced with a proper 8/16 bit theme
+  let g:airline_theme = 'simple'
+endif
+
 "-----------------------------------------------------------------------------
 " Execution commands
 "
 autocmd FileType python nmap <leader>ex :!python %<cr>
 autocmd FileType ruby nmap <leader>ex :!ruby %<cr>
+autocmd FileType cpp nmap <leader>ex :!g++ --std=c++11 -o %.out % && ./%.out && rm %.out<cr>
 
 "-----------------------------------------------------------------------------
 " Buffers
