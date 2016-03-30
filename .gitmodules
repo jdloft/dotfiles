@@ -22,3 +22,6 @@
 [submodule "lib/vim-plug"]
 	path = lib/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule "lib/solarized"]
+	path = lib/solarized
+	url = git://github.com/altercation/solarized.git
