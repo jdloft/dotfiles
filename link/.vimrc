@@ -8,6 +8,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'arnar/vim-matchopen'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
@@ -108,6 +109,9 @@ let modelines=5
 
 " easier to reach mapleader
 let mapleader=","
+
+" show incomplete commands
+set showcmd
 
 " tab autocompletion
 set wildmode=longest,list,full
