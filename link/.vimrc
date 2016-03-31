@@ -87,7 +87,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "-----------------------------------------------------------------------------
 " Basic
 "
-set number
 set noshowmode
 syntax enable
 set encoding=utf-8
@@ -163,6 +162,32 @@ set hlsearch " highlight searches
 set incsearch " incremental searching
 set ignorecase " case insensitive search
 set smartcase " except for one capital letter
+
+
+"-----------------------------------------------------------------------------
+" Numbering
+"
+set number
+set relativenumber
+
+" only show relative numbers in normal mode
+autocmd InsertEnter * :set norelativenumber
+autocmd InsertLeave * :set relativenumber
+
+" don't show relative numbers when out of focus
+au FocusLost * :set norelativenumber
+au FocusGained * :set relativenumber
+
+" fast toggling
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <Leader>n :call NumberToggle()<cr>
 
 "-----------------------------------------------------------------------------
 " Maps
