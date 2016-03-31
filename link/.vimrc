@@ -113,8 +113,28 @@ let mapleader=","
 set showcmd
 
 " tab autocompletion
-set wildmode=longest,list,full
+set wildmode=longest,list
 set wildmenu
+set wildignore=*.o,*.out,*.obj,*.class
+set wildignore+=*.swp,*~,._*
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=.git,.svn
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=*/vendor/assets/**
+set wildignore+=*/vendor/rails/**
+set wildignore+=*/vendor/cache/**
+set wildignore+=*/vendor/bundle/**
+set wildignore+=*/vendor/submodules/**
+set wildignore+=*/vendor/plugins/**
+set wildignore+=*/vendor/gems/**
+set wildignore+=*/.bundle/**
+set wildignore+=*.gem
+set wildignore+=*/log/**
+set wildignore+=*/tmp/**
+set wildignore+=*/_vendor/**
 
 " colors
 set background=dark
