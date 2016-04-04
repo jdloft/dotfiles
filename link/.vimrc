@@ -77,7 +77,7 @@ let g:tmuxline_preset = {
   \ 'y': '%a %d-%b-%y',
   \ 'z': '#h',
   \ 'options': {
-  \ 'status-justify': 'left'}}
+    \ 'status-justify': 'left'}}
 
 " show buffers
 " Enable the list of buffers
@@ -149,7 +149,7 @@ if $TERM == "xterm-256color"
     let g:solarized_termcolors=256
     colorscheme solarized
   endfunction
-  nnoremap <Leader>sf :call SolarizedFallback()<CR>
+  nnoremap <Leader>sf :call g:SolarizedFallback()<CR>
 else
   " TODO: should be replaced with a proper 8/16 bit theme
   let g:airline_theme = 'simple'
