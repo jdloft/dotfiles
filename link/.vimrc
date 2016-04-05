@@ -109,6 +109,9 @@ let modelines=5
 " easier to reach mapleader
 let mapleader=","
 
+" md files are markdown files
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 " show incomplete commands
 set showcmd
 
