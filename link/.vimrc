@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Yggdroot/indentLine'
 Plug 'altercation/vim-colors-solarized'
-Plug 'arnar/vim-matchopen'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
