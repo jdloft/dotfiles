@@ -152,6 +152,16 @@ if $TERM == "xterm-256color"
     colorscheme solarized
   endfunction
   nnoremap <Leader>sf :call g:SolarizedFallback()<CR>
+elseif $TERM == "screen-256color"
+  set t_Co=256
+  colorscheme solarized
+  let g:airline_theme = 'solarized'
+
+  function g:SolarizedFallback()
+    let g:solarized_termcolors=256
+    colorscheme solarized
+  endfunction
+  nnoremap <Leader>sf :call g:SolarizedFallback()<CR>
 else
   " TODO: should be replaced with a proper 8/16 bit theme
   let g:airline_theme = 'simple'
