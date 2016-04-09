@@ -1,6 +1,7 @@
 [user]
   name = Jamison Lofthouse
   email = jamison.lofthouse@gmail.com
+  signingkey = 75FFA55B
 [core]
   autocrlf = input
   whitespace = fix,space-before-tab,tab-in-indent,trailing-space
