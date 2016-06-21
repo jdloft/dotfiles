@@ -9,7 +9,9 @@ Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'edkolev/promptline.vim'
-Plug 'edkolev/tmuxline.vim'
+if $NOTMUXLINE == ""
+  Plug 'edkolev/tmuxline.vim'
+endif
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
 Plug 'puppetlabs/puppet-syntax-vim'
@@ -61,22 +63,24 @@ let g:airline_symbols.paste = 'P'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " tmuxline
-let g:tmuxline_separators = {
-  \ 'left' : '',
-  \ 'left_alt': '',
-  \ 'right' : '',
-  \ 'right_alt' : '',
-  \ 'space' : ' '}
+if $NOTMUXLINE == ""
+  let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
+    \ 'space' : ' '}
 
-let g:tmuxline_preset = {
-  \ 'a': '#S',
-  \ 'win': '#I: #W#F',
-  \ 'cwin': '#I: #W#F',
-  \ 'x': '%H:%M',
-  \ 'y': '%a %d-%b-%y',
-  \ 'z': '#h',
-  \ 'options': {
-    \ 'status-justify': 'left'}}
+  let g:tmuxline_preset = {
+    \ 'a': '#S',
+    \ 'win': '#I: #W#F',
+    \ 'cwin': '#I: #W#F',
+    \ 'x': '%H:%M',
+    \ 'y': '%a %d-%b-%y',
+    \ 'z': '#h',
+    \ 'options': {
+      \ 'status-justify': 'left'}}
+endif
 
 " show buffers
 " Enable the list of buffers
