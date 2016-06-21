@@ -16,8 +16,8 @@
 /link/.rbenv/versions/
 /link/.rbenv/version
 
-# Ignore any file with LOCAL in the name (good for per-machine vars/functions)
-*LOCAL*
+# Local source config
+/source/local.sh
 
 # Vim stuff
 *.swp
