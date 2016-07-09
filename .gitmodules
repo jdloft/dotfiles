@@ -25,3 +25,6 @@
 [submodule "lib/solarized"]
 	path = lib/solarized
 	url = git://github.com/altercation/solarized.git
+[submodule "lib/dircolors-solarized"]
+	path = lib/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
