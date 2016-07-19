@@ -150,6 +150,7 @@ if $TERM == "xterm-256color"
   set t_Co=256
   colorscheme solarized
   let g:airline_theme = 'solarized'
+  highlight CursorLineNr ctermfg=red
 
   function g:SolarizedFallback()
     let g:solarized_termcolors=256
@@ -160,6 +161,7 @@ elseif $TERM == "screen-256color"
   set t_Co=256
   colorscheme solarized
   let g:airline_theme = 'solarized'
+  highlight CursorLineNr ctermfg=red
 
   function g:SolarizedFallback()
     let g:solarized_termcolors=256
