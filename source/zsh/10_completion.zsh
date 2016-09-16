@@ -1,4 +1,4 @@
-# Taken from grml zsh configs
+# Based off of the grml zsh completion configs
 
 compinit
 
@@ -47,53 +47,29 @@ is439(){
     return 1
 }
 
-#f1# Checks whether or not you're running grml
-isgrml(){
-    [[ -f /etc/grml_version ]] && return 0
-    return 1
-}
-
-#f1# Checks whether or not you're running a grml cd
-isgrmlcd(){
-    [[ -f /etc/grml_cd ]] && return 0
-    return 1
-}
-
-if isgrml ; then
-#f1# Checks whether or not you're running grml-small
-    isgrmlsmall() {
-        if [[ ${${${(f)"$(</etc/grml_version)"}%% *}##*-} == 'small' ]]; then
-            return 0
-        fi
-        return 1
-    }
-else
-    isgrmlsmall() { return 1 }
-fi
-
-GRML_OSTYPE=$(uname -s)
+OSTYPE=$(uname -s)
 
 islinux(){
-    [[ $GRML_OSTYPE == "Linux" ]]
+    [[ $OSTYPE == "Linux" ]]
 }
 
 isdarwin(){
-    [[ $GRML_OSTYPE == "Darwin" ]]
+    [[ $OSTYPE == "Darwin" ]]
 }
 
 isfreebsd(){
-    [[ $GRML_OSTYPE == "FreeBSD" ]]
+    [[ $OSTYPE == "FreeBSD" ]]
 }
 
 isopenbsd(){
-    [[ $GRML_OSTYPE == "OpenBSD" ]]
+    [[ $OSTYPE == "OpenBSD" ]]
 }
 
 issolaris(){
-    [[ $GRML_OSTYPE == "SunOS" ]]
+    [[ $OSTYPE == "SunOS" ]]
 }
 
-grmlcomp() {
+zshcompinit() {
     # TODO: This could use some additional information
 
     # Make sure the completion system is initialised
@@ -227,13 +203,13 @@ grmlcomp() {
 
     # Some functions, like _apt and _dpkg, are very slow. We can use a cache in
     # order to speed things up
-    if [[ ${GRML_COMP_CACHING:-yes} == yes ]]; then
-        GRML_COMP_CACHE_DIR=${GRML_COMP_CACHE_DIR:-${ZDOTDIR:-$HOME}/.cache}
-        if [[ ! -d ${GRML_COMP_CACHE_DIR} ]]; then
-            command mkdir -p "${GRML_COMP_CACHE_DIR}"
+    if [[ ${ZSH_COMP_CACHING:-yes} == yes ]]; then
+        ZSH_COMP_CACHE_DIR=${ZSH_COMP_CACHE_DIR:-${ZDOTDIR:-$HOME}/.cache}
+        if [[ ! -d ${ZSH_COMP_CACHE_DIR} ]]; then
+            command mkdir -p "${ZSH_COMP_CACHE_DIR}"
         fi
         zstyle ':completion:*' use-cache  yes
-        zstyle ':completion:*:complete:*' cache-path "${GRML_COMP_CACHE_DIR}"
+        zstyle ':completion:*:complete:*' cache-path "${ZSH_COMP_CACHE_DIR}"
     fi
 
     # host completion
@@ -254,8 +230,6 @@ grmlcomp() {
         localhost
     )
     zstyle ':completion:*:hosts' hosts $hosts
-    # TODO: so, why is this here?
-    #  zstyle '*' hosts $hosts
 
     # use generic completion system for programs not yet defined; (_gnu_generic works
     # with commands that provide a --help option with "standard" gnu-like output.)
@@ -269,7 +243,7 @@ grmlcomp() {
 }
 
 if is42; then
-    grmlcomp
+    zshcompinit
     zstyle ':completion:*' menu select # fancy tab completion menu
 else
     zstyle ':completion:*' menu select # fancy tab completion menu

@@ -31,3 +31,6 @@
 [submodule "lib/tty-solarized"]
         path = lib/tty-solarized
         url = https://github.com/joepvd/tty-solarized.git
+[submodule "lib/zsh-completions"]
+	path = lib/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
