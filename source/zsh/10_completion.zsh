@@ -249,3 +249,6 @@ else
     zstyle ':completion:*' menu select # fancy tab completion menu
     setopt completealiases
 fi
+
+# gpg2 temporary fix
+compdef gpg2=gpg
