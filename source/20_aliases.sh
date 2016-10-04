@@ -1,7 +1,9 @@
-# Ubuntu (Linux), Solaris (SunOS)
-# On Mac (Darwin), this should be `ls -G`. However coreutils is installed
-# from Homebrew, so 'which ls' != '/bin/ls' on Mac.
-alias ls='ls --color=auto'
+# On Mac (Darwin), this should be `ls -G` if coreutils isn't installed from homebrew
+if [ is_mac ] && [ `which ls` == '/bin/ls' ]; then
+    alias ls='ls -G'
+else
+    alias ls='ls --color=auto'
+fi
 
 alias ll='ls -ahlF'
 alias l='ll'

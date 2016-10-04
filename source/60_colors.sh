@@ -1,4 +1,6 @@
 #!/bin/sh
 
 # Solarized dircolors
-eval `dircolors $DOTFILES/lib/dircolors-solarized/dircolors.ansi-dark`
+if [ ! is_mac ]; then
+    eval `dircolors $DOTFILES/lib/dircolors-solarized/dircolors.ansi-dark`
+fi
