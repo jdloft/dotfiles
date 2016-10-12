@@ -41,7 +41,11 @@ function yn-prompt {
 
 # OS detection
 function is_mac() {
-    [[ "$OSTYPE" =~ ^darwin ]] || return 1
+    if [[ "$OSTYPE" =~ ^darwin ]]; then
+        return 1
+    else
+        return 0
+    fi
 }
 
 # PATH manipulation
