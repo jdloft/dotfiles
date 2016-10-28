@@ -8,10 +8,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'edkolev/promptline.vim'
-if $NOTMUXLINE == ""
-  Plug 'edkolev/tmuxline.vim'
-endif
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
 Plug 'puppetlabs/puppet-syntax-vim'
