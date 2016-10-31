@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Hook for desk activation
-[ ! -z "$DESK_ENV" ] && source "$DESK_ENV"
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
 # Set desk dir based on host
 if [ "$DOTFILES_HOST" = "jdloft" ]; then
