@@ -4,12 +4,12 @@ export DOTFILES=~/.dotfiles
 # Source all files in "source"
 function src() {
   local file
-  for file in $DOTFILES/source/bash/*; do
+  for file in $DOTFILES/source/*; do
     if [ -f "$file" ]; then
       source "$file"
     fi
   done
-  for file in $DOTFILES/source/*; do
+  for file in $DOTFILES/source/bash/*; do
     if [ -f "$file" ]; then
       source "$file"
     fi
