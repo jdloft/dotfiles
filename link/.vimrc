@@ -3,7 +3,6 @@
 "
 call plug#begin('~/.vim/plugged')
 
-Plug 'Yggdroot/indentLine'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
