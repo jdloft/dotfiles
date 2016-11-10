@@ -8,5 +8,5 @@ Host bastion
     ForwardAgent no
 
 Host tools
-    Hostname tools-bastion-01.tools.eqiad.wmflabs
+    Hostname login.tools.wmflabs.org
 

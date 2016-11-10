@@ -6,8 +6,3 @@ Host primary.bastion.wmflabs.org
     IdentityFile ~/.ssh/id_rsa
     IdentitiesOnly yes
     ForwardAgent no
-
-# Tools
-Host tools-bastion-01.tools.eqiad.wmflabs
-    Hostname login.tools.wmflabs.org
-
