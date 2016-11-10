@@ -7,27 +7,18 @@ function _dotfiles-prompt() {
     local supportcolor
 
     # Special cases
-    if [ "$DOTFILES_HOST" = "hydrogen" ]; then
+    if [ "$DOTFILES_HOST" = "carbon" ]; then
         clr_host="$CLR_BLUE"
-    elif [ "$DOTFILES_HOST" = "titanium" ]; then
-        clr_host="$CLR_YELLOW"
-    elif [ "$DOTFILES_HOST" = "jdloft" ]; then
-        host="neon"
+    elif [ "$DOTFILES_HOST" = "LIS-JLOFTHOUSE" ]; then
         clr_host="$CLR_GREEN"
-    # WMF production like servers
+    # WMF production servers
     elif echo $DOTFILES_LHOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
         host="$DOTFILES_LHOST"
         clr_host="$CLR_MAGENTA"
     # WMF labs servers
     elif echo $DOTFILES_LHOST | grep -q -E '\.wmflabs'; then
         host="$DOTFILES_LHOST"
-        labshost=true
-        site=${host##*.}
-        host=${host%.*}
-        cluster=${host##*.}
-        host=${host%.*}
-        project=${host##*.}
-        host=${host%.*}
+        clr_host="$CLR_RED"
     fi
 
     # Root is special
@@ -48,11 +39,7 @@ function _dotfiles-prompt() {
 
     # Actual prompt code
     if [[ -n $supportcolor ]]; then
-        if [ "$labshost" = true ]; then
-            PS1="\[$CLR_NONE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_NONE\] at \[$CLR_RED\]$host.\[$CLR_BOLD\]$project\[$CLR_NONE\]\[$CLR_RED\].\[$CLR_LINE\]$cluster\[$CLR_NONE\]\[$CLR_RED\].$site\[$CLR_NONE\]${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_NONE\]$prompt\[$CLR_NONE\] "
-        else
-            PS1="\[$CLR_NONE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_NONE\] at \[$clr_host\]$host\[$CLR_NONE\]${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_NONE\]$prompt\[$CLR_NONE\] "
-        fi
+        PS1="\[$CLR_NONE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_NONE\] at \[$clr_host\]$host\[$CLR_NONE\]${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_NONE\]$prompt\[$CLR_NONE\] "
     else
         PS1="[\$(date +%H:%M\ %Z)] \u@$host:\w$prompt "
     fi

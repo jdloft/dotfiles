@@ -5,12 +5,9 @@ function _dotfiles-prompt() {
     local promptchar="\$"
 
     # Special cases
-    if [ "$DOTFILES_HOST" = "hydrogen" ]; then
+    if [ "$DOTFILES_HOST" = "carbon" ]; then
         clr_host="%F{blue}"
-    elif [ "$DOTFILES_HOST" = "titanium" ]; then
-        clr_host="%F{yellow}"
-    elif [ "$DOTFILES_HOST" = "jdloft" ]; then
-        host="neon"
+    elif [ "$DOTFILES_HOST" = "LIS-JLOFTHOUSE" ]; then
         clr_host="%F{green}"
     # WMF production like servers
     elif echo $DOTFILES_LHOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
@@ -19,13 +16,7 @@ function _dotfiles-prompt() {
     # WMF labs servers
     elif echo $DOTFILES_LHOST | grep -q -E '\.wmflabs'; then
         host="$DOTFILE_LHOST"
-        labshost=true
-        site=${host##*.}
-        host=${host%.*}
-        cluster=${host##*.}
-        host=${host%.*}
-        project=${host##*.}
-        host=${host%.*}
+        clr_host="$F{red}"
     fi
 
     # Root is special
@@ -40,11 +31,7 @@ function _dotfiles-prompt() {
     fi
 
     # Actual prompt code
-    if [ "$labshost" = true ]; then
-        echo "%f[$(date +%H:%M\ %Z)] $clr_user%n%f at %F{red}$host.%B$project%b%F{red}.%U$cluster%u%F{red}.$site%f${debian_chroot:+"%F{yellow} ($debian_chroot)%f"} in %F{yellow}${PWD/#$HOME/~}%f\n$(_dotfiles-exit_code)$promptchar%f "
-    else
-        echo "%f[$(date +%H:%M\ %Z)] $clr_user%n%f at $clr_host$host%f${debian_chroot:+"%F{yellow} ($debian_chroot)%f"} in %F{yellow}${PWD/#$HOME/~}%f\n$(_dotfiles-exit_code)$promptchar%f "
-    fi
+    echo "%f[$(date +%H:%M\ %Z)] $clr_user%n%f at $clr_host$host%f${debian_chroot:+"%F{yellow} ($debian_chroot)%f"} in %F{yellow}${PWD/#$HOME/~}%f\n$(_dotfiles-exit_code)$promptchar%f "
 }
 
 function _dotfiles-exit_code() {
