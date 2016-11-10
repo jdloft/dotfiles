@@ -42,9 +42,9 @@ function yn-prompt {
 # OS detection
 function is_mac() {
     if [[ "$OSTYPE" =~ ^darwin ]]; then
-        return 1
-    else
         return 0
+    else
+        return 1
     fi
 }
 
