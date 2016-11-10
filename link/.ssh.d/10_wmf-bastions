@@ -1,19 +1,11 @@
 # WMF bastions
 # vim: syntax=sshconfig
 
-Host bastion.wmflabs.org
+Host primary.bastion.wmflabs.org
+    User negative24
+    IdentityFile ~/.ssh/id_rsa
     IdentitiesOnly yes
-    ForwardAgent yes
-
-Host bastion2.wmflabs.org
-    IdentitiesOnly yes
-    ForwardAgent yes
-
-Host bastion-01.eqiad.wmflabs
-    Hostname bastion.wmflabs.org
-
-Host bastion-02.eqiad.wmflabs
-    Hostname bastion2.wmflabs.org
+    ForwardAgent no
 
 # Tools
 Host tools-bastion-01.tools.eqiad.wmflabs
