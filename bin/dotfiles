@@ -230,7 +230,7 @@ function do_stuff() {
 export prompt_delay=5
 
 # Ensure that we can actually, like, compile anything.
-if [[ ! "$(type -P gcc)" ]] && is_osx; then
+if [[ ! "$(type -P gcc)" ]] && is_mac; then
     e_error "XCode or the Command Line Tools for XCode must be installed first."
     exit 1
 fi
