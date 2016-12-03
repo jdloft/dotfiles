@@ -7,7 +7,7 @@ fi
 
 alias ll='ls -ahlF'
 alias l='ll'
-alias sl='ls'
+alias ls='sl'
 
 alias df='df -h'
 
