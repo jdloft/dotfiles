@@ -15,9 +15,9 @@ setopt HIST_IGNORE_SPACE
 
 setopt PROMPT_SUBST
 
-if [[ -n "${key[PageUp]}" && -n "${key[PageDown]}" ]]; then
-    bindkey "${key[PageUp]}" history-beginning-search-backward
-    bindkey "${key[PageDown]}" history-beginning-search-forward
+if [[ -n "${terminfo[kpp]}" && -n "${terminfo[knp]}" ]]; then
+    bindkey "${terminfo[kpp]}" history-beginning-search-backward
+    bindkey "${terminfo[knp]}" history-beginning-search-forward
 fi
 
 setopt extended_glob
