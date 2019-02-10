@@ -175,7 +175,8 @@ endif
 "
 autocmd FileType python nmap <leader>ex :!python %<cr>
 autocmd FileType ruby nmap <leader>ex :!ruby %<cr>
-autocmd FileType cpp nmap <leader>ex :!g++ --std=c++11 -o %.out % && ./%.out && rm %.out<cr>
+autocmd FileType cpp nmap <leader>ex :!g++ --std=c++11 -Wall -Werror -o %.out % && ./%.out; rm %.out<cr>
+autocmd FileType c nmap<leader>ex :!gcc -Wall -Werror -o %.out % && ./%.out; rm %.out<cr>
 
 "-----------------------------------------------------------------------------
 " Buffers
