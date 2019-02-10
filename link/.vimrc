@@ -4,13 +4,13 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
-Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'edkolev/promptline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
+Plug 'itchyny/lightline.vim'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
@@ -23,6 +23,18 @@ Plug 'xolox/vim-notes'
 
 call plug#end()
 
+" lightline
+set laststatus=2
+let g:lightline = {
+  \ 'colorscheme': 'solarized',
+  \ 'active': {
+  \ 'right': [ [ 'lineinfo' ], [ 'percent' ],
+    \ [ 'fileformat', 'fileencoding', 'filetype', 'gitbranch' ] ]
+    \ },
+  \ 'component_function': {
+  \   'gitbranch': 'fugitive#head'
+  \ }
+\ }
 
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -34,56 +46,7 @@ let g:syntastic_error_symbol = "!!"
 let g:syntastic_style_error_symbol = "S!"
 let g:syntastic_warning_symbol = ">>"
 let g:syntastic_style_warning_symbol = "S>"
-
 let g:syntastic_python_flake8_args = "--ignore=E501"
-
-" vim-airline
-set laststatus=2
-" theme set in color section
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 1
-
-" poor man's solution to no patched fonts
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_left_sep = ''
-" let g:airline_left_sep = '»'
-" let g:airline_left_sep = '▶'
-let g:airline_right_sep = ''
-" let g:airline_right_sep = '«'
-" let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '±'
-let g:airline_symbols.paste = 'P'
-let g:airline_symbols.whitespace = 'Ξ'
-
-" tmuxline
-if $NOTMUXLINE == ""
-  let g:tmuxline_separators = {
-    \ 'left' : '',
-    \ 'left_alt': '',
-    \ 'right' : '',
-    \ 'right_alt' : '',
-    \ 'space' : ' '}
-
-  let g:tmuxline_preset = {
-    \ 'a': '#S',
-    \ 'win': '#I: #W#F',
-    \ 'cwin': '#I: #W#F',
-    \ 'x': '%H:%M',
-    \ 'y': '%a %d-%b-%y',
-    \ 'z': '#h',
-    \ 'options': {
-      \ 'status-justify': 'left'}}
-endif
-
-" show buffers
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
 
 "-----------------------------------------------------------------------------
 " Basic
