@@ -6,8 +6,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'edkolev/promptline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
 Plug 'itchyny/lightline.vim'
@@ -18,8 +16,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
 
 call plug#end()
 
