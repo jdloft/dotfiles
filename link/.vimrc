@@ -188,6 +188,12 @@ endfunc
 
 nnoremap <Leader>n :call NumberToggle()<cr>
 
+" default tab
+" should be set by vim-sleuth
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+
 "-----------------------------------------------------------------------------
 " Maps
 "
