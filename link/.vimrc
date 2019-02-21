@@ -3,22 +3,23 @@
 "
 call plug#begin('~/.vim/plugged')
 
+Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'edkolev/tmuxline.vim'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-sleuth'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'jdloft/vim-airline-themes'
+Plug 'w0rp/ale'
+Plug 'wesQ3/vim-windowswap'
 
 call plug#end()
 
@@ -41,6 +42,12 @@ set laststatus=2
 " theme set in color section
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#hunks#enabled = 0
+
+
+" ALE
+let g:ale_echo_msg_format = '%linter%: %s'
+
 
 " poor man's solution to no patched fonts
 if !exists('g:airline_symbols')
@@ -146,6 +153,7 @@ if $TERM == "xterm-256color"
   set t_Co=256
   colorscheme solarized
   let g:airline_theme = 'solarized'
+  let g:airline_solarized_normal_blue = 1
   highlight CursorLineNr ctermfg=red
 
   function g:SolarizedFallback()
