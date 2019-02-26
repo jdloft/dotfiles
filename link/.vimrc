@@ -165,6 +165,7 @@ elseif $TERM == "screen-256color"
   set t_Co=256
   colorscheme solarized
   let g:airline_theme = 'solarized'
+  let g:airline_solarized_normal_blue = 1
   highlight CursorLineNr ctermfg=red
 
   function g:SolarizedFallback()
