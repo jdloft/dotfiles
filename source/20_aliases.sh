@@ -38,14 +38,5 @@ fi
 
 # SSH command opens keys, compiles config file, and starts
 if [[ "${DOTFILES_LHOST##*.}" == "wmnet" || "${DOTFILES_LHOST##*.}" == "wmflabs" ]]; then
-    if [ "${SHELL##*/}" = "bash" ]; then
-        alias ssh='unlock-keys; cat ~/.ssh.d/!(40_wmf-proxy) > ~/.ssh/config; ssh'
-    elif [ "${SHELL##*/}" = "zsh" ]; then
-        alias ssh='unlock-keys; cat ~/.ssh.d/^*(40_wmf-proxy) > ~/.ssh/config; ssh'
-    else
-        echo "The WMF proxy SSH config exclusion was NOT set because the current shell ($SHELL) isn't configured in 20_aliases.sh!"
-        alias ssh='unlock-keys; cat ~/.ssh.d/* > ~/.ssh/config; ssh'
-    fi
-else
     alias ssh='unlock-keys; cat ~/.ssh.d/* > ~/.ssh/config; ssh'
 fi

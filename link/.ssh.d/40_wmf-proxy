@@ -1,8 +1,0 @@
-# WMF proxying through bastions
-# vim: syntax=sshconfig
-# This file isn't loaded on WMF machines
-
-# Internal -> External
-Host *.eqiad.wmflabs !bastion !primary.bastion.wmflabs.org
-    ProxyCommand ssh -a -W %h:%p primary.bastion.wmflabs.org
-

@@ -2,12 +2,6 @@
 /caches/
 /backups/
 
-# SSH
-/link/.ssh/authorized_keys
-/link/.ssh/id_*
-/link/.ssh/known_hosts*
-/link/.ssh/config
-
 # Don't commit Vim plugins, vim-plug will install them.
 /link/.vim/plugged
 

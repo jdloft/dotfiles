@@ -1,8 +1,0 @@
-# WMF bastions
-# vim: syntax=sshconfig
-
-Host primary.bastion.wmflabs.org
-    User negative24
-    IdentityFile ~/.ssh/id_rsa
-    IdentitiesOnly yes
-    ForwardAgent no
