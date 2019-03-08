@@ -35,8 +35,3 @@ alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 if which ack-grep > /dev/null 2>&1; then
     alias ack=ack-grep
 fi
-
-# SSH command opens keys, compiles config file, and starts
-if [[ "${DOTFILES_LHOST##*.}" == "wmnet" || "${DOTFILES_LHOST##*.}" == "wmflabs" ]]; then
-    alias ssh='unlock-keys; cat ~/.ssh.d/* > ~/.ssh/config; ssh'
-fi
