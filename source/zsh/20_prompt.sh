@@ -2,22 +2,6 @@ function _dotfiles-prompt() {
     local host="$DOTFILES_HOST"
     local clr_user="%F{cyan}"
     local clr_host="%F{cyan}"
-    local promptchar="\$"
-
-    # Special cases
-    if [ "$DOTFILES_HOST" = "carbon" ]; then
-        clr_host="%F{blue}"
-    elif [ "$DOTFILES_HOST" = "LIS-JLOFTHOUSE" ]; then
-        clr_host="%F{green}"
-    # WMF production like servers
-    elif echo $DOTFILES_LHOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
-        host="$DOTFILES_LHOST"
-        clr_host="%F{magenta}"
-    # WMF labs servers
-    elif echo $DOTFILES_LHOST | grep -q -E '\.wmflabs'; then
-        host="$DOTFILE_LHOST"
-        clr_host="$F{red}"
-    fi
 
     # Root is special
     if [ "$LOGNAME" = "root" ]; then
@@ -25,17 +9,25 @@ function _dotfiles-prompt() {
         promptchar="#"
     fi
 
-    # Chroot info
-    if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-        debian_chroot=$(cat /etc/debian_chroot)
-    fi
-
     # Actual prompt code
-    echo "%f[$(date +%H:%M\ %Z)] $clr_user%n%f at $clr_host$host%f${debian_chroot:+"%F{yellow} ($debian_chroot)%f"} in %F{yellow}${PWD/#$HOME/~}%f\n$(_dotfiles-exit_code)$promptchar%f "
+    echo "%f[$(date +%H:%M\ %Z)] $clr_user%n%f at $clr_host$host%f$(_dotfiles-chroot-prompt) in %F{yellow}${PWD/#$HOME/~}%f"
+}
+
+function _dotfiles-prompt2() {
+    local promptchar="\$"
+    echo "%f\n$(_dotfiles-exit_code)$promptchar%f "
 }
 
 function _dotfiles-exit_code() {
     echo "%(?..%F{red}%?%f )"
+}
+
+function _dotfiles-chroot-prompt() {
+    CLR_CHROOT_CLS="%F{yellow}"
+
+    if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+        echo -en "${CLR_CHROOT_CLS} ($(cat /etc/debian_chroot))%f"
+    fi
 }
 
 # Git status
@@ -85,5 +77,16 @@ function _dotfiles-virtualenv-prompt() {
     echo -en "${CLR_VE_CLS} (${CLR_VE_ENV}$environment${CLR_VE_CLS})%f"
 }
 
-PROMPT='$(_dotfiles-prompt)'
-RPROMPT='$(_dotfiles-git-prompt)$(_dotfiles-virtualenv-prompt)'
+function _dotfiles-desk-prompt() {
+    CLR_DESK_CLS="%F{cyan}"
+    CLR_DESK_ENV="%F{cyan}"
+
+    if [[ $DESK_NAME == "" ]]; then
+        return 1
+    fi
+
+    echo -en "${CLR_DESK_CLS} (${CLR_DESK_ENV}$DESK_NAME${CLR_DESK_CLS})%f"
+}
+
+PROMPT='$(_dotfiles-prompt)$(_dotfiles-virtualenv-prompt)$(_dotfiles-desk-prompt)$(_dotfiles-prompt2)'
+RPROMPT='$(_dotfiles-git-prompt)'
