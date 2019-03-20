@@ -76,7 +76,8 @@ if $NOTMUXLINE == ""
     \ 'left_alt': '',
     \ 'right' : '',
     \ 'right_alt' : '',
-    \ 'space' : ' '}
+    \ 'space' : ' '
+  \}
 
   let g:tmuxline_preset = {
     \ 'a': '#S',
@@ -86,7 +87,9 @@ if $NOTMUXLINE == ""
     \ 'y': '%a %d-%b-%y',
     \ 'z': '#h',
     \ 'options': {
-      \ 'status-justify': 'left'}}
+      \ 'status-justify': 'left'
+    \}
+  \}
 endif
 
 " show buffers
