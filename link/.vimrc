@@ -197,8 +197,9 @@ autocmd FileType c nmap<leader>ex :!gcc -Wall -Werror -o %.out % && ./%.out; rm 
 " Buffers
 "
 set hidden
-nnoremap <Leader>gt :bn<CR>
-nnoremap <Leader>gT :bp<CR>
+nnoremap <Leader>f :bn<CR>
+nnoremap <Leader>F :bp<CR>
+nnoremap <Leader><Tab> :b#<CR>
 
 "-----------------------------------------------------------------------------
 " Scrolling
