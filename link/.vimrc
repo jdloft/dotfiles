@@ -286,3 +286,6 @@ nnoremap <leader>p :set paste!<cr>
 
 " NERDTree shortcut
 nnoremap <leader>ls :NERDTree<cr>
+
+" Words cannot describe the evil-ness of this command
+map q: <Nop>
