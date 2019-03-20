@@ -286,9 +286,3 @@ nnoremap <leader>p :set paste!<cr>
 
 " NERDTree shortcut
 nnoremap <leader>ls :NERDTree<cr>
-
-" Vim's hard mode
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
