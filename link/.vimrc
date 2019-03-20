@@ -48,6 +48,10 @@ let g:airline#extensions#hunks#enabled = 0
 " ALE
 let g:ale_echo_msg_format = '%linter%: %s'
 
+let g:ale_linters = {
+  \ 'cpp': ['gcc']
+\}
+
 
 " poor man's solution to no patched fonts
 if !exists('g:airline_symbols')
