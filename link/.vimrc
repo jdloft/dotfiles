@@ -217,34 +217,16 @@ set incsearch " incremental searching
 set ignorecase " case insensitive search
 set smartcase " except for one capital letter
 
-
 "-----------------------------------------------------------------------------
 " Numbering
 "
 set number
-set relativenumber
+nnoremap <Leader>n :set relativenumber!<cr>
 
-" only show relative numbers in normal mode
-autocmd InsertEnter * :set norelativenumber
-autocmd InsertLeave * :set relativenumber
-
-" don't show relative numbers when out of focus
-au FocusLost * :set norelativenumber
-au FocusGained * :set relativenumber
-
-" fast toggling
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-  else
-    set relativenumber
-  endif
-endfunc
-
-nnoremap <Leader>n :call NumberToggle()<cr>
-
-" default tab
+"-----------------------------------------------------------------------------
+" Tabbing
 " should be set by vim-sleuth
+"
 set expandtab
 set shiftwidth=4
 set softtabstop=4
@@ -266,15 +248,13 @@ nmap :W :w
 nmap :Wq :wq
 nmap :Q :q
 nmap :Q! :q!
-nmap :Dl :dl
 
 " trailing whitespace removal
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 
 " searching shortcuts
 nnoremap <Leader>sh :set hlsearch!<CR>
-nnoremap <Leader>cs :let @/ = ""<CR>
-nnoremap <Leader>* :let curwd='\<<C-R>=expand("<cword>")<CR>\>'<CR>:let @/=curwd<CR>:call histadd("search", curwd)<CR>
+nnoremap <Leader>cs :nohlsearch<CR>
 
 " tmux navigator arrow key bindings
 nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
