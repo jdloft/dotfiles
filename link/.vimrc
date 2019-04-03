@@ -53,6 +53,14 @@ let g:ale_linters = {
   \ 'cpp': ['gcc']
 \}
 
+let g:ale_type_map = {
+  \ 'flake8': {'ES': 'WS'}
+\}
+
+
+" vim-commentary
+autocmd FileType c setlocal commentstring=//\ %s
+
 
 " poor man's solution to no patched fonts
 if !exists('g:airline_symbols')
