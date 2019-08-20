@@ -1,7 +1,7 @@
 # Password generation
 # Courtesy of @tstarling
 function genpass() {
-    tr -cd [:alnum:] < /dev/urandom | head -c10
+    tr -cd '[:alnum:]' < /dev/urandom | head -c15
     echo
 }
 
