@@ -88,5 +88,23 @@ function _dotfiles-desk-prompt() {
     echo -en "${CLR_DESK_CLS} (${CLR_DESK_ENV}$DESK_NAME${CLR_DESK_CLS})%f"
 }
 
+function _dotfiles-k8s-prompt() {
+    CLR_K8S_CLS="%F{blue}"
+    CLR_K8S_ENV="%F{blue}"
+
+    current_context="$(kubectl config current-context)"
+
+    if [ $? -ne 0 ]; then
+        return 1
+    fi
+
+    echo -en "${CLR_K8S_CLS} (${CLR_K8S_ENV}$current_context${CLR_K8S_CLS})%f"
+}
+
 PROMPT='$(_dotfiles-prompt)$(_dotfiles-virtualenv-prompt)$(_dotfiles-desk-prompt)$(_dotfiles-prompt2)'
-RPROMPT='$(_dotfiles-git-prompt)'
+
+if [[ -n $K8S_PROMPT ]]; then
+    RPROMPT='$(_dotfiles-git-prompt)$(_dotfiles-k8s-prompt)'
+else
+    RPROMPT='$(_dotfiles-git-prompt)'
+fi
