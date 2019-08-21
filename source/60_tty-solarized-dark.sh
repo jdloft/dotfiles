@@ -1,1 +1,0 @@
-../lib/tty-solarized/tty-solarized-dark.sh
