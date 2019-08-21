@@ -1,7 +1,7 @@
 function _dotfiles-prompt() {
     local host="$DOTFILES_HOST"
-    local clr_user="%F{cyan}"
-    local clr_host="%F{cyan}"
+    local clr_user="%F{blue}"
+    local clr_host="%F{yellow}"
 
     # Root is special
     if [ "$LOGNAME" = "root" ]; then
@@ -10,12 +10,13 @@ function _dotfiles-prompt() {
     fi
 
     # Actual prompt code
-    echo "%f[$(date +%H:%M\ %Z)] $clr_user%n%f at $clr_host$host%f$(_dotfiles-chroot-prompt) in %F{yellow}${PWD/#$HOME/~}%f"
+    # %n = username
+    echo "%f$(_dotfiles-exit_code)$clr_user%n%f@$clr_host$host%f$(_dotfiles-chroot-prompt) %F{blue}${PWD/#$HOME/~}%f"
 }
 
 function _dotfiles-prompt2() {
     local promptchar="\$"
-    echo "%f\n$(_dotfiles-exit_code)$promptchar%f "
+    echo " $promptchar%f "
 }
 
 function _dotfiles-exit_code() {
