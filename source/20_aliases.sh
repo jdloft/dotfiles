@@ -8,7 +8,6 @@ fi
 alias ll='ls -ahlF'
 alias l='ll'
 alias sl='ls'
-
 alias df='df -h'
 
 alias ..='cd ..'
@@ -19,12 +18,10 @@ alias .4='cd ../../../../'
 alias .5='cd ../../../../../'
 alias .6='cd ../../../../../../'
 
+alias d='desk go'
 alias mkdir='mkdir -p'
-
 alias wget='wget -c'
-
 alias grep='grep --color=auto'
-
 alias parts='cat /proc/partitions'
 
 alias nit='npm install && npm test'
@@ -41,3 +38,9 @@ alias vd="vim \$(git diff HEAD --name-only --diff-filter=ACMR)"
 alias vds="vim \$(git diff --staged --name-only --diff-filter=ACMR)"
 alias vdc="vim \$(git diff HEAD^ --name-only --diff-filter=ACMR)"
 alias vdm="vim \$(git diff master --name-only --diff-filter=ACMR)"
+
+alias :q='exit'
+alias :wq='exit'
+alias :e='vim'
+
+alias resetcomp='rm -f ~/.zcompdump; compinit'
