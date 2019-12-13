@@ -165,19 +165,7 @@ set wildignore+=*/_vendor/**
 " colors
 set background=dark
 
-if $TERM == "xterm-256color"
-  set t_Co=256
-  colorscheme solarized
-  let g:airline_theme = 'solarized'
-  let g:airline_solarized_normal_blue = 1
-  highlight CursorLineNr ctermfg=red
-
-  function g:SolarizedFallback()
-    let g:solarized_termcolors=256
-    colorscheme solarized
-  endfunction
-  nnoremap <Leader>sf :call g:SolarizedFallback()<CR>
-elseif $TERM == "screen-256color"
+if $TERM == "xterm-256color" || $TERM == "screen-256color"
   set t_Co=256
   colorscheme solarized
   let g:airline_theme = 'solarized'
