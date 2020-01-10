@@ -12,5 +12,15 @@ if [ -d "$HOME/.local/bin" ]; then
     path_prepend "$HOME/.local/bin"
 fi
 
+# Python
+# TODO: add Linux support
+if [[ is_mac ]]; then
+    for directory in ~/Library/Python/*/; do
+        if [ -d "${directory}bin" ]; then # output from for has a trailing slash
+            path_append "${directory}bin"
+        fi
+    done
+fi
+
 # rbenv
 path_append "$DOTFILES/lib/rbenv/bin"
