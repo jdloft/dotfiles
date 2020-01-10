@@ -47,8 +47,6 @@ is439(){
     return 1
 }
 
-OSTYPE=$(uname -s)
-
 islinux(){
     [[ $OSTYPE == "Linux" ]]
 }

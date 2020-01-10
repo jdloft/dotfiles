@@ -1,5 +1,5 @@
 # On Mac (Darwin), this should be `ls -G` if coreutils isn't installed from homebrew
-if [[ is_mac == 0 ]] && [[ `which ls` == '/bin/ls' ]]; then
+if [[ is_mac ]]; then
     alias ls='ls -G'
 else
     alias ls='ls --color=auto'
