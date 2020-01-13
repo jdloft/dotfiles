@@ -1,6 +1,6 @@
 # On Mac (Darwin), this should be `ls -G` if coreutils isn't installed from homebrew
 if is_mac && [[ `which ls` == '/bin/ls' ]]; then
-    alias ls='ls -G'
+    alias ls='ls -GF' # -G is colorized output, -F is to show trailing slashes and other file info
 else
     alias ls='ls --color=auto'
 fi
