@@ -107,6 +107,13 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 
+" show ALE loc list
+" let g:ale_open_list = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
+
 "-----------------------------------------------------------------------------
 " Basic
 "
