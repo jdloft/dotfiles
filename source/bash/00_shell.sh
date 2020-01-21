@@ -27,11 +27,6 @@ export HISTFILESIZE=2000
 # Sort dotfiles before "a" in ls(1) and sort(1) (http://superuser.com/a/448294/164493)
 export LC_COLLATE="C"
 
-# Fix gem/ruby errors about "unable to convert U+3002 from UTF-8 to US-ASCII for lib/shortener.rb, skipping"
-export LC_CTYPE="en_US.UTF-8"
-export LANG="en_US.UTF-8"
-unset LC_ALL
-
 #
 # Colors
 #
