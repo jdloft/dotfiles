@@ -1,5 +1,9 @@
 # Based off of the grml zsh completion configs
 
+if [[ -d "$DOTFILES/lib/zsh-completions/src" ]]; then
+    fpath=("$DOTFILES/lib/zsh-completions/src" $fpath)
+fi
+
 compinit
 
 # check for version/system
