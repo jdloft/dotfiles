@@ -1,12 +1,6 @@
 [submodule "lib/desk"]
 	path = lib/desk
 	url = https://github.com/jamesob/desk.git
-[submodule "lib/rbenv"]
-	path = lib/rbenv
-	url = https://github.com/sstephenson/rbenv.git
-[submodule "link/.rbenv/plugins/ruby-build"]
-	path = link/.rbenv/plugins/ruby-build
-	url = https://github.com/rbenv/ruby-build
 [submodule "lib/zsh-syntax-highlighting"]
 	path = lib/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

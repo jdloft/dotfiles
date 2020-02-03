@@ -21,6 +21,3 @@ if is_mac; then
         fi
     done
 fi
-
-# rbenv
-path_append "$DOTFILES/lib/rbenv/bin"
