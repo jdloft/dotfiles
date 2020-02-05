@@ -53,3 +53,15 @@ path_append()  { path_remove $1; export PATH="$PATH:$1"; }
 path_prepend() { path_remove $1; export PATH="$1:$PATH"; }
 path_remove()  { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'$1'"' | sed 's/:$//'`; }
 path_clean()   { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '!a[$1]++' | sed 's/:$//'`; }
+
+title() {
+    echo -ne "\033]0;$1\007"
+}
+
+tb() {
+    if [ -z "$1" ]; then
+        toolbox enter
+    else
+        toolbox enter -c $1
+    fi
+}

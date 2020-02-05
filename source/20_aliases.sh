@@ -51,4 +51,3 @@ alias resetcomp='rm -f ~/.zcompdump; compinit'
 
 # New Silverblue aliases
 alias pm='podman'
-alias tb='toolbox enter -c '
