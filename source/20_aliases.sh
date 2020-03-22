@@ -49,5 +49,11 @@ alias :e='vim'
 
 alias resetcomp='rm -f ~/.zcompdump; compinit'
 
+# systemd
+alias start='sudo systemctl start'
+alias stop='sudo systemctl stop'
+alias restart='sudo systemctl restart'
+alias status='systemctl status'
+
 # New Silverblue aliases
 alias pm='podman'
