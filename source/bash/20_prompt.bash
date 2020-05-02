@@ -1,25 +1,10 @@
 function _dotfiles-prompt() {
     local ec="$?"
     local host="$DOTFILES_HOST"
-    local clr_user="$CLR_CYAN"
-    local clr_host="$CLR_CYAN"
+    local clr_user="$CLR_BLUE"
+    local clr_host="$CLR_YELLOW"
     local prompt="\$"
-    local supportcolor
-
-    # Special cases
-    if [ "$DOTFILES_HOST" = "carbon" ]; then
-        clr_host="$CLR_BLUE"
-    elif [ "$DOTFILES_HOST" = "LIS-JLOFTHOUSE" ]; then
-        clr_host="$CLR_GREEN"
-    # WMF production servers
-    elif echo $DOTFILES_LHOST | grep -q -E '\.wikimedia\.org|\.wmnet'; then
-        host="$DOTFILES_LHOST"
-        clr_host="$CLR_MAGENTA"
-    # WMF labs servers
-    elif echo $DOTFILES_LHOST | grep -q -E '\.wmflabs'; then
-        host="$DOTFILES_LHOST"
-        clr_host="$CLR_RED"
-    fi
+    local supports_color
 
     # Root is special
     if [ "$LOGNAME" = "root" ]; then
@@ -29,32 +14,30 @@ function _dotfiles-prompt() {
 
     # Test for color support
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        supportcolor=1
-    fi
-
-    # Chroot info
-    if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-        debian_chroot=$(cat /etc/debian_chroot)
+        supports_color=1
     fi
 
     # Actual prompt code
-    if [[ -n $supportcolor ]]; then
-        PS1="\[$CLR_NONE\][\$(date +%H:%M\ %Z)] \[$clr_user\]\u\[$CLR_NONE\] at \[$clr_host\]$host\[$CLR_NONE\]${debian_chroot:+\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]} in \[$CLR_YELLOW\]\w\$(_dotfiles-git-prompt)\$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\]\n$(_dotfiles-exit_code $ec)\[$CLR_NONE\]$prompt\[$CLR_NONE\] "
+    if [[ -n $supports_color ]]; then
+        PS1="\[$CLR_NONE\]$(_dotfiles-exit_code)\[$clr_user\]\u\[$CLR_NONE\]@\[$clr_host\]$host\[$CLR_NONE\]$(_dotfiles-chroot-prompt) \[$CLR_BLUE\]\w$(_dotfiles-git-prompt)$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\] $prompt\[$CLR_NONE\] "
     else
-        PS1="[\$(date +%H:%M\ %Z)] \u@$host:\w$prompt "
+        PS1="\u@$host:\w$prompt "
     fi
 
-    # from /etc/profile.d/vte.sh
-    local command=$(HISTTIMEFORMAT= history 1 | sed 's/^ *[0-9]\+ *//')
-    command="${command//;/ }"
-    local pwd='~'
-    [ "$PWD" != "$HOME" ] && pwd=${PWD/#$HOME\//\~\/}
-    pwd="${pwd//[[:cntrl:]]}"
-    printf '\033]777;notify;Command completed;%s\033\\\033]777;precmd\033\\\033]0;%s@%s:%s\033\\' "${command}" "${USER}" "$host" "${pwd}"
+    _dotfiles-title
 }
 
 function _dotfiles-exit_code() {
-    [[ $1 != 0 ]] && echo "\[$CLR_RED\]$1\[$CLR_NONE\] "
+    local ec=$ec
+    [[ $ec != 0 ]] && echo "\[$CLR_RED\]$ec\[$CLR_NONE\] "
+}
+
+function _dotfiles-chroot-prompt() {
+    # Chroot info
+    if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+        debian_chroot=$(cat /etc/debian_chroot)
+        echo "\[$CLR_YELLOW\] ($debian_chroot)\[$CLR_NONE\]"
+    fi
 }
 
 #
