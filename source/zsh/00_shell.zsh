@@ -20,17 +20,11 @@ fi
 
 setopt extended_glob
 
-#
 # Colors
-#
-
 autoload -U colors
 colors
 
-#
 # Misc
-#
-
 export EDITOR=vim
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
