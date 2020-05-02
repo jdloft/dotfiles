@@ -16,3 +16,6 @@
 [submodule "lib/zsh-completions"]
 	path = lib/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "lib/gnome-terminal-colors-solarized"]
+	path = lib/gnome-terminal-colors-solarized
+	url = https://github.com/aruhier/gnome-terminal-colors-solarized.git
