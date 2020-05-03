@@ -58,6 +58,16 @@ title() {
     echo -ne "\033]0;$1\007"
 }
 
+# get messages from journalctl
+msgs() {
+    if [ -z "$1" ]; then
+        journalctl -xef
+    else
+        journalctl -xefu $1
+    fi
+}
+
+# new toolbox start
 tb() {
     if [ -z "$1" ]; then
         toolbox enter

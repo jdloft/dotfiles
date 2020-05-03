@@ -23,6 +23,7 @@ alias mkdir='mkdir -p'
 alias wget='wget -c'
 alias grep='grep --color=auto'
 alias parts='cat /proc/partitions'
+alias n='(nohup nautilus -w . &) > /dev/null 2>&1'
 
 alias nit='npm install && npm test'
 alias jsonhint='jshint --extra-ext .json'
@@ -43,6 +44,8 @@ alias vds="vim \$(git diff --staged --name-only --diff-filter=ACMR)"
 alias vdc="vim \$(git diff HEAD^ --name-only --diff-filter=ACMR)"
 alias vdm="vim \$(git diff master --name-only --diff-filter=ACMR)"
 
+alias stage="git diff --staged"
+
 alias :q='exit'
 alias :wq='exit'
 alias :e='vim'
@@ -54,6 +57,8 @@ alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'
 alias restart='sudo systemctl restart'
 alias status='systemctl status'
+
+alias se=sudoedit
 
 # New Silverblue aliases
 alias pm='podman'
