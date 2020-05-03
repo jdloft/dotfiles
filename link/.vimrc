@@ -273,3 +273,6 @@ nnoremap <leader>ls :NERDTree<cr>
 
 " Words cannot describe the evil-ness of this command
 map q: <Nop>
+
+" Insert single character
+nnoremap <Space> i_<Esc>r
