@@ -58,6 +58,10 @@ title() {
     echo -ne "\033]0;$1\007"
 }
 
+adb-screenshot() {
+    adb shell screencap -p | sed 's/^M$//' > Screenshot_$(date '+%Y%m%d-%H%M%S').png
+}
+
 # get messages from journalctl
 msgs() {
     if [ -z "$1" ]; then
