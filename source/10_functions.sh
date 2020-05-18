@@ -59,7 +59,7 @@ title() {
 }
 
 adb-screenshot() {
-    adb shell screencap -p | sed 's/^M$//' > Screenshot_$(date '+%Y%m%d-%H%M%S').png
+    adb shell screencap -p | sed 's/^M$//' > "Screenshot from $(date '+%Y-%m-%d %H-%M-%S').png"
 }
 
 # get messages from journalctl
