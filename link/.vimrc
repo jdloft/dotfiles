@@ -189,6 +189,9 @@ else
   let g:airline_theme = 'simple'
 endif
 
+" TODO: set ALE sign bg highlights; see :help ale-highlights
+highlight SignColumn guibg=black ctermbg=black
+
 "-----------------------------------------------------------------------------
 " Execution commands
 "
