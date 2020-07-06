@@ -189,12 +189,23 @@ function link_do() {
     ln -sf ${2#$HOME/} ~/
 }
 
+# Link files recursively.
+function link-recurse_header() { e_header "Recursively linking files into home directory"; }
+function link-recurse_test() {
+    [[ "$1" -ef "$2" ]] && echo "same file"
+}
+function link-recurse_do() {
+    e_success "Linking ~/$1."
+    dir="${base#/$(basename $file)}"
+    ln -sf $2 ~/$dir
+}
+
 # process a single file
 function process_file() {
     file=$2
-    if [ "$1" == "copy" ]; then
-        base="${file#$DOTFILES/$1/}"
-        dir="${base#/$(basename $file)}"
+    if [ "$1" == "copy" ] || [ "$1" == "link-recurse" ]; then
+        base="${file/$DOTFILES\/$1\//}"
+        dir="${base/\/$(basename $file)/}"
     else
         base="$(basename $file)"
     fi
@@ -216,7 +227,7 @@ function process_file() {
             [[ -e "$backup_dir" ]] || mkdir -p "$backup_dir"
 
             # Backup file / link / whatever.
-            if [ "$1" == "copy" ]; then
+            if [ "$1" == "copy" ] || [ "$1" == "link-recurse" ]; then
                 # remember, $backup_dir has trailing slash
                 [[ -e "$backup_dir$dir" ]] || mkdir -p "$backup_dir/$dir"
                 mv "$dest" "$backup_dir$dir"
@@ -244,7 +255,7 @@ function do_stuff() {
         for file in "${files[@]}"; do
             process_file $1 $file
         done
-    elif [ "$1" == "copy" ]; then
+    elif [ "$1" == "copy" ] || [ "$1" == "link-recurse" ]; then
         find $DOTFILES/$1/ -type f | while read file; do
             process_file $1 $file
         done
@@ -313,6 +324,7 @@ backup=
 # Execute code for each file in these subdirectories.
 do_stuff "copy"
 do_stuff "link"
+do_stuff "link-recurse"
 if [[ "$1" != "-a" && "$1" != "--auto" ]]; then
     do_stuff "init"
 fi

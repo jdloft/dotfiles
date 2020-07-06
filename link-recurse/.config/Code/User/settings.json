@@ -1,0 +1,96 @@
+{
+    "editor.suggestSelection": "first",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoSurround": "never",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "java.configuration.checkProjectSettingsExclusions": false,
+    "python.dataScience.jupyterServerURI": "local",
+    "python.jediEnabled": false,
+    "telemetry.enableTelemetry": false,
+    "terminal.integrated.cursorBlinking": true,
+    "terminal.integrated.env.linux": {},
+    "vim.handleKeys": {
+        "<C-c>": false,
+        "<C-f>": false,
+        "<C-k>": false,
+        "<C-v>": false, // Note: C-q can be used for visual block
+        "<C-x>": false
+    },
+    "vim.sneak": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // https://github.com/VSCodeVim/Vim/issues/1323
+        // {
+        //     "before": ["j"],
+        //     "after": ["g", "j"]
+        // },
+        // {
+        //     "before": ["k"],
+        //     "after": ["g", "k"]
+        // },
+
+        // Not working
+        // {
+        //     "before": ["<leader>", "f"],
+        //     "commands": [
+        //         "workbench.action.nextEditor"
+        //     ]
+        // },
+        // {
+        //     "before": ["<leader>", "F"],
+        //     "commands": [
+        //         "workbench.action.previousEditor"
+        //     ]
+        // }
+    ],
+    "vsicons.dontShowNewVersionMessage": true,
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    // "workbench.colorTheme": "Braver's Solarized Dark",
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.preferredLightColorTheme": "Solarized Light",
+    "workbench.preferredDarkColorTheme": "Solarized Dark",
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#727272",
+        "editorCursor.background": "#000000",
+        "terminal.background":"#002B36",
+        "terminal.foreground":"#839496",
+        "terminalCursor.foreground":"#727272",
+        "terminalCursor.background":"#000000", //"#93A1A1",
+        "terminal.ansiBlack":"#073642",
+        "terminal.ansiRed":"#DC322F",
+        "terminal.ansiGreen":"#859900",
+        "terminal.ansiYellow":"#B58900",
+        "terminal.ansiBlue":"#268BD2",
+        "terminal.ansiMagenta":"#D33682",
+        "terminal.ansiCyan":"#2AA198",
+        "terminal.ansiWhite":"#EEE8D5",
+        "terminal.ansiBrightBlack":"#002B36",
+        "terminal.ansiBrightRed":"#CB4B16",
+        "terminal.ansiBrightGreen":"#586E75",
+        "terminal.ansiBrightYellow":"#657B83",
+        "terminal.ansiBrightBlue":"#839496",
+        "terminal.ansiBrightMagenta":"#6C71C4",
+        "terminal.ansiBrightCyan":"#93A1A1",
+        "terminal.ansiBrightWhite":"#FDF6E3",
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "python.dataScience.askForKernelRestart": false,
+    "todo-tree.tree.showScanModeButton": false,
+    "explorer.confirmDragAndDrop": false,
+    "git.ignoreLegacyWarning": true,
+    "cSpell.userWords": [
+        "kubernetes",
+        "nextcloud",
+        "podman",
+        "wifi"
+    ],
+    // "zenMode.centerLayout": false,
+    "zenMode.hideTabs": false,
+    "zenMode.hideStatusBar": false,
+    "C_Cpp.default.includePath": [
+        "/usr/include/"
+    ],
+    "diffEditor.ignoreTrimWhitespace": false,
+    "files.trimTrailingWhitespace": true,
+    "python.languageServer": "Pylance"
+}
