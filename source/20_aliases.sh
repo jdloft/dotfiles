@@ -62,3 +62,6 @@ alias se=sudoedit
 
 # New Silverblue aliases
 alias pm='podman'
+
+# kubernetes
+alias k='kubectl'
