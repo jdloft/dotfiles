@@ -195,9 +195,9 @@ function link-recurse_test() {
     [[ "$1" -ef "$2" ]] && echo "same file"
 }
 function link-recurse_do() {
+    dir="${base#/$(basename $file)}"
     if [ -f "$dir" ]; then
         e_success "Linking ~/$1."
-        dir="${base#/$(basename $file)}"
         ln -sf $2 ~/$dir
     fi
 }
