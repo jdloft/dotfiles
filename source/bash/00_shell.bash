@@ -13,6 +13,9 @@ shopt -s extglob
 
 test -f /etc/bash_completion && . /etc/bash_completion
 
+# Emacs mode
+set -o emacs
+
 #
 # Environment
 #

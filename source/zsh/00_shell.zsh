@@ -13,11 +13,6 @@ setopt HIST_IGNORE_SPACE
 
 setopt PROMPT_SUBST
 
-if [[ -n "${terminfo[kpp]}" && -n "${terminfo[knp]}" ]]; then
-    bindkey "${terminfo[kpp]}" history-beginning-search-backward
-    bindkey "${terminfo[knp]}" history-beginning-search-forward
-fi
-
 setopt extended_glob
 
 # Colors
