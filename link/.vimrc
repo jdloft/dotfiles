@@ -174,16 +174,17 @@ set background=dark
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color"
   set t_Co=256
-  colorscheme solarized
-  let g:airline_theme = 'solarized'
-  let g:airline_solarized_normal_blue = 1
   highlight CursorLineNr ctermfg=red
 
-  function g:SolarizedFallback()
+  if $NO_SOLAR == "true"
+    " Fallback solarized palette
     let g:solarized_termcolors=256
-    colorscheme solarized
-  endfunction
-  nnoremap <Leader>sf :call g:SolarizedFallback()<CR>
+    let g:airline_theme = 'simple'
+  else
+    let g:airline_theme = 'solarized'
+    let g:airline_solarized_normal_blue = 1
+  endif
+  colorscheme solarized
 else
   " TODO: should be replaced with a proper 8/16 bit theme
   let g:airline_theme = 'simple'
