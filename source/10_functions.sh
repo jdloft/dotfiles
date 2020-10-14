@@ -44,7 +44,7 @@ function yn-prompt {
 OSTYPE=$(uname -s)
 
 function is_mac() {
-    return `! [[ "$OSTYPE" =~ ^darwin ]]`
+    return `[[ "$OSTYPE" =~ ^darwin ]]`
 }
 
 # PATH manipulation
