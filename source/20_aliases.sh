@@ -65,3 +65,7 @@ alias pm='podman'
 
 # kubernetes
 alias k='kubectl'
+
+alias out='journalctl -xe'
+
+alias gpus="lspci -vnn | grep '\''[030[02]\]'"
