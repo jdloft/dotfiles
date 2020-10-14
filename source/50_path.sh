@@ -12,6 +12,10 @@ if [ -d "$HOME/.local/bin" ]; then
     path_prepend "$HOME/.local/bin"
 fi
 
+if [ -d "$HOME/.npm/bin" ]; then
+    path_prepend "$HOME/.npm/bin"
+fi
+
 # Python
 # TODO: add Linux support
 if is_mac && [ -d "$HOME/Library/Python" ]; then
