@@ -15,7 +15,9 @@ key[PageDown]="${terminfo[knp]}"
 key[Shift-Tab]="${terminfo[kcbt]}"
 key[Control-Left]="${terminfo[kLFT5]}"
 key[Control-Right]="${terminfo[kRIT5]}"
+key[Control-Backspace]="${terminfo[kbs]}" # I have no idea how this doesn't conflict with just backspace
 
+bindkey -e # emacs mode
 [[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"      beginning-of-line
 [[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"       end-of-line
 [[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"    overwrite-mode
@@ -29,6 +31,7 @@ key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"  history-beginning-search-forward
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+[[ -n "${key[Control-Backspace]}" ]] && bindkey -- "${key[Control-Backspace]}" backward-kill-word
 
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	autoload -Uz add-zle-hook-widget
