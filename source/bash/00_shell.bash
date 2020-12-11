@@ -26,6 +26,7 @@ set -o emacs
 export HISTCONTROL=ignorespace:erasedups
 export HISTSIZE=1000
 export HISTFILESIZE=2000
+export SHELL_SESSION_HISTORY=0 # disable new sessions in macOS
 
 # Sort dotfiles before "a" in ls(1) and sort(1) (http://superuser.com/a/448294/164493)
 export LC_COLLATE="C"
@@ -67,5 +68,5 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 # Setup functions
 #
 
-PROMPT_COMMAND="_dotfiles-prompt"
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }_dotfiles-prompt"
 PS0=$(printf "\033]777;preexec\033\\")

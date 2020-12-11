@@ -10,6 +10,7 @@ export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
+export SHELL_SESSION_HISTORY=0 # disable new sessions in macOS
 
 setopt PROMPT_SUBST
 
