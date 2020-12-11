@@ -1,8 +1,10 @@
 # On Mac (Darwin), this should be `ls -G` if coreutils isn't installed from homebrew
 if is_mac; then
     alias ls='ls -GF' # -G is colorized output, -F is to show trailing slashes and other file info
+    alias n='open .'
 else
     alias ls='ls --color=auto'
+    alias n='(nohup nautilus -w . &) > /dev/null 2>&1'
 fi
 
 alias ll='ls -ahlF'
@@ -23,7 +25,6 @@ alias mkdir='mkdir -p'
 alias wget='wget -c'
 alias grep='grep --color=auto'
 alias parts='cat /proc/partitions'
-alias n='(nohup nautilus -w . &) > /dev/null 2>&1'
 
 alias nit='npm install && npm test'
 alias jsonhint='jshint --extra-ext .json'
