@@ -7,3 +7,4 @@ function _dotfiles-title() {
     pwd="${pwd//[[:cntrl:]]}"
     printf '\033]777;notify;Command completed;%s\033\\\033]777;precmd\033\\\033]0;%s@%s:%s\033\\' "${command}" "${USER}" "$host" "${pwd}"
 }
+

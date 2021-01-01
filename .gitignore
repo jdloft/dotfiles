@@ -24,3 +24,6 @@ link/.vim/autoload/plug.vim.old
 /link/.rbenv/shims/
 /link/.rbenv/versions/
 /link/.rbenv/version
+
+.DS_Store
+

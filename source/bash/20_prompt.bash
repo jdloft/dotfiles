@@ -24,7 +24,9 @@ function _dotfiles-prompt() {
         PS1="\u@$host:\w$prompt "
     fi
 
-    _dotfiles-title
+    if ! is_mac; then
+        _dotfiles-title
+    fi
 }
 
 function _dotfiles-exit_code() {
