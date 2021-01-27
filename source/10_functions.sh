@@ -79,3 +79,12 @@ tb() {
         toolbox enter -c $1
     fi
 }
+
+# add to git exclude
+exclude() {
+    if [ -z "$1" ]; then
+        echo "This requires a file or pattern argument"
+    else
+        echo $1 >> ./.git/info/exclude
+    fi
+}
