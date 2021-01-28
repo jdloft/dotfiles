@@ -1,21 +1,21 @@
 [submodule "lib/desk"]
-	path = lib/desk
+	path = resources/desk
 	url = https://github.com/jamesob/desk.git
 [submodule "lib/zsh-syntax-highlighting"]
-	path = lib/zsh-syntax-highlighting
+	path = resources/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "lib/vim-plug"]
-	path = lib/vim-plug
+	path = resources/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
 [submodule "lib/solarized"]
-	path = lib/solarized
+	path = resources/solarized
 	url = git://github.com/altercation/solarized.git
 [submodule "lib/dircolors-solarized"]
-	path = lib/dircolors-solarized
+	path = resources/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
 [submodule "lib/zsh-completions"]
-	path = lib/zsh-completions
+	path = resources/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
 [submodule "lib/gnome-terminal-colors-solarized"]
-	path = lib/gnome-terminal-colors-solarized
+	path = resources/gnome-terminal-colors-solarized
 	url = https://github.com/aruhier/gnome-terminal-colors-solarized.git
