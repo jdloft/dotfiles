@@ -1,1 +1,1 @@
-../../lib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+../../resources/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
