@@ -1,1 +1,1 @@
-../lib/gnome-terminal-colors-solarized/set_dark.sh
+../resources/gnome-terminal-colors-solarized/set_dark.sh

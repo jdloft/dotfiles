@@ -1,1 +1,1 @@
-../../../lib/vim-plug/plug.vim
+../../../resources/vim-plug/plug.vim
