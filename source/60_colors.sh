@@ -2,5 +2,5 @@
 
 # Solarized dircolors
 if ! is_mac; then
-    eval `dircolors $DOTFILES/lib/dircolors-solarized/dircolors.ansi-dark`
+    eval `dircolors $DOTFILES/resources/dircolors-solarized/dircolors.ansi-dark`
 fi
