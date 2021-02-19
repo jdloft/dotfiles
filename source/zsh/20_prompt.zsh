@@ -9,6 +9,10 @@ function _dotfiles-prompt() {
         promptchar="#"
     fi
 
+    if [ "$host" = "toolbox" ]; then
+        clr_host="%F{red}"
+    fi
+
     # Actual prompt code
     # %n = username
     echo "%f$(_dotfiles-exit_code)$clr_user%n%f@$clr_host$host%f$(_dotfiles-chroot-prompt) %F{blue}${PWD/#$HOME/~}%f"

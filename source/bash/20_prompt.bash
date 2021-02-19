@@ -12,6 +12,10 @@ function _dotfiles-prompt() {
         prompt="#"
     fi
 
+    if [ "$host" = "toolbox" ]; then
+        clr_host="$CLR_RED"
+    fi
+
     # Test for color support
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
         supports_color=1
