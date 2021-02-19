@@ -31,7 +31,6 @@ alias jsonhint='jshint --extra-ext .json'
 alias dsize='du -hs'
 alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
 
-alias fix-perms='chmod -R u+rwX,go+rX,go-w' # dir rwxr-xr-x, files rw-r--r--
 alias clean-win='find . -iname desktop.ini -delete' # honestly this shouldn't need to exist
 alias clean-mac='find . -iname .DS_Store -delete' # this either; should do the weird underscore files too in the future
 

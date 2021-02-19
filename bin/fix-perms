@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# dir rwxr-xr-x, files rw-r--r--
+find $1 -type f -print0 | xargs -0 chmod 644 $i
+find $1 -type d -print0 | xargs -0 chmod 755 $ii ;;
