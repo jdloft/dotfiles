@@ -39,5 +39,30 @@
         "key": "ctrl+c",
         "command": "-editor.action.clipboardCopyAction",
         "when": "textInputFocus"
+    },
+    {
+        "key": "f5",
+        "command": "-workbench.action.debug.start",
+        "when": "!inDebugMode"
+    },
+    {
+        "key": "f5",
+        "command": "-workbench.action.debug.continue",
+        "when": "inDebugMode"
+    },
+    {
+        "key": "f5",
+        "command": "workbench.action.debug.continue",
+        "when": "inDebugMode && resourceLangId != 'racket'"
+    },
+    {
+        "key": "f5",
+        "command": "workbench.action.debug.start",
+        "when": "!inDebugMode && resourceLangId != 'racket'"
+    },
+    {
+        "key": "f5",
+        "command": "magic-racket.runFile",
+        "when": "resourceLangId == 'racket'"
     }
 ]

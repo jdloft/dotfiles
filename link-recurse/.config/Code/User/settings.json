@@ -2,6 +2,8 @@
     "editor.suggestSelection": "first",
     "editor.autoClosingQuotes": "never",
     "editor.autoSurround": "never",
+    "editor.parameterHints.enabled": false,
+    // "editor.acceptSuggestionOnEnter": "off",
     "git.autofetch": true,
     "git.confirmSync": false,
     "java.configuration.checkProjectSettingsExclusions": false,
@@ -15,7 +17,8 @@
         "<C-f>": false,
         "<C-k>": false,
         "<C-v>": false, // Note: C-q can be used for visual block
-        "<C-x>": false
+        "<C-x>": false,
+        "<C-a>": false
     },
     "vim.sneak": true,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -91,6 +94,16 @@
         "/usr/include/"
     ],
     "diffEditor.ignoreTrimWhitespace": false,
-    "files.trimTrailingWhitespace": true,
-    "python.languageServer": "Pylance"
+    // "files.trimTrailingWhitespace": true,
+    "python.languageServer": "Pylance",
+    "python.experiments.optOutFrom": [
+        "LocalZMQKernel - experiment"
+    ],
+    "vs-kubernetes": {
+    },
+    "python.showStartPage": false,
+    "[css]": {
+        "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+    },
+    "files.trimTrailingWhitespace": true
 }
