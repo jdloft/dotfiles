@@ -29,7 +29,7 @@ alias parts='cat /proc/partitions'
 alias nit='npm install && npm test'
 alias jsonhint='jshint --extra-ext .json'
 alias dsize='du -hs'
-alias wanip='dig +short myip.opendns.com @resolver1.opendns.com'
+alias getip='curl -4 ifconfig.co; curl -6 ifconfig.co'
 
 alias clean-win='find . -iname desktop.ini -delete' # honestly this shouldn't need to exist
 alias clean-mac='find . -iname .DS_Store -delete' # this either; should do the weird underscore files too in the future
