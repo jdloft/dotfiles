@@ -22,6 +22,7 @@
   sub = !"echo 'Sync'; git submodule sync; echo 'Update'; git submodule update --init --recursive"
   ff = merge --ff-only @{u}
   hard-reset = !"echo 'Reverting modified files'; git reset --hard; echo 'Removing untracked files and directories'; git clean -id"
+  ane = commit --amend --no-edit
 [color]
   ui = auto
 [color "branch"]
