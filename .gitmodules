@@ -19,3 +19,6 @@
 [submodule "resources/base16-shell"]
 	path = resources/base16-shell
 	url = https://github.com/chriskempson/base16-shell.git
+[submodule "resources/zsh-autosuggestions"]
+	path = resources/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
