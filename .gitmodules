@@ -22,3 +22,6 @@
 [submodule "resources/zsh-autosuggestions"]
 	path = resources/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "resources/base16-gnome-terminal"]
+	path = resources/base16-gnome-terminal
+	url = https://github.com/aaron-williamson/base16-gnome-terminal.git

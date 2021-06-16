@@ -173,8 +173,8 @@ set wildignore+=*/_vendor/**
 set background=dark
 set t_Co=256
 let base16colorspace=256
-colorscheme base16-flat
-let g:airline_theme = 'base16_flat'
+colorscheme base16-solarized-dark
+let g:airline_theme = 'base16_solarized_dark'
 
 "-----------------------------------------------------------------------------
 " Execution commands

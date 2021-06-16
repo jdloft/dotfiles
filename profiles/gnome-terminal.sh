@@ -1,0 +1,1 @@
+../resources/base16-gnome-terminal/color-scripts/base16-solarized-dark-256.sh
