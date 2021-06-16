@@ -1,6 +1,4 @@
 #!/bin/sh
 
-# Solarized dircolors
-if ! is_mac; then
-    eval `dircolors $DOTFILES/resources/dircolors-solarized/dircolors.ansi-dark`
-fi
+# base16-shell
+sh $DOTFILES/resources/base16-shell/scripts/base16-flat.sh
