@@ -2,6 +2,8 @@
 if is_mac; then
     alias ls='ls -GF' # -G is colorized output, -F is to show trailing slashes and other file info
     alias n='open .'
+    alias rm_quarantine='sudo xattr -r -d com.apple.quarantine'
+    alias sha256sum='shasum -a 256'
 else
     alias ls='ls --color=auto'
     alias n='(nohup nautilus -w . &) > /dev/null 2>&1'
