@@ -192,10 +192,10 @@ else
   let g:airline_theme = 'simple'
 endif
 
-highlight SignColumn      guibg=0 ctermbg=0
-highlight GitGutterAdd    guibg=0 ctermbg=0
-highlight GitGutterChange guibg=0 ctermbg=0
-highlight GitGutterDelete guibg=0 ctermbg=0
+highlight SignColumn      guibg=black ctermbg=black
+highlight GitGutterAdd    guibg=black ctermbg=black
+highlight GitGutterChange guibg=black ctermbg=black
+highlight GitGutterDelete guibg=black ctermbg=black
 
 "-----------------------------------------------------------------------------
 " Execution commands
