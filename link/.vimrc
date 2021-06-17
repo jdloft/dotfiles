@@ -277,6 +277,15 @@ map q: <Nop>
 nnoremap <Space> i_<Esc>r
 
 " COC stuff
+
+command InstallCocServers
+      \ exe ':CocInstall coc-pyright' |
+      \ exe ':CocInstall coc-sh' |
+      \ exe ':CocInstall coc-clangd' |
+      \ exe ':CocInstall coc-html' |
+      \ exe ':CocInstall coc-tsserver'
+      " TODO: Install something for Dockerfiles
+
 set cmdheight=2
 set updatetime=300
 " if has("patch-8.1.1564")
