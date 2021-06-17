@@ -83,14 +83,13 @@ function _dotfiles-virtualenv-prompt() {
 }
 
 function _dotfiles-desk-prompt() {
-    CLR_DESK_CLS="%F{cyan}"
-    CLR_DESK_ENV="%F{cyan}"
+    CLR_DESK="%F{cyan}"
 
     if [[ $DESK_NAME == "" ]]; then
         return 1
     fi
 
-    echo -en "${CLR_DESK_CLS} (${CLR_DESK_ENV}$DESK_NAME${CLR_DESK_CLS})%f"
+    echo -en "${CLR_DESK} ◲%f"
 }
 
 function _dotfiles-k8s-prompt() {
