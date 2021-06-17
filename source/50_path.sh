@@ -28,9 +28,15 @@ if is_mac; then
         source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
         path_append /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
     fi
+    if [ -d "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
+        source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+        path_append /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+    fi
 
     # Ruby
-    if [ -d "/usr/local/opt/ruby/bin" ]; then
+    if type "rbenv" > /dev/null; then
+        eval "$(rbenv init -)"
+    elif [ -d "/usr/local/opt/ruby/bin" ]; then
         path_append /usr/local/opt/ruby/bin
     fi
     if [ -d "$HOME/.gem/ruby" ]; then
@@ -39,6 +45,11 @@ if is_mac; then
                 path_append "${directory}bin"
             fi
         done
+    fi
+
+    # MacTeX
+    if [ -d "/usr/local/texlive/2020/bin/x86_64-darwin" ]; then
+        path_append "/usr/local/texlive/2020basic/bin/x86_64-darwin"
     fi
 fi
 
@@ -52,6 +63,10 @@ fi
 
 if [ -d "$HOME/.local/bin" ]; then
     path_prepend "$HOME/.local/bin"
+fi
+
+if [ -d "$HOME/go/bin" ]; then
+    path_prepend "$HOME/go/bin"
 fi
 
 if [ -d "$HOME/.npm/bin" ]; then
