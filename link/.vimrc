@@ -25,7 +25,7 @@ let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 
 
-" ALE
+" ALE (fallback for CoC)
 let g:ale_echo_msg_format = '%linter%: %s'
 
 let g:ale_linters = {
@@ -36,6 +36,13 @@ let g:ale_type_map = {
   \ 'flake8': {'ES': 'WS'}
 \}
 
+" CoC startup
+let g:coc_start_at_startup=0
+
+if executable('node')
+  let g:ale_enabled=0
+  call coc#rpc#start_server()
+endif
 
 " vim-commentary
 autocmd FileType c setlocal commentstring=//\ %s
