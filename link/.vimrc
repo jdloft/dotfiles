@@ -4,7 +4,6 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -14,6 +13,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
 Plug 'jdloft/vim-airline-themes'
+Plug 'jdloft/vim-colors-solarized'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -184,14 +184,18 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color"
     let g:airline_theme = 'solarized'
     let g:airline_solarized_normal_blue = 1
   endif
+
+  let g:solarized_termtrans = 1
   colorscheme solarized
 else
   " TODO: should be replaced with a proper 8/16 bit theme
   let g:airline_theme = 'simple'
 endif
 
-" TODO: set ALE sign bg highlights; see :help ale-highlights
-highlight SignColumn guibg=black ctermbg=black
+highlight SignColumn      guibg=0 ctermbg=0
+highlight GitGutterAdd    guibg=0 ctermbg=0
+highlight GitGutterChange guibg=0 ctermbg=0
+highlight GitGutterDelete guibg=0 ctermbg=0
 
 "-----------------------------------------------------------------------------
 " Execution commands
