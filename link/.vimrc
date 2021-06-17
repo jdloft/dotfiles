@@ -4,16 +4,16 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
-Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dawikur/base16-vim-airline-themes'
 Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab'
+Plug 'jdloft/vim-airline-themes'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -171,10 +171,27 @@ set wildignore+=*/_vendor/**
 
 " colors
 set background=dark
-set t_Co=256
-let base16colorspace=256
-colorscheme base16-solarized-dark
-let g:airline_theme = 'base16_solarized_dark'
+
+if $TERM == "xterm-256color" || $TERM == "screen-256color"
+  set t_Co=256
+  highlight CursorLineNr ctermfg=red
+
+  if $NO_SOLAR == "true"
+    " Fallback solarized palette
+    let g:solarized_termcolors=256
+    let g:airline_theme = 'simple'
+  else
+    let g:airline_theme = 'solarized'
+    let g:airline_solarized_normal_blue = 1
+  endif
+  colorscheme solarized
+else
+  " TODO: should be replaced with a proper 8/16 bit theme
+  let g:airline_theme = 'simple'
+endif
+
+" TODO: set ALE sign bg highlights; see :help ale-highlights
+highlight SignColumn guibg=black ctermbg=black
 
 "-----------------------------------------------------------------------------
 " Execution commands
