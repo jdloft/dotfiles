@@ -1,8 +1,8 @@
 #!/bin/sh
 # Solarized mode 3 by jdloft
-# colors 9-14 are inherited from non-bright variants
+# colors 10-14 are inherited from non-bright variants
 # colors 16-21 are bright variants
-# Old: 09 10 11 12 13 14
+# Old: 10 11 12 13 14 08
 # New: 16 17 18 19 20 21
 
 # based off of base16-shell (https://github.com/chriskempson/base16-shell)
@@ -17,19 +17,19 @@ color05="d3/36/82" # magenta - magenta
 color06="2a/a1/98" # cyan - cyan
 color07="ee/e8/d5" # white - base2
 color08="65/7b/83" # brblack - bright black override from mode 2
-color09=$color01 # brred
+color09="cb/4b/16" # brred - orange
 color10=$color02 # brgreen
 color11=$color03 # bryellow
 color12=$color04 # brblue
 color13=$color05 # brmagenta
 color14=$color06 # brcyan
 color15="fd/f6/e3" # brwhite - base3
-color16="cb/4b/16" # orange
-color17="58/6e/75" # base01
-color18="65/7b/83" # base00
-color19="83/94/96" # base0
-color20="6c/71/c4" # violet
-color21="93/a1/a1" # base1
+color16="58/6e/75" # base01
+color17="65/7b/83" # base00
+color18="83/94/96" # base0
+color19="6c/71/c4" # violet
+color20="93/a1/a1" # base1
+color21="00/2b/36" # base03
 color_foreground="83/94/96" # base0
 color_background="00/2b/36" # base03
 

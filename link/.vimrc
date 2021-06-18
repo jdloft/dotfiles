@@ -163,11 +163,10 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color"
     let g:airline_theme = 'solarized'
     let g:airline_solarized_normal_blue = 1
 
-    if $SOLAR_MODE2 == "true"
-      let g:solarized_termtrans = 1
-    endif
     if $SOLAR_MODE3 == "true"
       let g:solarized_mode3 = 1
+    elseif $SOLAR_MODE2 == "true"
+      let g:solarized_termtrans = 1
     endif
   endif
 
