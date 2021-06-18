@@ -16,3 +16,6 @@
 [submodule "lib/zsh-completions"]
 	path = resources/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "resources/dotbot"]
+	path = resources/dotbot
+	url = https://github.com/anishathalye/dotbot

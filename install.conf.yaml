@@ -1,0 +1,34 @@
+- defaults:
+    link:
+      relink: true
+      relative: true
+
+- clean: ['~']
+
+- link:
+    ~/.bashrc:
+      path: link/.bashrc
+      force: true
+    ~/.bash_profile:
+      path: link/.bash_profile
+      force: true
+    ~/.zshrc:
+      path: link/.zshrc
+      force: true
+    ~/:
+      glob: true
+      path: link/.*
+    ~/.config/nvim: nvim
+    ~/.config/Code/User/:
+      create: true
+      glob: true
+      path: Code/User/*
+      if: '[ `uname` != Darwin ]'
+    ~/Library/Application Support/Code/User/:
+      create: true
+      glob: true
+      path: Code/User/*
+      if: '[ `uname` = Darwin ]'
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
