@@ -27,3 +27,6 @@ link/.vim/autoload/plug.vim.old
 
 .DS_Store
 
+# local variables
+source/01_local.sh
+
