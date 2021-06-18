@@ -1,2 +1,2 @@
 #!/bin/bash
-vim +PlugClean +PlugInstall +PlugUpdate +qall
+vim -u ~/.vim/vim-plugged.vim +PlugClean +PlugInstall +PlugUpdate +qall
