@@ -47,7 +47,7 @@ alias vdc="vim \$(git diff HEAD^ --name-only --diff-filter=ACMR)"
 alias vdm="vim \$(git diff master --name-only --diff-filter=ACMR)"
 
 alias st="git st"
-alias stage="git diff --staged"
+alias staged="git diff --staged"
 
 alias :q='exit'
 alias :wq='exit'
