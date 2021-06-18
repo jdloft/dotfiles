@@ -32,3 +32,8 @@
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
+  -
+    command: scripts/vim-plug.sh
+    description: Configuring vim plugins
+    stdin: true
+    stdout: true
