@@ -41,10 +41,8 @@ if which ack-grep > /dev/null 2>&1; then
 fi
 
 alias v="vim"
-alias vd="vim \$(git diff HEAD --name-only --diff-filter=ACMR)"
+alias vd="vim \$(git diff --name-only --diff-filter=ACMR)"
 alias vds="vim \$(git diff --staged --name-only --diff-filter=ACMR)"
-alias vdc="vim \$(git diff HEAD^ --name-only --diff-filter=ACMR)"
-alias vdm="vim \$(git diff master --name-only --diff-filter=ACMR)"
 
 alias st="git st"
 alias staged="git diff --staged"

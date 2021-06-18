@@ -239,10 +239,10 @@ nnoremap k gk
 nnoremap j gj
 
 " common mis-types
-nmap :W :w
-nmap :Wq :wq
-nmap :Q :q
-nmap :Q! :q!
+command -bang W w<bang>
+command -bang Wq wq<bang>
+command -bang WQ wq<bang>
+command -bang Q q<bang>
 
 " trailing whitespace removal
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
