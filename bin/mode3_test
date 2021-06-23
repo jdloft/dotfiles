@@ -20,13 +20,38 @@ ansi_mappings=(
   Bright_Cyan
   Bright_White
 )
+solar_mappings=(
+  base02
+  red
+  green
+  yellow
+  blue
+  magenta
+  cyan
+  base2
+  \(custom\)
+  orange
+  green
+  yellow
+  blue
+  magenta
+  cyan
+  base3
+  base01
+  base00
+  base0
+  violet
+  base1
+  base03
+)
 for padded_value in `seq -w 0 21`; do
   color_variable="color${padded_value}"
   non_padded_value=$((10#$padded_value))
   ansi_label=${ansi_mappings[$non_padded_value]}
+  solar_label=${solar_mappings[$non_padded_value]}
   block=$(printf "\x1b[48;5;${non_padded_value}m___________________________")
   foreground=$(printf "\x1b[38;5;${non_padded_value}m$color_variable")
-  printf "%s %-30s %s\x1b[0m\n" $foreground ${ansi_label:-""} $block
+  printf "%s %-8s %-30s %s\x1b[0m\n" $foreground ${solar_label:-""} ${ansi_label:-""} $block
 done;
 if [ $# -eq 1 ]; then
     printf "To restore current theme, source ~/.base16_theme or reopen your terminal\n"
