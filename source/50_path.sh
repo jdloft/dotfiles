@@ -23,16 +23,6 @@ if is_mac; then
         path_prepend "/usr/local/opt/llvm/bin"
     fi
 
-    # Google SDK
-    if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
-        source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-        path_append /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
-    fi
-    if [ -d "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
-        source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-        path_append /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
-    fi
-
     # Ruby
     if type "rbenv" > /dev/null; then
         eval "$(rbenv init -)"

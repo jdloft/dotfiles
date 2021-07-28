@@ -13,3 +13,15 @@ if [ -d "$HOME/miniforge3/" ]; then
     fi
     unset __conda_setup
 fi
+
+if is_mac; then
+    # Google SDK
+    if [ -d "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
+        source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+        path_append /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+    fi
+    if [ -d "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then
+        source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+        path_append /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin
+    fi
+fi
