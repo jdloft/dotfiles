@@ -7,13 +7,13 @@
 if is_mac; then
     # homebrew
     if [ -d "/opt/homebrew/bin" ]; then
-        path_append "/opt/homebrew/bin"
+        path_prepend "/opt/homebrew/bin"
     fi
 
     if [ -d "$HOME/Library/Python" ]; then
         for directory in ~/Library/Python/*/; do
             if [ -d "${directory}bin" ]; then # output from for has a trailing slash
-                path_append "${directory}bin"
+                path_prepend "${directory}bin"
             fi
         done
     fi
@@ -27,19 +27,19 @@ if is_mac; then
     if type "rbenv" > /dev/null; then
         eval "$(rbenv init -)"
     elif [ -d "/usr/local/opt/ruby/bin" ]; then
-        path_append /usr/local/opt/ruby/bin
+        path_prepend /usr/local/opt/ruby/bin
     fi
     if [ -d "$HOME/.gem/ruby" ]; then
         for directory in ~/.gem/ruby/*/; do
             if [ -d "${directory}bin" ]; then
-                path_append "${directory}bin"
+                path_prepend "${directory}bin"
             fi
         done
     fi
 
     # MacTeX
     if [ -d "/usr/local/texlive/2020/bin/x86_64-darwin" ]; then
-        path_append "/usr/local/texlive/2020basic/bin/x86_64-darwin"
+        path_prepend "/usr/local/texlive/2020basic/bin/x86_64-darwin"
     fi
 fi
 
