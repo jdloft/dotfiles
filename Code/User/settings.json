@@ -1,17 +1,25 @@
 {
-    "editor.suggestSelection": "first",
+    "editor.acceptSuggestionOnEnter": "off",
     "editor.autoClosingQuotes": "never",
     "editor.autoSurround": "never",
+    "editor.inlineSuggest.enabled": true,
     "editor.parameterHints.enabled": false,
-    // "editor.acceptSuggestionOnEnter": "off",
+    "editor.suggestSelection": "first",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
     "git.autofetch": true,
     "git.confirmSync": false,
     "java.configuration.checkProjectSettingsExclusions": false,
+    "jupyter.askForKernelRestart": false,
     "python.dataScience.jupyterServerURI": "local",
     "python.jediEnabled": false,
     "telemetry.enableTelemetry": false,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.env.linux": {},
+    // vim
+    "vim.leader": ",",
+    "vim.useSystemClipboard": false,
     "vim.handleKeys": {
         "<C-c>": false,
         "<C-f>": false,
@@ -31,24 +39,41 @@
         //     "before": ["k"],
         //     "after": ["g", "k"]
         // },
-
-        // Not working
-        // {
-        //     "before": ["<leader>", "f"],
-        //     "commands": [
-        //         "workbench.action.nextEditor"
-        //     ]
-        // },
-        // {
-        //     "before": ["<leader>", "F"],
-        //     "commands": [
-        //         "workbench.action.previousEditor"
-        //     ]
-        // }
+        {
+            "before": ["<leader>", "f"],
+            "commands": [
+                "workbench.action.nextEditor"
+            ]
+        },
+        {
+            "before": ["<leader>", "F"],
+            "commands": [
+                "workbench.action.previousEditor"
+            ]
+        },
+        {
+            "before": [ "c" ],
+            "after": [ "\"", "_", "c" ]
+        },
+        {
+            "before": [ "C" ],
+            "after": [ "\"", "_", "C" ]
+        },
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "p" ],
+            "after": [ "\"", "_", "d", "P" ]
+        }
+    ],
+    "vim.commandLineModeKeyBindings": [
+        {
+            "before": ["W", "<CR>"],
+            "after": ["w", "<CR>"]
+        },
     ],
     "vsicons.dontShowNewVersionMessage": true,
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    // "workbench.colorTheme": "Braver's Solarized Dark",
     "workbench.colorTheme": "Solarized Dark",
     "workbench.preferredLightColorTheme": "Solarized Light",
     "workbench.preferredDarkColorTheme": "Solarized Dark",
@@ -76,17 +101,10 @@
         "terminal.ansiBrightCyan":"#93A1A1",
         "terminal.ansiBrightWhite":"#FDF6E3",
     },
-    "workbench.iconTheme": "vscode-icons",
-    "python.dataScience.askForKernelRestart": false,
+    "workbench.iconTheme": "vs-seti",
     "todo-tree.tree.showScanModeButton": false,
     "explorer.confirmDragAndDrop": false,
     "git.ignoreLegacyWarning": true,
-    "cSpell.userWords": [
-        "kubernetes",
-        "nextcloud",
-        "podman",
-        "wifi"
-    ],
     // "zenMode.centerLayout": false,
     "zenMode.hideTabs": false,
     "zenMode.hideStatusBar": false,
@@ -94,16 +112,16 @@
         "/usr/include/"
     ],
     "diffEditor.ignoreTrimWhitespace": false,
-    // "files.trimTrailingWhitespace": true,
-    "python.languageServer": "Pylance",
-    "python.experiments.optOutFrom": [
-        "LocalZMQKernel - experiment"
-    ],
-    "vs-kubernetes": {
+    "python.languageServer": "None",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
     },
-    "python.showStartPage": false,
-    "[css]": {
-        "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+    "terminal.integrated.inheritEnv": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": false,
+        "plaintext": true,
+        "markdown": true
     },
-    "files.trimTrailingWhitespace": true
 }
