@@ -1,7 +1,10 @@
 # Based off of the grml zsh completion configs
 
-if [[ -d "$DOTFILES/lib/zsh-completions/src" ]]; then
-    fpath=("$DOTFILES/lib/zsh-completions/src" $fpath)
+if [[ -d "$DOTFILES/resources/zsh-completions/src" ]]; then
+    fpath=("$DOTFILES/resources/zsh-completions/src" $fpath)
+fi
+if [[ -d "$DOTFILES/resources/conda-zsh-completion" ]]; then
+    fpath=("$DOTFILES/resources/conda-zsh-completion" $fpath)
 fi
 
 compinit

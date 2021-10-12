@@ -19,3 +19,6 @@
 [submodule "resources/dotbot"]
 	path = resources/dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "resources/conda-zsh-completion"]
+	path = resources/conda-zsh-completion
+	url = https://github.com/esc/conda-zsh-completion.git
