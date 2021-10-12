@@ -189,8 +189,8 @@ highlight GitGutterChange guibg=black ctermbg=black
 highlight GitGutterDelete guibg=black ctermbg=black
 
 " mouse
-set ttymouse=xterm2
-set mouse=a
+" set ttymouse=xterm2
+" set mouse=a
 
 "-----------------------------------------------------------------------------
 " Execution commands
