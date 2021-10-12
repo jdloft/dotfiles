@@ -271,6 +271,15 @@ nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 " paste mappings
 nnoremap <leader>p :set paste!<cr>
 
+" replace without yanking
+vnoremap p "_dP
+
+" don't copy on clear
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
+
 " NERDTree shortcut
 nnoremap <leader>ls :NERDTree<cr>
 
