@@ -24,15 +24,13 @@ if is_mac; then
     fi
 
     # Ruby
-    if type "rbenv" > /dev/null; then
-        eval "$(rbenv init -)"
-    elif [ -d "/usr/local/opt/ruby/bin" ]; then
-        path_prepend /usr/local/opt/ruby/bin
+    if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+        path_prepend "/opt/homebrew/opt/ruby/bin"
     fi
-    if [ -d "$HOME/.gem/ruby" ]; then
-        for directory in ~/.gem/ruby/*/; do
-            if [ -d "${directory}bin" ]; then
-                path_prepend "${directory}bin"
+    if [ -d "/opt/homebrew/lib/ruby/gems" ]; then
+        for dir in /opt/homebrew/lib/ruby/gems/*; do
+            if [ -d "${dir}/bin" ]; then
+                path_prepend "${dir}/bin"
             fi
         done
     fi
