@@ -13,7 +13,7 @@
     "jupyter.askForKernelRestart": false,
     "python.dataScience.jupyterServerURI": "local",
     "python.jediEnabled": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.env.linux": {},
     // vim
