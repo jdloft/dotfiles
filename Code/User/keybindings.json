@@ -73,5 +73,25 @@
     { "key": "cmd+6","command": "workbench.action.openEditorAtIndex6" },
     { "key": "cmd+7","command": "workbench.action.openEditorAtIndex7" },
     { "key": "cmd+8","command": "workbench.action.openEditorAtIndex8" },
-    { "key": "cmd+9","command": "workbench.action.openEditorAtIndex9" }
+    { "key": "cmd+9","command": "workbench.action.openEditorAtIndex9" },
+    {
+        "key": "pageup",
+        "command": "-workbench.action.terminal.scrollUpPage",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "pagedown",
+        "command": "-workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "shift+pagedown",
+        "command": "workbench.action.terminal.scrollDownPage",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    },
+    {
+        "key": "shift+pageup",
+        "command": "workbench.action.terminal.scrollUpPage",
+        "when": "terminalFocus && terminalProcessSupported && !terminalAltBufferActive"
+    }
 ]
