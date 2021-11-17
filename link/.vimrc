@@ -154,7 +154,11 @@ set wildignore+=*/tmp/**
 set wildignore+=*/_vendor/**
 
 " colors
-set background=dark
+if $SOLAR_LIGHT == "true"
+  set background=light
+else
+  set background=dark
+endif
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color"
   set t_Co=256

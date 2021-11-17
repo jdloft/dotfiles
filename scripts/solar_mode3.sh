@@ -8,30 +8,58 @@
 # based off of base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
 
-color00="07/36/42" # black - base02
-color01="dc/32/2f" # red - red
-color02="85/99/00" # green - green
-color03="b5/89/00" # yellow - yellow
-color04="26/8b/d2" # blue - blue
-color05="d3/36/82" # magenta - magenta
-color06="2a/a1/98" # cyan - cyan
-color07="ee/e8/d5" # white - base2
+base03="00/2b/36"
+base02="07/36/42"
+base01="58/6e/75"
+base00="65/7b/83"
+base0="83/94/96"
+base1="93/a1/a1"
+base2="ee/e8/d5"
+base3="fd/f6/e3"
+yellow="b5/89/00"
+orange="cb/4b/16"
+red="dc/32/2f"
+magenta="d3/36/82"
+violet="6c/71/c4"
+blue="26/8b/d2"
+cyan="2a/a1/98"
+green="85/99/00"
+
+color_background=$base03
+color_foreground=$base0
+color00=$base02 # black
+color01=$red # red
+color02=$green # green
+color03=$yellow # yellow
+color04=$blue # blue
+color05=$magenta # magenta
+color06=$cyan # cyan
+color07=$base2 # white
 color08="65/7b/83" # brblack - bright black override from mode 2
-color09="cb/4b/16" # brred - orange
+color09=$orange # brred
 color10=$color02 # brgreen
 color11=$color03 # bryellow
 color12=$color04 # brblue
 color13=$color05 # brmagenta
 color14=$color06 # brcyan
-color15="fd/f6/e3" # brwhite - base3
-color16="58/6e/75" # base01
-color17="65/7b/83" # base00
-color18="83/94/96" # base0
-color19="6c/71/c4" # violet
-color20="93/a1/a1" # base1
-color21="00/2b/36" # base03
-color_foreground="83/94/96" # base0
-color_background="00/2b/36" # base03
+color15=$base3 # brwhite
+color16=$base01
+color17=$base00
+color18=$base0
+color19=$violet
+color20=$base1
+color21=$base03
+
+if [ ! -z $SOLAR_LIGHT ] && [ $SOLAR_LIGHT = true ]; then
+  color_background=$base3
+  color_foreground=$base00
+  color15=$color07
+  color16=$base1
+  color17=$base0
+  color18=$base00
+  color20=$base01
+  color21=$base3
+fi
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
@@ -83,13 +111,23 @@ put_template 21 $color21
 # foreground / background / cursor color
 if [ -n "$ITERM_SESSION_ID" ]; then
   # iTerm2 proprietary escape codes
-  put_template_custom Pg 839496 # foreground
-  put_template_custom Ph 002b36 # background
-  put_template_custom Pi 93a1a1 # bold color
-  put_template_custom Pj 073642 # selection color
-  put_template_custom Pk 93a1a1 # selected text color
-  put_template_custom Pl 839496 # cursor
-  put_template_custom Pm 073642 # cursor text
+  if [ -z $SOLAR_LIGHT ]; then
+    put_template_custom Pg 839496 # foreground
+    put_template_custom Ph 002b36 # background
+    put_template_custom Pi 93a1a1 # bold color
+    put_template_custom Pj 073642 # selection color
+    put_template_custom Pk 93a1a1 # selected text color
+    put_template_custom Pl 839496 # cursor
+    put_template_custom Pm 073642 # cursor text
+  else
+    put_template_custom Pg 657b83 # foreground
+    put_template_custom Ph fdf6e3 # background
+    put_template_custom Pi 586e75 # bold color
+    put_template_custom Pj eee8d5 # selection color
+    put_template_custom Pk 586e75 # selected text color
+    put_template_custom Pl 657b83 # cursor
+    put_template_custom Pm eee8d5 # cursor text
+  fi
 else
   put_template_var 10 $color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
@@ -105,6 +143,8 @@ fi
 unset -f put_template
 unset -f put_template_var
 unset -f put_template_custom
+unset color_background
+unset color_foreground
 unset color00
 unset color01
 unset color02
@@ -127,5 +167,19 @@ unset color18
 unset color19
 unset color20
 unset color21
-unset color_foreground
-unset color_background
+unset base03
+unset base02
+unset base01
+unset base00
+unset base0
+unset base1
+unset base2
+unset base3
+unset yellow
+unset orange
+unset red
+unset magenta
+unset violet
+unset blue
+unset cyan
+unset green
