@@ -109,26 +109,7 @@ put_template 20 $color20
 put_template 21 $color21
 
 # foreground / background / cursor color
-if [ -n "$ITERM_SESSION_ID" ]; then
-  # iTerm2 proprietary escape codes
-  if [ -z $SOLAR_LIGHT ]; then
-    put_template_custom Pg 839496 # foreground
-    put_template_custom Ph 002b36 # background
-    put_template_custom Pi 93a1a1 # bold color
-    put_template_custom Pj 073642 # selection color
-    put_template_custom Pk 93a1a1 # selected text color
-    put_template_custom Pl 839496 # cursor
-    put_template_custom Pm 073642 # cursor text
-  else
-    put_template_custom Pg 657b83 # foreground
-    put_template_custom Ph fdf6e3 # background
-    put_template_custom Pi 586e75 # bold color
-    put_template_custom Pj eee8d5 # selection color
-    put_template_custom Pk 586e75 # selected text color
-    put_template_custom Pl 657b83 # cursor
-    put_template_custom Pm eee8d5 # cursor text
-  fi
-else
+if [ -z "$ITERM_SESSION_ID" ]; then
   put_template_var 10 $color_foreground
   if [ "$BASE16_SHELL_SET_BACKGROUND" != false ]; then
     put_template_var 11 $color_background
