@@ -58,3 +58,5 @@
   insteadOf = "gist:"
 [url "git@heroku.com:"]
   insteadOf = "heroku:"
+[init]
+	defaultBranch = master
