@@ -8,6 +8,6 @@ fi
 
 if type "kubectl" > /dev/null; then
     source <(kubectl completion zsh)
-    complete -F __start_kubectl k
+    compdef __start_kubectl k
 fi
 
