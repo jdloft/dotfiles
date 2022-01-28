@@ -23,6 +23,11 @@
 
 - shell:
   -
+    command: scripts/migrate-vscode.sh
+    description: Migrate VS Code configs
+    stdin: false
+    stdout: true
+  -
     command: scripts/vim-plug.sh
     description: Configuring vim plugins
     stdin: true
