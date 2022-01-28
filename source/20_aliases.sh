@@ -58,6 +58,7 @@ alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'
 alias restart='sudo systemctl restart'
 alias status='systemctl status'
+alias s='systemctl'
 
 alias se=sudoedit
 
@@ -66,7 +67,5 @@ alias pm='podman'
 
 # kubernetes
 alias k='kubectl'
-
-alias s='systemctl'
 
 alias gpus="lspci -vnn | grep '\''[030[02]\]'"
