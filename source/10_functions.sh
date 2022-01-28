@@ -65,9 +65,17 @@ adb-screenshot() {
 # get messages from journalctl
 msgs() {
     if [ -z "$1" ]; then
-        journalctl -xef --output cat
+        journalctl -xfn 25
     else
-        journalctl -xefu $1 --output cat
+        journalctl -xfu $1 -n 25
+    fi
+}
+
+j() {
+    if [ -z "$1" ]; then
+        journalctl -xn 25
+    else
+        journalctl -xu $1 -n 25
     fi
 }
 
