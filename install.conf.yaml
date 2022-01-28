@@ -20,16 +20,6 @@
       glob: true
       path: link/.*
     ~/.config/nvim: nvim
-    ~/.config/Code/User/:
-      create: true
-      glob: true
-      path: Code/User/*
-      if: '[ `uname` != Darwin ]'
-    ~/Library/Application Support/Code/User/:
-      create: true
-      glob: true
-      path: Code/User/*
-      if: '[ `uname` = Darwin ]'
 
 - shell:
   -
