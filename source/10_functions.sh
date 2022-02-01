@@ -158,3 +158,11 @@ trucolor_test() {
         printf "\n";
     }'
 }
+
+listen() {
+    if [ -f $1 ]; then
+        tail -f $1 | grep --line-buffered $2
+    else
+        echo "Please specify a file"
+    fi
+}
