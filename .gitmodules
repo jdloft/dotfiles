@@ -22,3 +22,6 @@
 [submodule "resources/conda-zsh-completion"]
 	path = resources/conda-zsh-completion
 	url = https://github.com/esc/conda-zsh-completion.git
+[submodule "link/.tmux/plugins/tpm"]
+	path = link/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm

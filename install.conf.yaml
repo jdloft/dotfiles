@@ -32,3 +32,7 @@
     description: Configuring vim plugins
     stdin: true
     stdout: true
+  -
+    command: link/.tmux/plugins/tpm/bin/install_plugins
+    description: Install tmux plugins
+    stdout: true
