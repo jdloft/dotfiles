@@ -20,6 +20,10 @@
       glob: true
       path: link/.*
     ~/.config/nvim: nvim
+    ~/.config/karabiner/karabiner.json:
+      path: config/karabiner.json
+      if: '[ `uname` = Darwin ]'
+      force: true
 
 - shell:
   -
