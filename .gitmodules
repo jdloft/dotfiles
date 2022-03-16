@@ -9,7 +9,7 @@
 	url = https://github.com/junegunn/vim-plug.git
 [submodule "lib/solarized"]
 	path = resources/solarized
-	url = git://github.com/altercation/solarized.git
+	url = https://github.com/altercation/solarized.git
 [submodule "lib/dircolors-solarized"]
 	path = resources/dircolors-solarized
 	url = https://github.com/seebi/dircolors-solarized.git
