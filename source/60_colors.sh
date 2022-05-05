@@ -6,7 +6,7 @@ if [[ $- == *i* ]]; then
     fi
 
     # Solarized dircolors
-    if ! is_mac; then
+    if ! is_mac && ! is_bsd; then
         eval `dircolors $DOTFILES/resources/dircolors-solarized/dircolors.ansi-dark`
     fi
 fi
