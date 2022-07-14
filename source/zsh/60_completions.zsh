@@ -11,3 +11,6 @@ if type "kubectl" > /dev/null; then
     compdef __start_kubectl k
 fi
 
+if type "helm" > /dev/null; then
+    source <(helm completion zsh)
+fi
