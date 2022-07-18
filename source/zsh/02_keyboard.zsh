@@ -31,7 +31,8 @@ bindkey -e # emacs mode
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
-if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
+autoload -Uz is-at-least
+if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )) && is-at-least 5.3.0.0 $ZSH_VERSION.0.0; then
 	autoload -Uz add-zle-hook-widget
 	function zle_application_mode_start { echoti smkx }
 	function zle_application_mode_stop { echoti rmkx }
