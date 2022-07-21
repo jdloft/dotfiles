@@ -23,7 +23,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
 Plug 'wesQ3/vim-windowswap'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+if v:version > 800
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 Plug 'easymotion/vim-easymotion'
 
 call plug#end()
