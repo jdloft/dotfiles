@@ -1,12 +1,7 @@
 #!/bin/sh
 
-if [[ $- == *i* ]]; then
+if [[ $- == *i* ]]; then # if we're interactive
     if [ $SOLAR_MODE3 = true ]; then
         eval $DOTFILES/scripts/solar_mode3.sh
-    fi
-
-    # Solarized dircolors
-    if ! is_mac && ! is_bsd; then
-        eval `dircolors $DOTFILES/resources/dircolors-solarized/dircolors.ansi-dark`
     fi
 fi

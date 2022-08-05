@@ -10,9 +10,6 @@
 [submodule "lib/solarized"]
 	path = resources/solarized
 	url = https://github.com/altercation/solarized.git
-[submodule "lib/dircolors-solarized"]
-	path = resources/dircolors-solarized
-	url = https://github.com/seebi/dircolors-solarized.git
 [submodule "lib/zsh-completions"]
 	path = resources/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git

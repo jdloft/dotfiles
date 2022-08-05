@@ -35,14 +35,12 @@ export LC_COLLATE="C"
 # Colors
 #
 
-if [ -x /usr/bin/dircolors ]
-then
+if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
 fi
 
 # Colors http://linux.101hacks.com/ps1-examples/prompt-color-using-tput/
-if [[ $- == *i* ]]
-then
+if [[ $- == *i* ]]; then
     CLR_NONE=`tput sgr0`
     CLR_LINE=`tput smul`
     CLR_BOLD=`tput bold`
