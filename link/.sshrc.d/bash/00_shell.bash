@@ -1,0 +1,1 @@
+../../.dotfiles/source/bash/00_shell.bash

@@ -1,0 +1,1 @@
+../../.dotfiles/scripts/solar_mode3.sh
