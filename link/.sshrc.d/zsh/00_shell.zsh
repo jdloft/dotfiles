@@ -1,1 +1,1 @@
-../../.dotfiles/source/zsh/00_shell.zsh
+../../../source/zsh/00_shell.zsh

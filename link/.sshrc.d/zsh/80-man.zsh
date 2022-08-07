@@ -1,1 +1,1 @@
-../../.dotfiles/source/zsh/80-man.zsh
+../../../source/zsh/80-man.zsh

@@ -1,1 +1,1 @@
-../.dotfiles/source/40_term-emulator.sh
+../../source/40_term-emulator.sh

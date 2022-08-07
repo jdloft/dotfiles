@@ -1,1 +1,1 @@
-../../.dotfiles/source/zsh/20_prompt.zsh
+../../../source/zsh/20_prompt.zsh

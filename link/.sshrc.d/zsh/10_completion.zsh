@@ -1,1 +1,1 @@
-../../.dotfiles/source/zsh/10_completion.zsh
+../../../source/zsh/10_completion.zsh

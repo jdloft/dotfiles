@@ -1,1 +1,1 @@
-../../.dotfiles/source/bash/20_prompt.bash
+../../../source/bash/20_prompt.bash

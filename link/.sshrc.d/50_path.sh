@@ -1,1 +1,1 @@
-../.dotfiles/source/50_path.sh
+../../source/50_path.sh

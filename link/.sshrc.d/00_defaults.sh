@@ -1,1 +1,1 @@
-../.dotfiles/source/00_defaults.sh
+../../source/00_defaults.sh

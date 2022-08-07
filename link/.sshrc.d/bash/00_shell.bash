@@ -1,1 +1,1 @@
-../../.dotfiles/source/bash/00_shell.bash
+../../../source/bash/00_shell.bash

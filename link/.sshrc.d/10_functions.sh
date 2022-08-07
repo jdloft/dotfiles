@@ -1,1 +1,1 @@
-../.dotfiles/source/10_functions.sh
+../../source/10_functions.sh

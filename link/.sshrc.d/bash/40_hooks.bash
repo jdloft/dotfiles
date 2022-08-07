@@ -1,1 +1,1 @@
-../../.dotfiles/source/bash/40_hooks.bash
+../../../source/bash/40_hooks.bash

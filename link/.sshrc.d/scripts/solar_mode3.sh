@@ -1,1 +1,1 @@
-../../.dotfiles/scripts/solar_mode3.sh
+../../../scripts/solar_mode3.sh

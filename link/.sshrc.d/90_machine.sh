@@ -1,1 +1,1 @@
-../.dotfiles/source/90_machine.sh
+../../source/90_machine.sh

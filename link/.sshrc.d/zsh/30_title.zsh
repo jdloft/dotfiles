@@ -1,1 +1,1 @@
-../../.dotfiles/source/zsh/30_title.zsh
+../../../source/zsh/30_title.zsh

@@ -1,1 +1,1 @@
-../../.dotfiles/source/zsh/40_hooks.zsh
+../../../source/zsh/40_hooks.zsh

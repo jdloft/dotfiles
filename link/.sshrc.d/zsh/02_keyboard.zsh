@@ -1,1 +1,1 @@
-../../.dotfiles/source/zsh/02_keyboard.zsh
+../../../source/zsh/02_keyboard.zsh

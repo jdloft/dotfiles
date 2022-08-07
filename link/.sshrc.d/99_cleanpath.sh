@@ -1,1 +1,1 @@
-../.dotfiles/source/99_cleanpath.sh
+../../source/99_cleanpath.sh

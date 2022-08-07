@@ -1,1 +1,1 @@
-../.dotfiles/source/60_colors.sh
+../../source/60_colors.sh
