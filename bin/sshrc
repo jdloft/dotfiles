@@ -14,6 +14,7 @@ function sshrc() {
         if [ -z "$CMDARG" -a ! -e ~/.sshrc.d/.hushlogin ]; then
             WELCOME_MSG="
                 if [ ! -e ~/.hushlogin ]; then
+                    if [ -d /etc/motd.d ]; then cat /etc/motd.d/*; fi
                     if [ -e /etc/motd ]; then cat /etc/motd; fi
                     if [ -e /etc/update-motd.d ]; then run-parts /etc/update-motd.d/ 2>/dev/null; fi
                     last -F \$USER 2>/dev/null | grep -v 'still logged in' | head -n1 | awk '{print \"Last login:\",\$4,\$5,\$6,\$7,\$8,\"from\",\$3;}'
