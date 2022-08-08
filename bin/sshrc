@@ -61,7 +61,11 @@ EOF
             echo $'"$(tar czf - -h -C $SSHHOME $files | openssl enc -base64)"' | tr -s ' ' $'\n' | openssl enc -base64 -d | tar mxzf - -C \$SSHHOME
             export SSHHOME=\$SSHHOME
             echo \"$CMDARG\" >> \$SSHHOME/sshrc.bashrc
-            bash --rcfile \$SSHHOME/sshrc.bashrc
+            if command -v zsh &> /dev/null; then
+                ZDOTDIR=\$SSHHOME/.sshrc.d zsh
+            else
+                bash --rcfile \$SSHHOME/sshrc.bashrc
+            fi
             "
     else
         echo "No such file: $SSHHOME/.sshrc" >&2

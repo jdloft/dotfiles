@@ -1,1 +1,0 @@
-../../../source/zsh/90_zsh-syntax-highlighting.zsh
