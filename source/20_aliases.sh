@@ -76,3 +76,8 @@ alias k='kubectl'
 
 alias gpus="lspci -vnn | grep '\''[030[02]\]'"
 alias x509="openssl x509 -noout -text -in"
+
+# use nvim if it exists
+if type "nvim" > /dev/null 2>&1; then
+    alias vim="nvim"
+fi

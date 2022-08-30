@@ -27,5 +27,8 @@ if v:version > 800
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 Plug 'easymotion/vim-easymotion'
+if has('nvim')
+  Plug 'github/copilot.vim'
+endif
 
 call plug#end()
