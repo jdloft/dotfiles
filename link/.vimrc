@@ -254,10 +254,10 @@ nnoremap k gk
 nnoremap j gj
 
 " common mis-types
-command -bang W w<bang>
-command -bang Wq wq<bang>
-command -bang WQ wq<bang>
-command -bang Q q<bang>
+command! -bang W w<bang>
+command! -bang Wq wq<bang>
+command! -bang WQ wq<bang>
+command! -bang Q q<bang>
 
 " trailing whitespace removal
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
@@ -315,12 +315,14 @@ if v:version > 800
 
   " Use tab for trigger completion with characters ahead and navigate.
   " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+  " NOTE: There's always complete item selected by default, you may want to enable
+  " no select by `"suggest.noselect": true` in your configuration file.
   " other plugin before putting this into your config.
   inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
+        \ coc#pum#visible() ? coc#pum#next(1):
+        \ CheckBackspace() ? "\<Tab>" :
         \ coc#refresh()
-  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
   function! s:check_back_space() abort
     let col = col('.') - 1
@@ -449,3 +451,4 @@ if v:version > 800
   " Resume latest coc list.
   nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 endif
+let g:coc_disable_startup_warning = 1
