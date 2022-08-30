@@ -255,5 +255,10 @@ else
     setopt completealiases
 fi
 
+# Equivalents
+# see https://unix.stackexchange.com/questions/496379/treat-command-like-another-for-completion-purposes
+
 # gpg2 temporary fix
 compdef gpg2=gpg
+
+compdef sshrc=ssh

@@ -6,11 +6,18 @@ if [ -f "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/complet
     source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
-if type "kubectl" > /dev/null; then
-    source <(kubectl completion zsh)
-    compdef __start_kubectl k
-fi
+cache_completion() {
+    if (( $+commands[$1] )); then
+        if [[ ! -f "$ZSH_CACHE_DIR/completions/_$1" ]]; then
+            $1 completion zsh | tee "$ZSH_CACHE_DIR/completions/_$1" >/dev/null
+            source "$ZSH_CACHE_DIR/completions/_$1"
+        else
+            source "$ZSH_CACHE_DIR/completions/_$1"
+            $1 completion zsh | tee "$ZSH_CACHE_DIR/completions/_$1" >/dev/null &|
+        fi
+    fi
+}
 
-if type "helm" > /dev/null; then
-    source <(helm completion zsh)
-fi
+cache_completion "kubectl"
+cache_completion "helm"
+cache_completion "kubeadm"
