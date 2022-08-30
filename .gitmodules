@@ -7,6 +7,9 @@
 [submodule "lib/vim-plug"]
 	path = resources/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
+[submodule "resources/dircolors-solarized"]
+	path = resources/dircolors-solarized
+	url = https://github.com/seebi/dircolors-solarized.git
 [submodule "lib/zsh-completions"]
 	path = resources/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
