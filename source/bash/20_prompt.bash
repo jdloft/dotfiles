@@ -58,11 +58,11 @@ function _dotfiles-git-prompt() {
     local indicator
     local branch
 
-    CLR_GITST_CLS="$CLR_GREEN" # Clear state
-    CLR_GITST_SC="$CLR_YELLOW" # Staged changes indicator
-    CLR_GITST_USC="$CLR_RED" # Unstaged changes indicator
-    CLR_GITST_UT="$CLR_CYAN" # Untracked files indicator
-    CLR_GITST_BR="$CLR_GREEN" # Branch
+    CLR_GITST_CLS="\[$CLR_GREEN\]" # Clear state
+    CLR_GITST_SC="\[$CLR_YELLOW\]" # Staged changes indicator
+    CLR_GITST_USC="\[$CLR_RED\]" # Unstaged changes indicator
+    CLR_GITST_UT="\[$CLR_CYAN\]" # Untracked files indicator
+    CLR_GITST_BR="\[$CLR_GREEN\]" # Branch
 
     if [[ -z "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]]; then
         return 1
@@ -85,8 +85,8 @@ function _dotfiles-git-prompt() {
 }
 
 function _dotfiles-virtualenv-prompt() {
-    CLR_VE_CLS="$CLR_YELLOW"
-    CLR_VE_ENV="$CLR_YELLOW"
+    CLR_VE_CLS="\[$CLR_YELLOW\]"
+    CLR_VE_ENV="\[$CLR_YELLOW\]"
 
     if [[ $VIRTUAL_ENV != "" ]]; then
         environment="${VIRTUAL_ENV##*/}"
