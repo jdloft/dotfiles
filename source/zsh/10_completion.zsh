@@ -11,70 +11,75 @@ compinit
 
 # check for version/system
 # check for versions (compatibility reasons)
-is4(){
+function is51 () {
+    [[ $ZSH_VERSION == 5.<1->* ]] && return 0
+    return 1
+}
+
+function is4 () {
     [[ $ZSH_VERSION == <4->* ]] && return 0
     return 1
 }
 
-is41(){
+function is41 () {
     [[ $ZSH_VERSION == 4.<1->* || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
 
-is42(){
+function is42 () {
     [[ $ZSH_VERSION == 4.<2->* || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
 
-is425(){
+function is425 () {
     [[ $ZSH_VERSION == 4.2.<5->* || $ZSH_VERSION == 4.<3->* || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
 
-is43(){
+function is43 () {
     [[ $ZSH_VERSION == 4.<3->* || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
 
-is433(){
+function is433 () {
     [[ $ZSH_VERSION == 4.3.<3->* || $ZSH_VERSION == 4.<4->* \
                                  || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
 
-is437(){
+function is437 () {
     [[ $ZSH_VERSION == 4.3.<7->* || $ZSH_VERSION == 4.<4->* \
                                  || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
 
-is439(){
+function is439 () {
     [[ $ZSH_VERSION == 4.3.<9->* || $ZSH_VERSION == 4.<4->* \
                                  || $ZSH_VERSION == <5->* ]] && return 0
     return 1
 }
 
-islinux(){
+function islinux () {
     [[ $OSTYPE == "Linux" ]]
 }
 
-isdarwin(){
+function isdarwin () {
     [[ $OSTYPE == "Darwin" ]]
 }
 
-isfreebsd(){
+function isfreebsd () {
     [[ $OSTYPE == "FreeBSD" ]]
 }
 
-isopenbsd(){
+function isopenbsd () {
     [[ $OSTYPE == "OpenBSD" ]]
 }
 
-issolaris(){
+function issolaris () {
     [[ $OSTYPE == "SunOS" ]]
 }
 
-zshcompinit() {
+function zshcompinit() {
     # TODO: This could use some additional information
 
     # Make sure the completion system is initialised
@@ -177,7 +182,7 @@ zshcompinit() {
     zstyle ':completion:*' special-dirs ..
 
     # run rehash on completion so new installed program are found automatically:
-    _force_rehash() {
+    function _force_rehash () {
         (( CURRENT == 1 )) && rehash
         return 1
     }
@@ -208,33 +213,45 @@ zshcompinit() {
 
     # Some functions, like _apt and _dpkg, are very slow. We can use a cache in
     # order to speed things up
-    if [[ ${ZSH_COMP_CACHING:-yes} == yes ]]; then
-        ZSH_COMP_CACHE_DIR=${ZSH_COMP_CACHE_DIR:-${ZDOTDIR:-$HOME}/.cache}
-        if [[ ! -d ${ZSH_COMP_CACHE_DIR} ]]; then
-            command mkdir -p "${ZSH_COMP_CACHE_DIR}"
+    if [[ ${GRML_COMP_CACHING:-yes} == yes ]]; then
+        GRML_COMP_CACHE_DIR=${GRML_COMP_CACHE_DIR:-${ZDOTDIR:-$HOME}/.cache}
+        if [[ ! -d ${GRML_COMP_CACHE_DIR} ]]; then
+            command mkdir -p "${GRML_COMP_CACHE_DIR}"
         fi
         zstyle ':completion:*' use-cache  yes
-        zstyle ':completion:*:complete:*' cache-path "${ZSH_COMP_CACHE_DIR}"
+        zstyle ':completion:*:complete:*' cache-path "${GRML_COMP_CACHE_DIR}"
     fi
 
     # host completion
+    _etc_hosts=()
+    _ssh_config_hosts=()
+    _ssh_hosts=()
     if is42 ; then
-        [[ -r ~/.ssh/config ]] && _ssh_config_hosts=(${${(s: :)${(ps:\t:)${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }}}:#*[*?]*}) || _ssh_config_hosts=()
-        [[ -r ~/.ssh/known_hosts ]] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
-        [[ -r /etc/hosts ]] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
-    else
-        _ssh_config_hosts=()
-        _ssh_hosts=()
-        _etc_hosts=()
+        if [[ -r ~/.ssh/config ]] ; then
+            _ssh_config_hosts=(${${(s: :)${(ps:\t:)${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }}}:#*[*?]*})
+        fi
+
+        if [[ -r ~/.ssh/known_hosts ]] ; then
+            _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*})
+        fi
+
+        if [[ -r /etc/hosts ]] && [[ "$NOETCHOSTS" -eq 0 ]] ; then
+            : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(grep -v '^0\.0\.0\.0\|^127\.0\.0\.1\|^::1 ' /etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}}
+        fi
     fi
+
+    local localname
+    localname="$(uname -n)"
     hosts=(
-        $(hostname)
+        "${localname}"
         "$_ssh_config_hosts[@]"
         "$_ssh_hosts[@]"
         "$_etc_hosts[@]"
         localhost
     )
     zstyle ':completion:*:hosts' hosts $hosts
+    # TODO: so, why is this here?
+    #  zstyle '*' hosts $hosts
 
     # use generic completion system for programs not yet defined; (_gnu_generic works
     # with commands that provide a --help option with "standard" gnu-like output.)
@@ -247,13 +264,7 @@ zshcompinit() {
     compdef _hosts upgrade
 }
 
-if is42; then
-    zshcompinit
-    zstyle ':completion:*' menu select # fancy tab completion menu
-else
-    zstyle ':completion:*' menu select # fancy tab completion menu
-    setopt completealiases
-fi
+is4 && zshcompinit
 
 # Equivalents
 # see https://unix.stackexchange.com/questions/496379/treat-command-like-another-for-completion-purposes
