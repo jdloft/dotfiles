@@ -7,7 +7,12 @@ if [[ -d "$DOTFILES/resources/conda-zsh-completion" ]]; then
     fpath=("$DOTFILES/resources/conda-zsh-completion" $fpath)
 fi
 
-compinit
+# compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+	compinit;
+else
+	compinit -C;
+fi;
 
 # check for version/system
 # check for versions (compatibility reasons)
