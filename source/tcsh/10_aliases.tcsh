@@ -17,6 +17,7 @@ else
     alias n explorer.exe .
   else
     alias n '(nohup nautilus -w . &) >& /dev/null'
+  endif
   alias ls ls --color=auto
 endif
 

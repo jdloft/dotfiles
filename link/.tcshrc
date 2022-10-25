@@ -1,5 +1,7 @@
 setenv DOTFILES ~/.dotfiles
 
+alias src source ~/.tcshrc
+
 # Source all files in "source"
 if (! $?loginsh) then
   set nonomatch
