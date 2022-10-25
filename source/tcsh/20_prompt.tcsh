@@ -25,7 +25,9 @@ if ($?prompt) then
     endsw
   endif
   set promptchars='$#'
-  set prompt="${blue}%n${end}@${yellow}%m${end} ${blue}%c${end} %# "
-  set prompt="$preamble$prompt"
+  set exitcode="${red}%?${end} "
+  set prompt="${blue}%n${end}@${yellow}%m${end} ${blue}%~${end} %# "
+  set prompt="$preamble$exitcode$prompt"
+  unset preamble exitcode
 endif
 unset red green yellow blue magenta cyan yellow white end
