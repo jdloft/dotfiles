@@ -16,7 +16,7 @@ else
   if ($?WSLENV) then
     alias n explorer.exe .
   else
-    alias n (nohup nautilus -w . &) >& /dev/null
+    alias n '(nohup nautilus -w . &) >& /dev/null'
   alias ls ls --color=auto
 endif
 
@@ -38,8 +38,8 @@ alias wget wget -c
 alias grep grep --color=auto
 
 alias v vim
-alias vd vim `git diff --name-only --diff-filter=ACMR`
-alias vds vim `git diff --staged --name-only --diff-filter=ACMR`
+alias vd 'vim `git diff --name-only --diff-filter=ACMR`'
+alias vds 'vim `git diff --staged --name-only --diff-filter=ACMR`'
 
 alias st git st
 alias staged git diff --staged
