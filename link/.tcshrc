@@ -1,0 +1,17 @@
+setenv DOTFILES ~/.dotfiles
+
+# Source all files in "source"
+if (! $?loginsh) then
+  set nonomatch
+  if (-f ~/.tcshrc.pre) then
+    source ~/.tcshrc.pre
+  endif
+  foreach file ($DOTFILES/source/tcsh/*)
+    if (-r $file) then
+      source $file
+    endif
+  end
+  if (-f ~/.tcshrc.post) then
+    source ~/.tcshrc.post
+  endif
+endif

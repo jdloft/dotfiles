@@ -32,7 +32,6 @@ alias d='desk go'
 alias mkdir='mkdir -p'
 alias wget='wget -c'
 alias grep='grep --color=auto'
-alias parts='cat /proc/partitions'
 
 alias nit='npm install && npm test'
 alias jsonhint='jshint --extra-ext .json'
@@ -68,7 +67,6 @@ alias s='systemctl'
 
 alias se=sudoedit
 
-# New Silverblue aliases
 alias pm='podman'
 
 # kubernetes
