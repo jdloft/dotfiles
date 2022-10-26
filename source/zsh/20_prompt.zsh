@@ -6,7 +6,6 @@ function _dotfiles-prompt() {
     # Root is special
     if [ "$LOGNAME" = "root" ]; then
         clr_user="%F{red}"
-        promptchar="#"
     fi
 
     if [ "$host" = "toolbox" ]; then
@@ -20,6 +19,11 @@ function _dotfiles-prompt() {
 
 function _dotfiles-prompt2() {
     local promptchar="\$"
+
+    if [ "$LOGNAME" = "root" ]; then
+        promptchar="#"
+    fi
+
     echo " $promptchar%f "
 }
 
