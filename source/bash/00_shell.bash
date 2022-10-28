@@ -61,10 +61,3 @@ fi
 export EDITOR=vim
 
 export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-#
-# Setup functions
-#
-
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }_dotfiles-prompt"
-PS0=$(printf "\033]777;preexec\033\\")

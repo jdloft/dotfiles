@@ -98,3 +98,5 @@ function _dotfiles-virtualenv-prompt() {
 
     echo -en "${CLR_VE_CLS} (${CLR_VE_ENV}$environment${CLR_VE_CLS})"
 }
+
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }_dotfiles-prompt"
