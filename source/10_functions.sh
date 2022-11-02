@@ -174,3 +174,7 @@ listen() {
         echo "Please specify a file"
     fi
 }
+
+function sudoedit() {
+    SUDO_COMMAND="sudoedit $@" command sudoedit "$@"
+}

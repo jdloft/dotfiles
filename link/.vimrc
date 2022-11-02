@@ -192,6 +192,19 @@ highlight GitGutterAdd    guibg=black ctermbg=black
 highlight GitGutterChange guibg=black ctermbg=black
 highlight GitGutterDelete guibg=black ctermbg=black
 
+" detect filetype depending on SUDO_COMMAND with sudoedit
+" from tpope/vim-eunuch
+if (!empty($SUDO_COMMAND))
+  let files = split($SUDO_COMMAND, ' ')[1:-1]
+  if len(files) ==# argc()
+    for i in range(argc())
+      execute 'autocmd BufEnter' fnameescape(argv(i))
+        \ 'if &filetype ==# "" |'
+        \ 'doautocmd filetypedetect BufReadPost ' . fnameescape(files[0])
+    endfor
+  endif
+endif
+
 " mouse
 " set ttymouse=xterm2
 " set mouse=a
