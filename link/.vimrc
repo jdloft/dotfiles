@@ -200,7 +200,7 @@ if (!empty($SUDO_COMMAND))
     for i in range(argc())
       execute 'autocmd BufEnter' fnameescape(argv(i))
         \ 'if &filetype ==# "" |'
-        \ 'doautocmd filetypedetect BufReadPost ' . fnameescape(files[0])
+        \ 'doautocmd filetypedetect BufReadPost ' . fnameescape(files[i])
     endfor
   endif
 endif
