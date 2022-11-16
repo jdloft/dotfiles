@@ -9,7 +9,7 @@ export SOLAR_MODE3=true
 # Set dotfiles host
 if command -v hostname &> /dev/null; then
     export DOTFILES_HOST=`hostname -s 2>/dev/null`
-    export DOTFILES_LHOST=`hostname -f 2>/dev/null`
+    export DOTFILES_LHOST=`timeout 0.2 hostname -f 2>/dev/null || echo $DOTFILES_HOST`
 else
     export DOTFILES_HOST=`cat /etc/hostname`
     export DOTFILES_LHOST=$DOTFILES_HOST
