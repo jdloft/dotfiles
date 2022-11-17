@@ -106,31 +106,6 @@ else
     }
 fi
 
-# new toolbox start
-tb() {
-    if [ -z "$1" ]; then
-        toolbox enter
-    else
-        toolbox enter -c $1
-    fi
-}
-if is_mac; then
-    tb() {
-        SHELL=zsh
-        if [ -z "$1" ]; then
-            NAME=toolbox
-        else
-            NAME=$1
-        fi
-        if ! docker ps -f name=$NAME | grep $NAME > /dev/null ; then
-            # do something
-            docker run -it --name toolbox --hostname toolbox --rm -v /Users/jamison:/home/jamison -e SHELL=$SHELL -e TERM=$TERM -d toolbox
-        fi
-        docker exec -it $NAME $SHELL
-    }
-    alias tbstop="docker stop toolbox"
-fi
-
 # add to git exclude
 exclude() {
     if [ -z "$1" ]; then
