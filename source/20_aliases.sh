@@ -65,6 +65,7 @@ alias restart='sudo systemctl restart'
 alias status='systemctl status'
 alias s='systemctl'
 
+alias sudo='sudo '
 alias se=sudoedit
 
 alias pm='podman'
