@@ -102,7 +102,7 @@ function _dotfiles-k8s-prompt() {
     CLR_K8S_CLS="%F{blue}"
     CLR_K8S_ENV="%F{blue}"
 
-    current_context="$(kubectl config current-context)"
+    current_context="$(kubectl config current-context 2> /dev/null)"
 
     if [ $? -ne 0 ]; then
         return 1
