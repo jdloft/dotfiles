@@ -30,6 +30,7 @@ bindkey -e # emacs mode
 [[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"  history-beginning-search-forward
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+bindkey '^H' backward-delete-word
 
 autoload -Uz is-at-least
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )) && is-at-least 5.3.0.0 $ZSH_VERSION.0.0; then
