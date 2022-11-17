@@ -70,22 +70,41 @@ adb-screenshot() {
     adb shell screencap -p | sed 's/^M$//' > "Screenshot from $(date '+%Y-%m-%d %H-%M-%S').png"
 }
 
-# get messages from journalctl
-msgs() {
-    if [ -z "$1" ]; then
-        journalctl -xfn 25
-    else
-        journalctl -xfu $1 -n 25
-    fi
-}
+# test if we can read system journal
+if journalctl --system -n 0 > /dev/null 2>&1; then
+    # get messages from journalctl
+    msgs() {
+        if [ -z "$1" ]; then
+            journalctl -xfn 25
+        else
+            journalctl -xfu $1 -n 25
+        fi
+    }
 
-j() {
-    if [ -z "$1" ]; then
-        journalctl -xn 25
-    else
-        journalctl -xu $1 -n 25
-    fi
-}
+    j() {
+        if [ -z "$1" ]; then
+            journalctl -xe
+        else
+            journalctl -xeu $1
+        fi
+    }
+else
+    msgs() {
+        if [ -z "$1" ]; then
+            sudo journalctl -xfn 25
+        else
+            sudo journalctl -xfu $1 -n 25
+        fi
+    }
+
+    j() {
+        if [ -z "$1" ]; then
+            sudo journalctl -xe
+        else
+            sudo journalctl -xeu $1
+        fi
+    }
+fi
 
 # new toolbox start
 tb() {
