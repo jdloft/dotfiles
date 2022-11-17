@@ -30,7 +30,6 @@ function _dotfiles-prompt() {
 }
 
 function _dotfiles-exit_code() {
-    local ec=$ec
     [[ $ec != 0 ]] && echo "\[$CLR_RED\]$ec\[$CLR_NONE\] "
 }
 
@@ -95,4 +94,4 @@ function _dotfiles-virtualenv-prompt() {
     echo -en "${CLR_VE_CLS} (${CLR_VE_ENV}$environment${CLR_VE_CLS})"
 }
 
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }_dotfiles-prompt"
+PROMPT_COMMAND="_dotfiles-prompt"
