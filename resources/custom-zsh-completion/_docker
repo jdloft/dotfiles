@@ -40,8 +40,8 @@
 #
 
 # Short-option stacking can be enabled with:
-#  zstyle ':completion:*:*:docker:*' option-stacking yes
-#  zstyle ':completion:*:*:docker-*:*' option-stacking yes
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
 __docker_arguments() {
     if zstyle -t ":completion:${curcontext}:" option-stacking; then
         print -- -s
@@ -150,26 +150,29 @@ __docker_complete_info_plugins() {
     return ret
 }
 
+# this should be renamed to digests
 __docker_complete_images() {
     [[ $PREFIX = -* ]] && return 1
     integer ret=1
-    declare -a images
-    images=(${${${(f)${:-"$(_call_program commands docker $docker_options images)"$'\n'}}[2,-1]}/(#b)([^ ]##) ##([^ ]##) ##([^ ]##)*/${match[3]}:${(r:15:: :::)match[2]} in ${match[1]}})
-    _describe -t docker-images "images" images && ret=0
+    # declare -a images
+    # images=(${${${(f)${:-"$(_call_program commands docker $docker_options images)"$'\n'}}[2,-1]}/(#b)([^ ]##) ##([^ ]##) ##([^ ]##)*/${match[3]}:${(r:15:: :::)match[2]} in ${match[1]}})
+    # _describe -t docker-images "images" images && ret=0
     __docker_complete_repositories_with_tags && ret=0
     return ret
 }
 
+# these are images
 __docker_complete_repositories() {
     [[ $PREFIX = -* ]] && return 1
     integer ret=1
     declare -a repos
     repos=(${${${(f)${:-"$(_call_program commands docker $docker_options images)"$'\n'}}%% *}[2,-1]})
     repos=(${repos#<none>})
-    _describe -t docker-repos "repositories" repos && ret=0
+    _describe -t docker-repos "images" repos && ret=0
     return ret
 }
 
+# again, should be "images with tags"
 __docker_complete_repositories_with_tags() {
     [[ $PREFIX = -* ]] && return 1
     integer ret=1
@@ -183,13 +186,13 @@ __docker_complete_repositories_with_tags() {
         [[ ${PREFIX##${~~m}} != ${PREFIX} ]] && {
             # Yes, complete with tags
             repos=(${${repos/:::/:}/:/\\:})
-            _describe -t docker-repos-with-tags "repositories with tags" repos && ret=0
+            _describe -t docker-repos-with-tags "images with tags" repos && ret=0
             return ret
         }
     done
     # No, only complete repositories
     onlyrepos=(${${repos%:::*}/:/\\:})
-    _describe -t docker-repos "repositories" onlyrepos -qS : && ret=0
+    _describe -t docker-repos "images" onlyrepos -qS : && ret=0
 
     return ret
 }
