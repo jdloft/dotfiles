@@ -6,6 +6,9 @@ fi
 if [[ -d "$DOTFILES/resources/conda-zsh-completion" ]]; then
     fpath=("$DOTFILES/resources/conda-zsh-completion" $fpath)
 fi
+if [[ -d "$DOTFILES/resources/custom-zsh-completion" ]]; then
+    fpath=("$DOTFILES/resources/custom-zsh-completion" $fpath)
+fi
 
 # compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
