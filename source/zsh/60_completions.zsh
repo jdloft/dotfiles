@@ -11,7 +11,11 @@ patch_cobra() {
     # kubectl and helm
     # https://github.com/kubernetes/kubernetes/issues/105587
     if [[ $1 == "kubectl" || $1 == "helm" ]]; then
-        sed -i '' -e 's/tab=$(printf \x27\\t\x27)/tab="$(printf \x27\\t\x27)"/' $ZSH_CACHE_DIR/completions/_$1
+        if is_mac; then
+            sed -i '' -e 's/tab=$(printf \x27\\t\x27)/tab="$(printf \x27\\t\x27)"/' $ZSH_CACHE_DIR/completions/_$1
+        else
+            sed -i 's/tab=$(printf \x27\\t\x27)/tab="$(printf \x27\\t\x27)"/' $ZSH_CACHE_DIR/completions/_$1
+        fi
     fi
 }
 
