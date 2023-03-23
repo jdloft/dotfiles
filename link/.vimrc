@@ -264,6 +264,14 @@ set sidescrolloff=5
 set sidescroll=1
 
 "-----------------------------------------------------------------------------
+" Speed
+"
+set synmaxcol=500
+set ttyfast
+set ttyscroll=3
+set lazyredraw
+
+"-----------------------------------------------------------------------------
 " Searching
 "
 set hlsearch " highlight searches
@@ -275,7 +283,8 @@ set smartcase " except for one capital letter
 " Numbering
 "
 set number
-nnoremap <Leader>n :set relativenumber!<cr>
+nnoremap <Leader>rn :set relativenumber!<cr>
+nnoremap <Leader>n :set nonumber<cr>
 
 "-----------------------------------------------------------------------------
 " Tabbing
@@ -294,8 +303,10 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " wrapped lines nav
-nnoremap k gk
-nnoremap j gj
+" nnoremap k gk
+" nnoremap j gj
+set nowrap
+set linebreak
 
 " common mis-types
 command! -bang W w<bang>
