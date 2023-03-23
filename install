@@ -14,7 +14,7 @@ fi
 
 cd "${BASEDIR}"
 git pull
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+# git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${BASEDIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
