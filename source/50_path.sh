@@ -61,3 +61,6 @@ if [ -d "$HOME/.npm/bin" ]; then
     path_prepend "$HOME/.npm/bin"
 fi
 
+if [ -d "$HOME/.krew/bin" ]; then
+    path_prepend "$HOME/.krew/bin"
+fi
