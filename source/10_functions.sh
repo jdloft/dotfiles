@@ -172,3 +172,14 @@ listen() {
 function sudoedit() {
     SUDO_COMMAND="sudoedit $@" command sudoedit "$@"
 }
+
+function x509remote() {
+    echo | openssl s_client -connect $1 -showcerts | openssl x509 -text -noout -fingerprint -sha256
+}
+
+function x509remoteall() {
+    temp=$(mktemp)
+    echo | openssl s_client -connect $1 -showcerts 2>/dev/null > $temp
+    openssl crl2pkcs7 -nocrl -certfile $temp | openssl pkcs7 -print_certs -text -noout
+    rm $temp
+}
