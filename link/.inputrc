@@ -22,6 +22,7 @@ $if mode=emacs
 $endif
 
 "\e[3~": delete-char # Delete key
+"\C-h": backward-kill-word # Ctrl+Backspace
 "\e[5~": history-search-backward # Page up
 "\e[6~": history-search-forward # Page down
 "\C-[1;5C": forward-word # Ctrl+Right
