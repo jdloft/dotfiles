@@ -135,6 +135,7 @@ let g:ale_lint_on_insert_leave = 1
 set noshowmode
 syntax enable
 set encoding=utf-8
+set backspace=indent,eol,start
 
 " remove insert delay
 set timeoutlen=1000 ttimeoutlen=10
