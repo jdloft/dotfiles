@@ -34,3 +34,5 @@ source/01_local.sh
 Code/User/
 
 link/.tmux/plugins/
+link/.tmux/resurrect/
+.vscode/
