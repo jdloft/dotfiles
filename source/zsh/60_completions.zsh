@@ -2,8 +2,8 @@
 if [ -f "/usr/share/google-cloud-sdk/completion.zsh.inc" ]; then
     source /usr/share/google-cloud-sdk/completion.zsh.inc
 fi
-if [ -f "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then
-    source /opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if [ -f "`brew --prefix`/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then
+    source `brew --prefix`/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
 fi
 
 patch_cobra() {
@@ -36,3 +36,4 @@ cache_completion() {
 cache_completion "kubectl"
 cache_completion "helm"
 cache_completion "kubeadm"
+cache_completion "tkn"

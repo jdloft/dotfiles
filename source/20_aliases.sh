@@ -66,7 +66,11 @@ alias status='systemctl status'
 alias s='systemctl'
 
 alias sudo='sudo '
-alias se=sudoedit
+if is_mac; then
+    alias se='sudo -e'
+else
+    alias se=sudoedit
+fi
 
 alias pm='podman'
 

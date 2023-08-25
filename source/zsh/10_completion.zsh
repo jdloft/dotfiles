@@ -10,6 +10,15 @@ if [[ -d "$DOTFILES/resources/custom-zsh-completion" ]]; then
     fpath=("$DOTFILES/resources/custom-zsh-completion" $fpath)
 fi
 
+if is_mac; then
+  if type brew &>/dev/null; then
+    # brew
+    FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+    autoload -Uz compinit
+    compinit
+  fi
+fi
+
 # compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
 	compinit;
