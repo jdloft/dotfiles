@@ -2,8 +2,10 @@
 if [ -f "/usr/share/google-cloud-sdk/completion.zsh.inc" ]; then
     source /usr/share/google-cloud-sdk/completion.zsh.inc
 fi
-if [ -f "`brew --prefix`/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then
-    source `brew --prefix`/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+if is_mac; then
+    if [ -f "`brew --prefix`/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then
+        source `brew --prefix`/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+    fi
 fi
 
 patch_cobra() {
