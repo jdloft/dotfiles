@@ -241,6 +241,12 @@ endif
 " set ttymouse=xterm2
 " set mouse=a
 
+" clipboard
+" disable X11 clipboard if in SSH
+if $SSH_CONNECTION
+  set clipboard=exclude:.*
+endif
+
 "-----------------------------------------------------------------------------
 " Execution commands
 "
@@ -349,7 +355,9 @@ map q: <Nop>
 " Insert single character
 nnoremap <Space> i_<Esc>r
 
+"-----------------------------------------------------------------------------
 " COC stuff
+"
 
 if v:version > 800
   command InstallCocServers
