@@ -1,6 +1,6 @@
 function _dotfiles-prompt() {
     local ec="$?"
-    local host="$DOTFILES_HOST"
+    local host="\h"
     local clr_user="$CLR_BLUE"
     local clr_host="$CLR_YELLOW"
     local prompt="\$"

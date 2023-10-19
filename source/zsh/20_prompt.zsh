@@ -1,5 +1,5 @@
 function _dotfiles-prompt() {
-    local host="$DOTFILES_HOST"
+    local host="%m"
     local clr_user="%F{blue}"
     local clr_host="%F{yellow}"
 

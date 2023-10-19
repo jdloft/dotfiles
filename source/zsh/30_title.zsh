@@ -19,4 +19,3 @@ if ! is_mac; then
 
     add-zsh-hook preexec _dotfiles-oscpreexec
 fi
-
