@@ -183,3 +183,17 @@ function x509remoteall() {
     openssl crl2pkcs7 -nocrl -certfile $temp | openssl pkcs7 -print_certs -text -noout
     rm $temp
 }
+
+if ! is_mac; then
+    function hasopen() {
+        pids=`ls -l /proc/[0-9]*/fd/* 2>/dev/null | grep $1 | grep -oP '/proc/(\d+)/fd/' | grep -oP '\d+'`
+        while IFS= read -r pid; do
+            if [ -d /proc/$pid ]; then
+                comm=`cat /proc/$pid/cmdline`
+                echo "$pid: $comm"
+            else
+                echo "$pid"
+            fi
+        done <<< $pids
+    }
+fi
