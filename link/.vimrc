@@ -28,9 +28,6 @@ if v:version > 800
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 Plug 'easymotion/vim-easymotion'
-if has('nvim')
-  Plug 'github/copilot.vim'
-endif
 
 call plug#end()
 
@@ -243,9 +240,10 @@ endif
 
 " clipboard
 " disable X11 clipboard if in SSH
-if $SSH_CONNECTION
-  set clipboard=exclude:.*
-endif
+" NOTE: now handled in 20_aliases.sh
+" if $SSH_CONNECTION
+"   set clipboard=exclude:.*
+" endif
 
 "-----------------------------------------------------------------------------
 " Execution commands
@@ -274,8 +272,10 @@ set sidescroll=1
 " Speed
 "
 set synmaxcol=500
-set ttyfast
-set ttyscroll=3
+if !has('nvim')
+  set ttyfast
+  set ttyscroll=3
+endif
 set lazyredraw
 
 "-----------------------------------------------------------------------------
@@ -291,7 +291,7 @@ set smartcase " except for one capital letter
 "
 set number
 nnoremap <Leader>rn :set relativenumber!<cr>
-nnoremap <Leader>n :set nonumber<cr>
+nnoremap <Leader>n :set number!<cr>
 
 "-----------------------------------------------------------------------------
 " Tabbing
@@ -335,7 +335,7 @@ nnoremap <silent> <C-Up> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-Right> :TmuxNavigateRight<cr>
 
 " paste mappings
-nnoremap <leader>p :set paste!<cr>
+nnoremap <Leader>p :set paste!<cr>:set number!<cr>
 
 " replace without yanking
 vnoremap p "_dP
@@ -378,7 +378,7 @@ if v:version > 800
 
   " Always show the signcolumn, otherwise it would shift the text each time
   " diagnostics appear/become resolved.
-  set signcolumn=yes
+  " set signcolumn=yes
 
   " Use tab for trigger completion with characters ahead and navigate.
   " NOTE: There's always complete item selected by default, you may want to enable

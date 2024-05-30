@@ -83,4 +83,6 @@ alias x509="openssl x509 -noout -text -fingerprint -sha256 -in"
 # use nvim if it exists
 if type "nvim" > /dev/null 2>&1; then
     alias vim="nvim"
+elif [ "$SSH_CONNECTION" ]; then
+    alias vim="vim -X"
 fi
