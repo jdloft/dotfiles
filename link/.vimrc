@@ -31,6 +31,14 @@ Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
+" https://vi.stackexchange.com/a/14143
+function! PlugLoaded(name)
+  return (
+    \ has_key(g:plugs, a:name) &&
+    \ isdirectory(g:plugs[a:name].dir) &&
+    \ stridx(&rtp, g:plugs[a:name].dir) >= 0)
+endfunction
+
 
 " syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -210,7 +218,9 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color"
     endif
   endif
 
-  colorscheme solarized
+  if PlugLoaded('jdloft/vim-colors-solarized')
+    colorscheme solarized
+  endif
 else
   " TODO: should be replaced with a proper 8/16 bit theme
   let g:airline_theme = 'simple'
@@ -359,7 +369,7 @@ nnoremap <Space> i_<Esc>r
 " COC stuff
 "
 
-if v:version > 800
+if v:version > 800 && PlugLoaded('coc.nvim')
   command InstallCocServers
         \ exe ':CocInstall coc-pyright' |
         \ exe ':CocInstall coc-sh' |
