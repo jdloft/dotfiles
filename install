@@ -13,8 +13,13 @@ else
 fi
 
 cd "${BASEDIR}"
-git pull
-# git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${BASEDIR}"
+
+if [ -f "offline" ]; then
+    echo "Offline mode. Skipping git pull and submodule update."
+else
+    git pull
+    # git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+    git submodule update --init --recursive "${BASEDIR}"
+fi
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"

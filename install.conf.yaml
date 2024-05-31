@@ -32,11 +32,11 @@
     stdin: false
     stdout: true
   -
-    command: scripts/vim-plug.sh
+    command: '[ -f offline ] || scripts/vim-plug.sh'
     description: Configuring vim plugins
     stdin: true
     stdout: true
   -
-    command: '! command -v tmux || link/.tmux/plugins/tpm/bin/install_plugins'
+    command: '! command -v tmux || [ -f offline ] || link/.tmux/plugins/tpm/bin/install_plugins'
     description: Install tmux plugins
     stdout: true
