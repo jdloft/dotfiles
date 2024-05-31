@@ -20,11 +20,6 @@ setopt extended_glob
 autoload -U colors
 colors
 
-# Misc
-export EDITOR=vim
-
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
 # Cache
 ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
 mkdir -p "$ZSH_CACHE_DIR/completions"

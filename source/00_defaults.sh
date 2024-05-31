@@ -14,3 +14,13 @@ else
     export DOTFILES_HOST=`cat /etc/hostname`
     export DOTFILES_LHOST=$DOTFILES_HOST
 fi
+
+# Editor
+if command -v vim &> /dev/null; then
+    export EDITOR=vim
+else
+    export EDITOR=vi
+fi
+
+# Misc
+export VIRTUAL_ENV_DISABLE_PROMPT=1

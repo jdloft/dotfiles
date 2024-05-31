@@ -1,8 +1,5 @@
-#
 # Shell options
 # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
-#
-
 shopt -s globstar >/dev/null 2>&1
 shopt -s histappend >/dev/null 2>&1
 shopt -s hostcomplete >/dev/null 2>&1
@@ -16,10 +13,7 @@ test -f /etc/bash_completion && . /etc/bash_completion
 # Emacs mode
 set -o emacs
 
-#
 # Environment
-#
-
 : ${HOME=~}
 : ${UNAME=$(uname)}
 
@@ -31,15 +25,12 @@ export SHELL_SESSION_HISTORY=0 # disable new sessions in macOS
 # Sort dotfiles before "a" in ls(1) and sort(1) (http://superuser.com/a/448294/164493)
 export LC_COLLATE="C"
 
-#
 # Colors
-#
-
 if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
 fi
 
-# Colors http://linux.101hacks.com/ps1-examples/prompt-color-using-tput/
+# http://linux.101hacks.com/ps1-examples/prompt-color-using-tput/
 if [[ $- == *i* ]]; then
     CLR_NONE=`tput sgr0`
     CLR_LINE=`tput smul`
@@ -53,11 +44,3 @@ if [[ $- == *i* ]]; then
     CLR_CYAN=`tput setaf 6`
     CLR_WHITE=`tput setaf 7`
 fi
-
-#
-# Misc
-#
-
-export EDITOR=vim
-
-export VIRTUAL_ENV_DISABLE_PROMPT=1
