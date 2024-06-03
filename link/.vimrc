@@ -12,10 +12,10 @@ Plug 'dense-analysis/ale'
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
-" Plug 'ervandew/supertab'
 Plug 'jdloft/vim-airline-themes'
 Plug 'jdloft/vim-colors-solarized'
 Plug 'justinmk/vim-sneak'
+Plug 'markonm/traces.vim'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -27,7 +27,6 @@ Plug 'wesQ3/vim-windowswap'
 if v:version > 800
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
-Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -305,7 +304,7 @@ nnoremap <Leader>n :set number!<cr>
 
 "-----------------------------------------------------------------------------
 " Tabbing
-" should be set by vim-sleuth
+" should be set by vim-sleuth, this is just default
 "
 set expandtab
 set shiftwidth=4
