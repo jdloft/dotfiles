@@ -254,6 +254,9 @@ endif
 "   set clipboard=exclude:.*
 " endif
 
+" Ctrl-P
+let g:ctrlp_follow_symlinks = 1
+
 "-----------------------------------------------------------------------------
 " Execution commands
 "
