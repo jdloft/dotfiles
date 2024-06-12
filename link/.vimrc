@@ -199,6 +199,7 @@ endif
 if $TERM == "xterm-256color" || $TERM == "screen-256color"
   set t_Co=256
   highlight CursorLineNr ctermfg=red
+  highlight LineNr ctermfg=8 guifg=8
 
   if $NO_SOLAR == "true"
     " Fallback solarized palette
@@ -225,10 +226,10 @@ else
   let g:airline_theme = 'simple'
 endif
 
-highlight SignColumn      guibg=black ctermbg=black
-highlight GitGutterAdd    guibg=black ctermbg=black
-highlight GitGutterChange guibg=black ctermbg=black
-highlight GitGutterDelete guibg=black ctermbg=black
+highlight SignColumn      guibg=NONE ctermbg=NONE
+highlight GitGutterAdd    guifg=green ctermfg=green
+highlight GitGutterChange guifg=yellow ctermfg=yellow
+highlight GitGutterDelete guifg=red ctermfg=red
 
 " detect filetype depending on SUDO_COMMAND with sudoedit
 " from tpope/vim-eunuch
@@ -305,6 +306,21 @@ set number
 nnoremap <Leader>rn :set relativenumber!<cr>
 nnoremap <Leader>n :set number!<cr>
 
+" Copy mode hides sign column and numbers
+let s:copymode = 0
+function! ToggleCopyMode()
+  if s:copymode
+    set number
+    set signcolumn=auto
+    let s:copymode = 0
+  else
+    set nonumber
+    set signcolumn=no
+    let s:copymode = 1
+  endif
+endfunction
+nnoremap <Leader>cp :call ToggleCopyMode()<cr>
+
 "-----------------------------------------------------------------------------
 " Tabbing
 " should be set by vim-sleuth, this is just default
@@ -320,6 +336,9 @@ set softtabstop=4
 " fast vimrc editing and sourcing
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" similar to tmux
+set splitright
+set splitbelow
 
 " wrapped lines nav
 " nnoremap k gk
@@ -357,6 +376,9 @@ nnoremap c "_c
 vnoremap c "_c
 nnoremap C "_C
 vnoremap C "_C
+
+" system clipboard
+vnoremap <C-c> "*y
 
 " NERDTree shortcut
 nnoremap <leader>ls :NERDTree<cr>
