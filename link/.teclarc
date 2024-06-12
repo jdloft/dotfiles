@@ -2,4 +2,3 @@ edit-mode emacs
 bind \e[1;5D backward-word
 bind \e[1;5C forward-word
 bind ^H backward-delete-word
-bind ^D user-interrupt # this shouldn't be necessary sigh
