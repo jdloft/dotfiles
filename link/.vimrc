@@ -31,9 +31,11 @@ call plug#end()
 
 " https://vi.stackexchange.com/a/14143
 function! PlugLoaded(name)
+  let l:dir_stripped = substitute(g:plugs[a:name].dir, '^\(.*\)/$', '\1', '')
   return (
     \ has_key(g:plugs, a:name) &&
-    \ isdirectory(g:plugs[a:name].dir))
+    \ isdirectory(g:plugs[a:name].dir) &&
+    \ stridx(&rtp, l:dir_stripped) >= 0)
 endfunction
 
 
