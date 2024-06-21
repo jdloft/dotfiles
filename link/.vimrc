@@ -33,8 +33,7 @@ call plug#end()
 function! PlugLoaded(name)
   return (
     \ has_key(g:plugs, a:name) &&
-    \ isdirectory(g:plugs[a:name].dir) &&
-    \ stridx(&rtp, g:plugs[a:name].dir) >= 0)
+    \ isdirectory(g:plugs[a:name].dir))
 endfunction
 
 
@@ -218,7 +217,7 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color"
     endif
   endif
 
-  if PlugLoaded('jdloft/vim-colors-solarized')
+  if PlugLoaded('vim-colors-solarized')
     colorscheme solarized
   endif
 else
