@@ -7,6 +7,6 @@ if [[ $- == *i* ]]; then # if we're interactive
 
     # Solarized dircolors
     if type dircolors > /dev/null 2>&1; then
-        eval `dircolors $DOTFILES/resources/dircolors-solarized/dircolors.ansi-dark`
+        eval `dircolors -b $DOTFILES/resources/dircolors-solarized/dircolors.ansi-dark`
     fi
 fi

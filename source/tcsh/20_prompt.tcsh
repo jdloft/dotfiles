@@ -15,12 +15,13 @@ if ($?prompt) then
           set preamble='%{\033]0;%n@%m:%c\007%}'
         endif
         breaksw
-      case screen:
+      case screen*:
         if ($?tcsh) then
           set preamble='%{\033k%n@%m:%c\033\\%}'
         endif
         breaksw
       default:
+        set preamble=''
         breaksw
     endsw
   endif
