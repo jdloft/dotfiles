@@ -197,8 +197,9 @@ endif
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color"
   set t_Co=256
-  highlight CursorLineNr ctermfg=red
-  highlight LineNr ctermfg=8 guifg=8
+  " TODO: test some gui fg and bgs? idk I don't really care about gui
+  highlight CursorLineNr ctermbg=black ctermfg=red
+  highlight LineNr       ctermbg=black ctermfg=8
 
   if $NO_SOLAR == "true"
     " Fallback solarized palette
@@ -225,10 +226,10 @@ else
   let g:airline_theme = 'simple'
 endif
 
-highlight SignColumn      guibg=NONE ctermbg=NONE
-highlight GitGutterAdd    guifg=green ctermfg=green
-highlight GitGutterChange guifg=yellow ctermfg=yellow
-highlight GitGutterDelete guifg=red ctermfg=red
+highlight SignColumn      guibg=black ctermbg=black
+highlight GitGutterAdd    guibg=black ctermbg=black guifg=green ctermfg=green
+highlight GitGutterChange guibg=black ctermbg=black guifg=yellow ctermfg=yellow
+highlight GitGutterDelete guibg=black ctermbg=black guifg=red ctermfg=red
 
 " detect filetype depending on SUDO_COMMAND with sudoedit
 " from tpope/vim-eunuch
