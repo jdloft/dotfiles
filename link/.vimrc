@@ -72,11 +72,6 @@ let g:ale_type_map = {
 " CoC startup
 let g:coc_start_at_startup=0
 
-if v:version > 800 && executable('node')
-  let g:ale_enabled=0
-  call coc#rpc#start_server()
-endif
-
 " vim-commentary
 autocmd FileType c setlocal commentstring=//\ %s
 
@@ -386,19 +381,20 @@ nnoremap <leader>ls :NERDTree<cr>
 map q: <Nop>
 
 " Insert single character
-nnoremap <Space> i_<Esc>r
+" nnoremap <Space> i_<Esc>r
 
 "-----------------------------------------------------------------------------
-" COC stuff
+" CoC stuff
 "
 
-if v:version > 800 && PlugLoaded('coc.nvim')
+if v:version > 800 && PlugLoaded('coc.nvim') && executable('node')
+  let g:ale_enabled=0
+  call coc#rpc#start_server()
+
   command InstallCocServers
         \ exe ':CocInstall coc-pyright' |
         \ exe ':CocInstall coc-sh' |
-        \ exe ':CocInstall coc-clangd' |
-        \ exe ':CocInstall coc-html' |
-        \ exe ':CocInstall coc-tsserver'
+        \ exe ':CocInstall coc-clangd'
         " TODO: Install something for Dockerfiles
 
   " Some servers have issues with backup files, see #649.
@@ -411,7 +407,7 @@ if v:version > 800 && PlugLoaded('coc.nvim')
 
   " Always show the signcolumn, otherwise it would shift the text each time
   " diagnostics appear/become resolved.
-  " set signcolumn=yes
+  set signcolumn=yes
 
   " Use tab for trigger completion with characters ahead and navigate.
   " NOTE: There's always complete item selected by default, you may want to enable
