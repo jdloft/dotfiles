@@ -141,6 +141,8 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set nofoldenable
 
+set directory=~/.cache//
+
 " remove insert delay
 set timeoutlen=1000 ttimeoutlen=10
 
