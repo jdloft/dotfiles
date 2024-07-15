@@ -37,19 +37,6 @@ function! PlugLoaded(name)
 endfunction
 
 
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_error_symbol = "!!"
-let g:syntastic_style_error_symbol = "S!"
-let g:syntastic_warning_symbol = ">>"
-let g:syntastic_style_warning_symbol = "S>"
-
-let g:syntastic_python_flake8_args = "--ignore=E501"
-
 " vim-airline
 set laststatus=2
 " theme set in color section
@@ -71,9 +58,22 @@ let g:airline_symbols.branch = '±'
 let g:airline_symbols.paste = 'P'
 let g:airline_symbols.whitespace = 'Ξ'
 
+" show buffers
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
 
 " ALE
 let g:ale_echo_msg_format = '%linter%: %s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:ale_lint_delay = 2000
+" let g:ale_open_list = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_use_ch_sendraw = 1
 
 let g:ale_linters = {
   \ 'cpp': ['clangd', 'cc']
@@ -91,10 +91,12 @@ let g:ale_type_map = {
 " Hopefully pylint resolves any errors with star
 " F403 = unable to detect undefined names
 " F405 = may have been imported via star
-let g:ale_python_flake8_options = '--ignore=F403,F405'
-let g:ale_python_pylint_options = 'disable=C0103' " C0103 = constant doesn't conform to UPPERCASE
+let g:ale_python_flake8_options = '--ignore=F403,F405,E'
+let g:ale_python_pylint_options = '--disable=C0103,C' " C0103 = constant doesn't conform to UPPERCASE
 
+" signs
 let g:ale_sign_error = '!>'
+let g:ale_sign_style_error = 'S!'
 let g:ale_sign_warning = '>>'
 let g:ale_sign_style_warning = 'S'
 let g:ale_sign_info = '->'
@@ -102,6 +104,7 @@ let g:ale_sign_info = '->'
 
 " vim-commentary
 autocmd FileType c setlocal commentstring=//\ %s
+autocmd FileType cpp setlocal commentstring=//\ %s
 
 
 " tmuxline
@@ -126,19 +129,6 @@ if $NOTMUXLINE == ""
     \}
   \}
 endif
-
-" show buffers
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-
-" show ALE loc list
-" let g:ale_open_list = 1
-let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_on_insert_leave = 1
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
 
 "-----------------------------------------------------------------------------
 " Basic
@@ -240,6 +230,7 @@ highlight GitGutterChange guibg=black ctermbg=black guifg=yellow ctermfg=yellow
 highlight GitGutterDelete guibg=black ctermbg=black guifg=red ctermfg=red
 highlight ALEErrorSign    ctermbg=black ctermfg=red
 highlight ALEWarningSign  ctermbg=black ctermfg=yellow
+highlight ALEStyleErrorSign  ctermbg=black ctermfg=grey
 highlight ALEStyleWarningSign  ctermbg=black ctermfg=grey
 
 " detect filetype depending on SUDO_COMMAND with sudoedit
