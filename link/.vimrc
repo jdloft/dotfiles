@@ -22,6 +22,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-sleuth'
 Plug 'wesQ3/vim-windowswap'
 
@@ -42,6 +43,7 @@ set laststatus=2
 " theme set in color section
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#obsession#enabled = 1
 let g:airline#extensions#hunks#enabled = 0
 
 " poor man's solution to no patched fonts
