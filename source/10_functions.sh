@@ -197,3 +197,12 @@ if ! is_mac; then
         done <<< $pids
     }
 fi
+
+# https://unix.stackexchange.com/a/253369
+function rescueterm() {
+    stty sane
+    printf '\033k%s\033\\\033]2;%s\007' "$(basename "$SHELL")" "$(uname -n)"
+    tput reset
+    tmux refresh
+    echo "Run \"set-window-option automatic-rename on\" in tmux"
+}
