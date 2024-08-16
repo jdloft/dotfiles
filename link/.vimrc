@@ -12,7 +12,7 @@ Plug 'dense-analysis/ale', {'tag': 'v3.3.x'}
 Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
-Plug 'ervandew/supertab'
+Plug 'ervandew/supertab', {'tag': '2.1'}
 Plug 'jdloft/vim-airline-themes'
 Plug 'jdloft/vim-colors-solarized'
 Plug 'justinmk/vim-sneak'
@@ -76,6 +76,7 @@ let g:ale_lint_delay = 2000
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 let g:ale_use_ch_sendraw = 1
+let g:ale_completion_enabled = 1
 
 let g:ale_linters = {
   \ 'cpp': ['clangd', 'cc']
@@ -102,6 +103,8 @@ let g:ale_sign_style_error = 'S!'
 let g:ale_sign_warning = '>>'
 let g:ale_sign_style_warning = 'S'
 let g:ale_sign_info = '->'
+
+nnoremap <silent> K :ALEHover<CR>
 
 
 " vim-commentary
@@ -141,7 +144,7 @@ set encoding=utf-8
 set backspace=indent,eol,start
 set nofoldenable
 
-set directory=~/.cache//
+" set directory=~/.cache//
 
 " remove insert delay
 set timeoutlen=1000 ttimeoutlen=10
@@ -168,7 +171,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 set showcmd
 
 " tab autocompletion
-set wildmode=longest,list
+set wildmode=longest,list,full
 set wildmenu
 set wildignore=*.o,*.out,*.obj,*.class
 set wildignore+=*.swp,*~,._*
@@ -237,6 +240,9 @@ highlight ALEWarningSign  ctermbg=black ctermfg=yellow
 highlight ALEStyleErrorSign  ctermbg=black ctermfg=grey
 highlight ALEStyleWarningSign  ctermbg=black ctermfg=grey
 
+" highligh TEMP
+syntax match cTodo /TEMP/ containedin=.*Comment
+
 " detect filetype depending on SUDO_COMMAND with sudoedit
 " from tpope/vim-eunuch
 if (!empty($SUDO_COMMAND))
@@ -280,6 +286,7 @@ nnoremap <Leader>f :bn<CR>
 nnoremap <Leader>F :bp<CR>
 nnoremap <Leader><Tab> :b#<CR>
 nnoremap <Leader>d :bp\|bd #<CR>
+nnoremap gb :buffer<Space>
 
 "-----------------------------------------------------------------------------
 " Scrolling
@@ -327,6 +334,7 @@ function! ToggleCopyMode()
   endif
 endfunction
 nnoremap <Leader>cp :call ToggleCopyMode()<cr>
+vnoremap <C-c> "*y
 
 "-----------------------------------------------------------------------------
 " Tabbing
@@ -335,6 +343,10 @@ nnoremap <Leader>cp :call ToggleCopyMode()<cr>
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+
+" Autocomplete
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
 
 "-----------------------------------------------------------------------------
 " Maps
