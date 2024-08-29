@@ -2,6 +2,8 @@
   name = Jamison Lofthouse
   email = jamison.lofthouse@gmail.com
   signingkey = 75FFA55B
+[include]
+  path = ~/.gitconfig_local
 [core]
   autocrlf = input
   whitespace = fix,space-before-tab,trailing-space
