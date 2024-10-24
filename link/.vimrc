@@ -240,6 +240,11 @@ highlight ALEWarningSign  ctermbg=black ctermfg=yellow
 highlight ALEStyleErrorSign  ctermbg=black ctermfg=grey
 highlight ALEStyleWarningSign  ctermbg=black ctermfg=grey
 
+highlight link ALEVirtualTextError Error
+highlight ALEVirtualTextWarning ctermfg=yellow
+highlight link ALEVirtualTextInfo Comment
+
+
 " highligh TEMP
 syntax match cTodo /TEMP/ containedin=.*Comment
 
