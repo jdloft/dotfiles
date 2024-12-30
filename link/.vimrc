@@ -14,7 +14,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab', {'tag': '2.1'}
 Plug '~/.vim/plugged/vim-airline-themes'
-Plug '~/.vim/plugged/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'justinmk/vim-sneak'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'scrooloose/nerdtree'
@@ -206,41 +206,24 @@ if $TERM =~# '256color\|ghostty'
   set t_Co=256
 endif
 
-" See .dotfiles/source/60_colors.sh
-if $SOLAR_MODE ==# 'none' || exists('$NO_SOLAR')
-  " Fallback solarized palette
-  let g:solarized_termcolors=256
-else
-  if $SOLAR_MODE ==# 'mode3'
-    let g:solarized_mode3 = 1
-  elseif $SOLAR_MODE ==# 'mode2'
-    let g:solarized_termtrans = 1
-  endif
-endif
+" TODO: these are full overrides for now
+" Fallbacks later
+let g:airline_theme = 'gruvbox'
+autocmd vimenter * ++nested colorscheme gruvbox
 
-let g:airline_theme = 'solarized'
-let g:airline_solarized_normal_blue = 1
-let g:airline_solarized_enable_command_color = 1
-let g:airline_solarized_dark_inactive_border = 1
+" highlight CursorLineNr         ctermbg=black ctermfg=red
+" highlight SignColumn           guibg=black  ctermbg=black
+" highlight GitGutterAdd         guibg=black  ctermbg=black guifg=green  ctermfg=green
+" highlight GitGutterChange      guibg=black  ctermbg=black guifg=yellow ctermfg=yellow
+" highlight GitGutterDelete      guibg=black  ctermbg=black guifg=red    ctermfg=red
+" highlight ALEErrorSign         ctermbg=black ctermfg=red
+" highlight ALEWarningSign       ctermbg=black ctermfg=yellow
+" highlight ALEStyleErrorSign    ctermbg=black ctermfg=grey
+" highlight ALEStyleWarningSign  ctermbg=black ctermfg=grey
 
-if PlugLoaded('vim-colors-solarized')
-  colorscheme solarized
-  call togglebg#map("<F5>")
-endif
-
-highlight CursorLineNr         ctermbg=black ctermfg=red
-highlight SignColumn           guibg=black  ctermbg=black
-highlight GitGutterAdd         guibg=black  ctermbg=black guifg=green  ctermfg=green
-highlight GitGutterChange      guibg=black  ctermbg=black guifg=yellow ctermfg=yellow
-highlight GitGutterDelete      guibg=black  ctermbg=black guifg=red    ctermfg=red
-highlight ALEErrorSign         ctermbg=black ctermfg=red
-highlight ALEWarningSign       ctermbg=black ctermfg=yellow
-highlight ALEStyleErrorSign    ctermbg=black ctermfg=grey
-highlight ALEStyleWarningSign  ctermbg=black ctermfg=grey
-
-highlight link ALEVirtualTextError Error
-highlight ALEVirtualTextWarning ctermfg=yellow
-highlight link ALEVirtualTextInfo Comment
+" highlight link ALEVirtualTextError Error
+" highlight ALEVirtualTextWarning ctermfg=yellow
+" highlight link ALEVirtualTextInfo Comment
 
 
 " highligh TEMP
