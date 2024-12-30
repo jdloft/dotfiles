@@ -14,7 +14,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab', {'tag': '2.1'}
 Plug 'jdloft/vim-airline-themes'
-Plug 'jdloft/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
 Plug 'justinmk/vim-sneak'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'scrooloose/nerdtree'
@@ -195,11 +195,7 @@ set wildignore+=*/tmp/**
 set wildignore+=*/_vendor/**
 
 " colors
-if $SOLAR_LIGHT == "true"
-  set background=light
-else
-  set background=dark
-endif
+set background=dark
 
 if $TERM == "xterm-256color" || $TERM == "screen-256color"
   set t_Co=256
@@ -209,20 +205,8 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color"
     let g:solarized_termcolors=256
     let g:airline_theme = 'simple'
   else
-    let g:airline_theme = 'solarized'
-    let g:airline_solarized_normal_blue = 1
-    let airline_solarized_enable_command_color = 1
-    let g:airline_solarized_dark_inactive_border = 1
-
-    if $SOLAR_MODE3 == "true"
-      let g:solarized_mode3 = 1
-    elseif $SOLAR_MODE2 == "true"
-      let g:solarized_termtrans = 1
-    endif
-  endif
-
-  if PlugLoaded('vim-colors-solarized')
-    colorscheme solarized
+    let g:airline_theme = 'gruvbox'
+    autocmd vimenter * ++nested colorscheme gruvbox
   endif
 
   highlight CursorLineNr ctermbg=black ctermfg=red
