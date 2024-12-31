@@ -1,6 +1,12 @@
 # On Mac (Darwin), this should be `ls -G` if coreutils isn't installed from homebrew
 if is_mac; then
-    alias ls='ls -GF' # -G is colorized output, -F is to show trailing slashes and other file info
+    if command -v ls >/dev/null 2>&1 && \
+        [[ "$(which ls)" == "/usr/local/opt/coreutils/libexec/gnubin/ls" || \
+        "$(which ls)" == "/opt/homebrew/opt/coreutils/libexec/gnubin/ls" ]]; then
+        alias ls='ls --color=auto -F'
+    else
+        alias ls='ls -GF' # -G is colorized output, -F is to show trailing slashes and other file info
+    fi
     alias n='open .'
     alias rm_quarantine='sudo xattr -r -d com.apple.quarantine'
     alias sha256sum='shasum -a 256'
