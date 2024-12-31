@@ -2,9 +2,10 @@
 # Can be changed in 01_local.sh without committing to git
 
 # Solarized modes
-export NO_SOLAR=false
-export SOLAR_MODE2=true
-export SOLAR_MODE3=true
+# see .vimrc
+export NO_SOLAR=${NO_SOLAR:-false}
+export SOLAR_MODE2=${SOLAR_MODE2:-true}
+export SOLAR_MODE3=${SOLAR_MODE3:-true}
 
 # Set dotfiles host
 if command -v hostname &> /dev/null; then

@@ -204,16 +204,15 @@ endif
 if $TERM == "xterm-256color" || $TERM == "screen-256color"
   set t_Co=256
 
+  " Solar modes:
+  " NO_SOLAR = no solar colors at all, use solarized fallback
+  " 1 = solar colors
+  " 2 = solar colors, transparent terminal (don't override background)
+  " 3 = modified solar colors (upper solar colors are in colors 16-21)
   if $NO_SOLAR == "true"
     " Fallback solarized palette
     let g:solarized_termcolors=256
-    let g:airline_theme = 'simple'
   else
-    let g:airline_theme = 'solarized'
-    let g:airline_solarized_normal_blue = 1
-    let airline_solarized_enable_command_color = 1
-    let g:airline_solarized_dark_inactive_border = 1
-
     if $SOLAR_MODE3 == "true"
       let g:solarized_mode3 = 1
     elseif $SOLAR_MODE2 == "true"
@@ -221,13 +220,18 @@ if $TERM == "xterm-256color" || $TERM == "screen-256color"
     endif
   endif
 
+  let g:airline_theme = 'solarized'
+  let g:airline_solarized_normal_blue = 1
+  let g:airline_solarized_enable_command_color = 1
+  let g:airline_solarized_dark_inactive_border = 1
+
   if PlugLoaded('vim-colors-solarized')
     colorscheme solarized
   endif
 
   highlight CursorLineNr ctermbg=black ctermfg=red
 else
-  " TODO: should be replaced with a proper 8/16 bit theme
+  " TODO: should add a proper 8 or 16 color colorscheme
   let g:airline_theme = 'simple'
 endif
 
