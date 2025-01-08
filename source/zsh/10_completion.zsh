@@ -14,16 +14,14 @@ if is_mac; then
   if type brew &>/dev/null; then
     # brew
     FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-    autoload -Uz compinit
-    compinit
   fi
 fi
 
 # compinit
 if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
-	compinit;
+    compinit;
 else
-	compinit -C;
+    compinit -C;
 fi;
 
 # check for version/system
