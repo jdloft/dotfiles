@@ -43,11 +43,11 @@ cache_completion() {
 
 completion_commands=("kubectl" "helm" "docker" "git" "oc")
 regen_completions() { # force regen
-    for cmd in "${commands_list[@]}"; do
+    for cmd in "${completion_commands[@]}"; do
         cache_completion --force "$cmd"
     done
 }
 
-for cmd in "${commands_list[@]}"; do
+for cmd in "${completion_commands[@]}"; do
     cache_completion "$cmd" # just source the completions if they exist
 done
