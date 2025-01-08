@@ -5,34 +5,53 @@ fi
 
 # Source all files in "source"
 function src() {
-    local file
+    local file start_time end_time elapsed_time
+
     if [ -f "$HOME/.zshrc.pre" ]; then
         if [ $DEBUG -gt 0 ]; then
             echo "Sourcing .zshrc.pre"
         fi
         source "$HOME/.zshrc.pre"
     fi
+
     for file in $DOTFILES/source/*; do
         if [ -f "$file" ]; then
             if [ $DEBUG -gt 0 ]; then
-                echo "Sourcing $file"
+                start_time=$(date +%s%N)
+                source "$file"
+                end_time=$(date +%s%N)
+                elapsed_time=$(( (end_time - start_time) / 1000000 ))
+                echo "Sourced $file in ${elapsed_time} ms"
+            else
+                source "$file"
             fi
-            source "$file"
         fi
     done
+
     for file in $DOTFILES/source/zsh/*; do
         if [ -f "$file" ]; then
             if [ $DEBUG -gt 0 ]; then
-                echo "Sourcing $file"
+                start_time=$(date +%s%N)
+                source "$file"
+                end_time=$(date +%s%N)
+                elapsed_time=$(( (end_time - start_time) / 1000000 ))
+                echo "Sourced $file in ${elapsed_time} ms"
+            else
+                source "$file"
             fi
-            source "$file"
         fi
     done
+
     if [ -f "$HOME/.zshrc.post" ]; then
         if [ $DEBUG -gt 0 ]; then
-            echo "Sourcing .zshrc.post"
+            start_time=$(date +%s%N)
+            source "$HOME/.zshrc.post"
+            end_time=$(date +%s%N)
+            elapsed_time=$(( (end_time - start_time) / 1000000 ))
+            echo "Sourced .zshrc.post in ${elapsed_time} ms"
+        else
+            source "$HOME/.zshrc.post"
         fi
-        source "$HOME/.zshrc.post"
     fi
 }
 
