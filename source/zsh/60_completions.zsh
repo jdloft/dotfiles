@@ -22,20 +22,32 @@ patch_cobra() {
 }
 
 cache_completion() {
+    local force=false
+    local completion_file="$ZSH_CACHE_DIR/completions/_$1"
+
+    if [[ "$1" == "--force" ]]; then
+        force=true
+        shift
+    fi
+
+    # If the command exists, process completions
     if (( $+commands[$1] )); then
-        if [[ ! -f "$ZSH_CACHE_DIR/completions/_$1" ]]; then
-            $1 completion zsh | tee "$ZSH_CACHE_DIR/completions/_$1" >/dev/null
+        if [[ ! -f "$completion_file" || "$force" == true ]]; then
+            $1 completion zsh | tee "$completion_file" >/dev/null
             patch_cobra $1
-            source "$ZSH_CACHE_DIR/completions/_$1"
-        else
-            patch_cobra $1
-            source "$ZSH_CACHE_DIR/completions/_$1"
-            $1 completion zsh | tee "$ZSH_CACHE_DIR/completions/_$1" >/dev/null &|
         fi
+
+        source "$completion_file"
     fi
 }
 
-cache_completion "kubectl"
-cache_completion "helm"
-cache_completion "kubeadm"
-cache_completion "tkn"
+completion_commands=("kubectl" "helm" "docker" "git")
+regen_completions() { # force regen
+    for cmd in "${commands_list[@]}"; do
+        cache_completion --force "$cmd"
+    done
+}
+
+for cmd in "${commands_list[@]}"; do
+    cache_completion "$cmd" # just source the completions if they exist
+done
