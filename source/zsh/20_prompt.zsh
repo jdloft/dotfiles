@@ -70,7 +70,7 @@ function _dotfiles-git-prompt() {
     fi
 
     branch="`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`"
-    echo -en "${CLR_GITST_CLS} (${CLR_GITST_BR}$branch$indicator${CLR_GITST_CLS})%f"
+    echo -en "${CLR_GITST_CLS} ${CLR_GITST_BR}$branch$indicator${CLR_GITST_CLS}%f"
 }
 
 function _dotfiles-virtualenv-prompt() {
@@ -113,8 +113,12 @@ function _dotfiles-k8s-prompt() {
 
 PROMPT='$(_dotfiles-prompt)$(_dotfiles-virtualenv-prompt)$(_dotfiles-desk-prompt)$(_dotfiles-prompt2)'
 
+RPROMPT=''
+
+if command -v git >/dev/null 2>&1; then
+    RPROMPT+='$(_dotfiles-git-prompt)'
+fi
+
 if [[ -n $K8S_PROMPT ]]; then
-    RPROMPT='$(_dotfiles-git-prompt)$(_dotfiles-k8s-prompt)'
-else
-    RPROMPT='$(_dotfiles-git-prompt)'
+    RPROMPT+='$(_dotfiles-k8s-prompt)'
 fi

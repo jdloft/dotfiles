@@ -23,7 +23,18 @@ function _dotfiles-prompt() {
 
     # Actual prompt code
     if [[ -n $supports_color ]]; then
-        PS1="\[$CLR_NONE\]$(_dotfiles-exit_code)\[$clr_user\]\u\[$CLR_NONE\]@\[$clr_host\]$host\[$CLR_NONE\]$(_dotfiles-chroot-prompt) \[$CLR_BLUE\]\w$(_dotfiles-git-prompt)$(_dotfiles-virtualenv-prompt)\[$CLR_NONE\] $prompt\[$CLR_NONE\] "
+        PS1="\[$CLR_NONE\]"
+        PS1+="$(_dotfiles-exit_code)"
+        PS1+="\[$clr_user\]\u\[$CLR_NONE\]@\[$clr_host\]$host"
+        PS1+="\[$CLR_NONE\]$(_dotfiles-chroot-prompt) "
+        PS1+="\[$CLR_BLUE\]\w"
+
+        if command -v git >/dev/null 2>&1; then
+            PS1+="$(_dotfiles-git-prompt)"
+        fi
+
+        PS1+="$(_dotfiles-virtualenv-prompt)"
+        PS1+="\[$CLR_NONE\] $prompt "
     else
         PS1="\u@$host:\w$prompt "
     fi
