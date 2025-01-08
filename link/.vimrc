@@ -201,7 +201,7 @@ else
   set background=dark
 endif
 
-if $TERM == "xterm-256color" || $TERM == "screen-256color"
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $TERM == "xterm-ghostty"
   set t_Co=256
 
   " Solar modes:
