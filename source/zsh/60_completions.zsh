@@ -41,7 +41,7 @@ cache_completion() {
     fi
 }
 
-completion_commands=("kubectl" "helm" "docker" "git" "oc")
+completion_commands=("kubectl" "helm" "docker" "oc")
 regen_completions() { # force regen
     for cmd in "${completion_commands[@]}"; do
         cache_completion --force "$cmd"
