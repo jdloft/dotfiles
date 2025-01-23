@@ -1,13 +1,3 @@
-# google cloud
-if [ -f "/usr/share/google-cloud-sdk/completion.zsh.inc" ]; then
-    source /usr/share/google-cloud-sdk/completion.zsh.inc
-fi
-if is_mac; then
-    if [ -f "`brew --prefix`/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then
-        source `brew --prefix`/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-    fi
-fi
-
 patch_cobra() {
     # workaround for https://github.com/spf13/cobra/issues/1694
     # kubectl and helm
