@@ -24,6 +24,7 @@
       path: config/karabiner.json
       if: '[ `uname` = Darwin ]'
       force: true
+    ~/.config/ghostty/config: config/ghostty
 
 - shell:
   -
