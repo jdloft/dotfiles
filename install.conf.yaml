@@ -28,11 +28,6 @@
 
 - shell:
   -
-    command: scripts/migrate-vscode.sh
-    description: Migrate VS Code configs
-    stdin: false
-    stdout: true
-  -
     command: '[ -f offline ] || scripts/vim-plug.sh'
     description: Configuring vim plugins
     stdin: true
