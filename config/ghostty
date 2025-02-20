@@ -2,3 +2,5 @@ font-family = "Berkeley Mono"
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
+window-height = 40
+window-width = 150
