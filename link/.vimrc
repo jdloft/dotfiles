@@ -417,3 +417,5 @@ map q: <Nop>
 " Insert single character
 " nnoremap <Space> i_<Esc>r
 
+syntax match TempKeyword /\<TEMP\>/
+highlight link TempKeyword Todo
