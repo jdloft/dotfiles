@@ -25,6 +25,7 @@
       if: '[ `uname` = Darwin ]'
       force: true
     ~/.config/ghostty/config: config/ghostty
+    ~/.config/k9s: config/k9s
 
 - shell:
   -
