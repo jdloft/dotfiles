@@ -1,0 +1,8 @@
+# vim: syntax=tmux
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "xclip -in -selection clipboard"
+bind-key -t vi-copy Enter copy-pipe "xclip -in -selection clipboard"
+# bind-key -t vi-copy MouseDragEnd1Pane copy-pipe "xclip -in -selection clipboard"
+bind-key -t vi-copy Escape cancel
+# unbind-key -t vi-copy MouseDragEnd1Pane
+
