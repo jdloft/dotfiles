@@ -80,7 +80,7 @@ function _dotfiles-virtualenv-prompt() {
     if [[ $VIRTUAL_ENV != "" ]]; then
         environment="${VIRTUAL_ENV##*/}"
     elif [[ $CONDA_DEFAULT_ENV != "" ]]; then
-        environment="$CONDA_DEFAULT_ENV"
+        environment="${CONDA_DEFAULT_ENV##*/}"
     else
         return 1
     fi
