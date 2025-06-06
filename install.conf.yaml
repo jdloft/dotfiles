@@ -28,12 +28,16 @@
     ~/.config/k9s: config/k9s
 
 - shell:
-  -
+  - description: Configure vim plugins
     command: '[ -f offline ] || scripts/vim-plug.sh'
-    description: Configuring vim plugins
     stdin: true
     stdout: true
-  -
+  - description: Install tmux plugins
     command: '! command -v tmux || [ -f offline ] || link/.tmux/plugins/tpm/bin/install_plugins'
-    description: Install tmux plugins
     stdout: true
+  - description: Initialize condarc
+    command: >
+      if [ ! -e ~/.condarc ]; then
+          cp config/condarc ~/.condarc
+      fi
+    quiet: true
