@@ -1,6 +1,7 @@
 if [[ $- == *i* ]] && command -v "tmux" > /dev/null 2>&1; then
     TMUX_VERSION=$(tmux -V | sed -En "s/^tmux[^0-9]*([.0-9]+).*/\1/p")
-    if [ "$(echo "$TMUX_VERSION < 2.1" | bc)" = 1 ]; then
+    IFS=. read -r major minor <<< "$TMUX_VERSION"
+    if [ "$major" -lt 2 ] || { [ "$major" -eq 2 ] && [ "$minor" -lt 1 ]; }; then
         alias tmux="tmux -f $DOTFILES/config/tmux/tmux-old.conf"
     fi
 
