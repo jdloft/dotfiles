@@ -17,7 +17,7 @@ if [ -d "$HOME/miniforge3/" ]; then
     if [ -f $MAMBA_EXE ]; then
         # find better mac dir?
         export MAMBA_ROOT_PREFIX="$HOME/.local/share/mamba";
-        __mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+        __mamba_setup="$("$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
         if [ $? -eq 0 ]; then
             eval "$__mamba_setup"
         else
