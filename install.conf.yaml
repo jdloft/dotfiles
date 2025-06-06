@@ -41,3 +41,9 @@
           cp config/condarc ~/.condarc
       fi
     quiet: true
+  - description: Initialize local gitconfig
+    command: >
+      if [ ! -e ~/.gitconfig_local ]; then
+          cp config/gitconfig_local ~/.gitconfig_local
+      fi
+    quiet: true
