@@ -73,6 +73,19 @@ function _dotfiles-git-prompt() {
     echo -en "${CLR_GITST_CLS} ${CLR_GITST_BR}$branch$indicator${CLR_GITST_CLS}%f"
 }
 
+function _dotfiles-git-prompt-branchonly() {
+    local branch
+
+    CLR_GITST_BR="%F{green}" # Branch
+
+    if [[ -z "$(git rev-parse --is-inside-work-tree 2> /dev/null)" ]]; then
+        return 1
+    fi
+
+    branch="`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`"
+    echo -en "${CLR_GITST_CLS} ${CLR_GITST_BR}$branch${CLR_GITST_CLS}%f"
+}
+
 function _dotfiles-virtualenv-prompt() {
     CLR_VE_CLS="%F{yellow}"
     CLR_VE_ENV="%F{yellow}"
@@ -116,7 +129,7 @@ PROMPT='$(_dotfiles-prompt)$(_dotfiles-virtualenv-prompt)$(_dotfiles-desk-prompt
 RPROMPT=''
 
 if command -v git >/dev/null 2>&1; then
-    RPROMPT+='$(_dotfiles-git-prompt)'
+    RPROMPT+='$(_dotfiles-git-prompt-branchonly)'
 fi
 
 if [[ -n $K8S_PROMPT ]]; then
