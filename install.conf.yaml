@@ -25,7 +25,12 @@
       if: '[ `uname` = Darwin ]'
       force: true
     ~/.config/ghostty/config: config/ghostty
-    ~/.config/k9s: config/k9s
+    ~/.config/k9s:
+      path: config/k9s
+      if: '[ `uname` != Darwin ]'
+    ~/Library/Application Support/k9s:
+      path: config/k9s
+      if: '[ `uname` = Darwin ]'
 
 - shell:
   - description: Configure vim plugins
