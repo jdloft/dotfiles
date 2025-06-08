@@ -206,3 +206,52 @@ function rescueterm() {
     tmux refresh
     echo "Run \"set-window-option automatic-rename on\" in tmux"
 }
+
+merge_kubeconfigs() {
+    local kubeconfig="$HOME/.kube/config"
+    local backup="$HOME/.kube/config-backup"
+    local tmpfile
+    local file1 file2
+
+    if [ "$#" -eq 1 ]; then
+        file1="$kubeconfig"
+        file2="$1"
+    elif [ "$#" -eq 2 ]; then
+        file1="$1"
+        file2="$2"
+    else
+        echo "Usage:"
+        echo "  merge_kubeconfigs <file>"           # merge ~/.kube/config with <file>
+        echo "  merge_kubeconfigs <file1> <file2>" # merge <file1> and <file2>"
+        return 1
+    fi
+
+    # Check files exist
+    for f in "$file1" "$file2"; do
+        if [ ! -f "$f" ]; then
+            echo "Error: file not found: $f" >&2
+            return 1
+        fi
+    done
+
+    # Backup ~/.kube/config
+    if [ -f "$kubeconfig" ]; then
+        cp "$kubeconfig" "$backup"
+        chmod 600 "$backup"
+        echo "Backed up $kubeconfig to $backup"
+    fi
+
+    # Create a temp file
+    tmpfile=$(mktemp)
+    chmod 600 "$tmpfile"
+
+    # Merge configs into temp file
+    if KUBECONFIG="$file1:$file2" kubectl config view --merge --flatten > "$tmpfile"; then
+        mv "$tmpfile" "$kubeconfig"
+        echo "Merged kubeconfig saved to $kubeconfig"
+    else
+        echo "Failed to merge kubeconfigs" >&2
+        rm -f "$tmpfile"
+        return 1
+    fi
+}
