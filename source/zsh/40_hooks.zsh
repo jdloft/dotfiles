@@ -1,6 +1,23 @@
-# conda
-if [ -d "$HOME/miniforge3/" ]; then
-    FORGE_DIR="$HOME/miniforge3"
+# conda + mamba init
+FORGE_DIRS=(
+    "$HOME/miniforge3"
+    "/opt/homebrew/Caskroom/miniforge/base"
+    "/opt/homebrew/miniforge3"
+)
+
+find_forge_dir() {
+    for path in "${FORGE_DIRS[@]}"; do
+        if [ -d "$path" ]; then
+            echo "$path"
+            return 0
+        fi
+    done
+    return 1
+}
+
+FORGE_DIR="$(find_forge_dir)"
+
+if [ -n "$FORGE_DIR" ]; then
     __conda_setup="$('$FORGE_DIR/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
