@@ -1,4 +1,5 @@
-if ! is_mac; then
+# if [[ "$TERM" != "dumb" && "$TERM" != "linux" ]]; then
+if [[ ! is_mac && -n "$VTE_VERSION" ]]; then
     autoload -U add-zsh-hook
     function _dotfiles-titleinfo() {
         local host="$DOTFILES_HOST"
