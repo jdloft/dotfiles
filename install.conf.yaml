@@ -31,6 +31,7 @@
     ~/Library/Application Support/k9s:
       path: config/k9s
       if: '[ `uname` = Darwin ]'
+    ~/.config/git: config/git
 
 - shell:
   - description: Configure vim plugins
