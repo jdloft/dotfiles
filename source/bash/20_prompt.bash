@@ -34,6 +34,9 @@ function _dotfiles-prompt() {
         fi
 
         PS1+="$(_dotfiles-virtualenv-prompt)"
+        if [[ -n $K8S_PROMPT ]]; then
+            PS1+="$(_dotfiles-k8s-prompt)"
+        fi
         PS1+="\[$CLR_NONE\] $prompt "
     else
         PS1="\u@$host:\w$prompt "
@@ -103,6 +106,18 @@ function _dotfiles-virtualenv-prompt() {
     fi
 
     echo -en "${CLR_VE_CLS} (${CLR_VE_ENV}$environment${CLR_VE_CLS})"
+}
+
+function _dotfiles-k8s-prompt() {
+    CLR_K8S_CLS="\[$CLR_BLUE\]"
+    CLR_K8S_ENV="\[$CLR_BLUE\]"
+
+    current_context="$(kubectl config current-context 2> /dev/null)"
+    if [ $? -ne 0 ] || [ -z "$current_context" ]; then
+        return 1
+    fi
+
+    echo -en "${CLR_K8S_CLS} (${CLR_K8S_ENV}$current_context${CLR_K8S_CLS})"
 }
 
 PROMPT_COMMAND="_dotfiles-prompt"
