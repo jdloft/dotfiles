@@ -1,11 +1,9 @@
 # Default variables
 # Can be changed in 01_local.sh without committing to git
 
-# Solarized modes
+# Solarized mode
 # see .vimrc
-export NO_SOLAR=${NO_SOLAR:-false}
-export SOLAR_MODE2=${SOLAR_MODE2:-true}
-export SOLAR_MODE3=${SOLAR_MODE3:-true}
+export SOLAR_MODE=${SOLAR_MODE:-mode3}
 
 # Set dotfiles host
 if command -v hostname &> /dev/null; then
