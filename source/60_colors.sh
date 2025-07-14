@@ -1,9 +1,16 @@
 #!/bin/sh
+function solar_mode3() {
+    eval sh $DOTFILES/scripts/solar_mode3.sh
+}
+
+if [ -n "$TMUX" ]; then
+    export SOLAR_TMUX=1
+fi
 
 case "$-" in
   *i*)
     if [ "$SOLAR_MODE" = "mode3" ] && [ -z "$SSH_CONNECTION" ]; then
-        eval sh $DOTFILES/scripts/solar_mode3.sh
+        solar_mode3
     fi
 
     # Solarized dircolors
