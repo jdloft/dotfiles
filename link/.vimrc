@@ -78,6 +78,7 @@ let g:ale_set_quickfix = 1
 let g:ale_use_ch_sendraw = 1
 let g:ale_completion_enabled = 1
 
+let g:ale_linters_explicit = 1
 let g:ale_linters = {
   \ 'cpp': ['clangd', 'cc']
 \}
