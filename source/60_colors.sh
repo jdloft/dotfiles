@@ -9,7 +9,7 @@ fi
 
 case "$-" in
   *i*)
-    if [ "$SOLAR_MODE" = "mode3" ] && [ -z "$SSH_CONNECTION" ]; then
+    if [ "$SOLAR_MODE" = "mode3" ]; then
         solar_mode3
     fi
 
