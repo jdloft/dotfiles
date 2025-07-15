@@ -58,10 +58,15 @@ put_template 11 $yellow # bryellow
 put_template 12 $blue # brblue
 put_template 13 $magenta # brmagenta
 put_template 14 $cyan # brcyan
-
-put_template 240 $base01
-put_template 245 $base1
 put_template 61 $violet
+put_template 234 $base03
+put_template 235 $base02
+put_template 240 $base01
+put_template 66 $base00
+put_template 244 $base0
+put_template 245 $base1
+put_template 254 $base2
+put_template 230 $base3
 
 if [ ! -z $SOLAR_LIGHT ] && [ $SOLAR_LIGHT = true ]; then
   color_background=$base3
@@ -71,9 +76,6 @@ if [ ! -z $SOLAR_LIGHT ] && [ $SOLAR_LIGHT = true ]; then
   put_template 7  $base02
   put_template 8  $base00 # not typical, but I would prefer this be legible on background
   put_template 15 $base03 # brwhite
-
-  put_template 244 $base0
-  put_template 230 $base3
 else
   color_background=$base03
   color_foreground=$base0
@@ -82,9 +84,6 @@ else
   put_template 7  $base2
   put_template 8  $base0 # not typical, but I would prefer this be legible on background
   put_template 15 $base3 # brwhite
-
-  put_template 66 $base00
-  put_template 234 $base03
 fi
 
 # foreground / background / cursor color

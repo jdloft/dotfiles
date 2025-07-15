@@ -196,7 +196,7 @@ set wildignore+=*/tmp/**
 set wildignore+=*/_vendor/**
 
 " colors
-if $SOLAR_LIGHT == "true"
+if !empty($SOLAR_LIGHT) && $SOLAR_LIGHT == 'true'
   set background=light
 else
   set background=dark
@@ -217,7 +217,6 @@ if $SOLAR_MODE ==# 'none'
 else
   if $SOLAR_MODE ==# 'mode3'
     let g:solarized_mode3 = 1
-    let g:solarized_termtrans = 1
   elseif $SOLAR_MODE ==# 'mode2'
     let g:solarized_termtrans = 1
   endif
@@ -230,6 +229,7 @@ let g:airline_solarized_dark_inactive_border = 1
 
 if PlugLoaded('vim-colors-solarized')
   colorscheme solarized
+  call togglebg#map("<F5>")
 endif
 
 highlight CursorLineNr         ctermbg=black ctermfg=red
