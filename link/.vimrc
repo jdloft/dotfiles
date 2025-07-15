@@ -13,8 +13,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'ervandew/supertab', {'tag': '2.1'}
-Plug 'jdloft/vim-airline-themes'
-Plug 'jdloft/vim-colors-solarized'
+Plug '~/.vim/plugged/vim-airline-themes'
+Plug '~/.vim/plugged/vim-colors-solarized'
 Plug 'justinmk/vim-sneak'
 Plug 'puppetlabs/puppet-syntax-vim'
 Plug 'scrooloose/nerdtree'
@@ -217,6 +217,7 @@ if $SOLAR_MODE ==# 'none'
 else
   if $SOLAR_MODE ==# 'mode3'
     let g:solarized_mode3 = 1
+    let g:solarized_termtrans = 1
   elseif $SOLAR_MODE ==# 'mode2'
     let g:solarized_termtrans = 1
   endif

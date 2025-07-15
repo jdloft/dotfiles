@@ -19,3 +19,9 @@
 [submodule "link/.tmux/plugins/tpm"]
 	path = link/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "link/.vim/plugged/vim-colors-solarized"]
+	path = link/.vim/plugged/vim-colors-solarized
+	url = ../vim-colors-solarized
+[submodule "link/.vim/plugged/vim-airline-themes"]
+	path = link/.vim/plugged/vim-airline-themes
+	url = ../vim-airline-themes
