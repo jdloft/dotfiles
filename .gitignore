@@ -3,7 +3,9 @@
 /backups/
 
 # Don't commit Vim plugins, vim-plug will install them.
-/link/.vim/plugged
+link/.vim/plugged/*
+!link/.vim/plugged/vim-airline-themes
+!link/.vim/plugged/vim-colors-solarized
 
 # Don't commit rbenv temp files.
 /link/.rbenv/shims/
