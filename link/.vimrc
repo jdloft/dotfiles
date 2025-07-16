@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator', {'commit': 'd847ea9'}
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dense-analysis/ale', {'tag': 'v3.3.x'}
 Plug 'easymotion/vim-easymotion'
