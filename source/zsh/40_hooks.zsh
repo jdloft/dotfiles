@@ -3,6 +3,7 @@ FORGE_DIRS=(
     "$HOME/miniforge3"
     "/opt/homebrew/Caskroom/miniforge/base"
     "/opt/homebrew/miniforge3"
+    "/opt/homebrew/anaconda3"
 )
 
 find_forge_dir() {
