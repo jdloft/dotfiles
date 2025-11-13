@@ -19,6 +19,7 @@
     ~/:
       glob: true
       path: link/.*
+    ~/.config/btop/btop.conf: link/btop.conf
     ~/.config/nvim: nvim
     ~/.config/karabiner/karabiner.json:
       path: config/karabiner.json
