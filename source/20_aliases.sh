@@ -38,6 +38,8 @@ alias d='desk go'
 alias mkdir='mkdir -p'
 alias wget='wget -c'
 alias grep='grep --color=auto'
+alias less='less -i'
+alias watch='watch -n 0.5 -d'
 
 alias nit='npm install && npm test'
 alias jsonhint='jshint --extra-ext .json'
