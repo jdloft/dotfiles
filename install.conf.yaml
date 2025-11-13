@@ -21,10 +21,6 @@
       path: link/.*
     ~/.config/btop/btop.conf: link/btop.conf
     ~/.config/nvim: nvim
-    ~/.config/karabiner/karabiner.json:
-      path: config/karabiner.json
-      if: '[ `uname` = Darwin ]'
-      force: true
     ~/.config/ghostty/config: config/ghostty
     ~/.config/k9s:
       path: config/k9s
@@ -46,6 +42,12 @@
     command: >
       if [ ! -e ~/.condarc ]; then
           cp config/condarc ~/.condarc
+      fi
+    quiet: true
+  - description: Initialize karabiner config
+    command: >
+      if [ ! -e ~/.config/karabiner/karabiner.json ]; then
+          cp config/karabiner.json ~/.config/karabiner/
       fi
     quiet: true
   - description: Initialize local gitconfig
