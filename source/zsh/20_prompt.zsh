@@ -1,6 +1,3 @@
-# Ensure $(...) in PROMPT is expanded
-setopt PROMPT_SUBST
-
 function _dotfiles-prompt() {
     local host="%m"
     local clr_user="%F{blue}"

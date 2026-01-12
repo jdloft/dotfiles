@@ -12,6 +12,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 export SHELL_SESSION_HISTORY=0 # disable new sessions in macOS
 
+# Ensure $(...) in PROMPT is expanded
 setopt PROMPT_SUBST
 
 setopt extended_glob
