@@ -207,7 +207,7 @@ if $TERM =~# '256color\|ghostty'
 endif
 
 " Solar modes:
-" NO_SOLAR = no solar colors at all, use solarized fallback
+" none = no solar colors at all, use solarized fallback
 " 1 = solar colors
 " 2 = solar colors, transparent terminal (don't override background)
 " 3 = modified solar colors (upper solar colors are in colors 16-21)

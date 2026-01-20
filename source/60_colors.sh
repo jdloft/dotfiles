@@ -1,4 +1,15 @@
 #!/bin/sh
+if [[ "$TERM" == putty* ]]; then
+    export SOLAR_MODE="none"
+elif [ "$CLOUD_SHELL" = true ]; then
+    export SOLAR_MODE="none"
+    export NO_TMUXLINE=true
+elif [ "$TERM_PROGRAM" = "Lens" ]; then
+    export SOLAR_MODE="none"
+elif [ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]; then
+    export SOLAR_MODE="none"
+fi
+
 function solar_mode3() {
     eval sh $DOTFILES/scripts/solar_mode3.sh
 }
