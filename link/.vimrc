@@ -206,12 +206,8 @@ if $TERM =~# '256color\|ghostty'
   set t_Co=256
 endif
 
-" Solar modes:
-" none = no solar colors at all, use solarized fallback
-" 1 = solar colors
-" 2 = solar colors, transparent terminal (don't override background)
-" 3 = modified solar colors (upper solar colors are in colors 16-21)
-if $SOLAR_MODE ==# 'none'
+" See .dotfiles/source/60_colors.sh
+if $SOLAR_MODE ==# 'none' || exists('$NO_SOLAR')
   " Fallback solarized palette
   let g:solarized_termcolors=256
 else

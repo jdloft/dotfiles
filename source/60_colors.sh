@@ -1,14 +1,27 @@
 #!/bin/sh
-if [[ "$TERM" == putty* ]]; then
-    export SOLAR_MODE="none"
-elif [ "$CLOUD_SHELL" = true ]; then
-    export SOLAR_MODE="none"
+
+# Solar modes:
+# none = no solar colors at all, use solarized fallback
+# 1 = solar colors
+# 2 = solar colors, transparent terminal (don't override background)
+# 3 = modified solar colors (upper solar colors are in colors 16-21)
+# NO_SOLAR implies that solarized colors are not supported by the terminal
+
+NO_SOLAR=0
+case "$TERM" in
+  putty*) NO_SOLAR=1 ;;
+esac
+
+if [ "$CLOUD_SHELL" = true ]; then
+    NO_SOLAR=1
     export NO_TMUXLINE=true
 elif [ "$TERM_PROGRAM" = "Lens" ]; then
-    export SOLAR_MODE="none"
+    NO_SOLAR=1
 elif [ "$TERMINAL_EMULATOR" = "JetBrains-JediTerm" ]; then
-    export SOLAR_MODE="none"
+    NO_SOLAR=1
 fi
+
+export NO_SOLAR
 
 function solar_mode3() {
     eval sh $DOTFILES/scripts/solar_mode3.sh
@@ -20,7 +33,7 @@ fi
 
 case "$-" in
   *i*)
-    if [ "$SOLAR_MODE" = "mode3" ]; then
+    if [ "$NO_SOLAR" -eq 0 ] && [ "$SOLAR_MODE" = "mode3" ]; then
         solar_mode3
     fi
 
