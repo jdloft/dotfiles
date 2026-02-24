@@ -409,6 +409,11 @@ nnoremap <leader>ls :NERDTree<cr>
 " Words cannot describe the evil-ness of this command
 map q: <Nop>
 
+" Allow Ctrl-Q as an option to enter visual block
+" cause stuff keeps eating Ctrl-V
+nnoremap <C-q> <C-v>
+xnoremap <C-q> <C-v>
+
 " Insert single character
 " nnoremap <Space> i_<Esc>r
 
