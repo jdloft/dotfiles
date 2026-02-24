@@ -2,26 +2,27 @@
 # Solarized mode 3 by jdloft
 # colors 10-14 are inherited from non-bright variants
 # colors 16-21 are bright variants
-# the rest of the colors are strategically placed in the 8-bit color space
+# the rest of the colors are strategically placed in the 256 color space
 
 # based off of base16-shell (https://github.com/chriskempson/base16-shell)
 # Base16 Shell template by Chris Kempson (http://chriskempson.com)
 
-base03="00/2b/36"
-base02="07/36/42"
-base01="58/6e/75"
-base00="65/7b/83"
-base0="83/94/96"
-base1="93/a1/a1"
-base2="ee/e8/d5"
-base3="fd/f6/e3"
+# Neutral-gray Solarized remix:
+base03="23/26/29"
+base02="2f/34/38"
+base01="6b/74/7a"
+base00="7a/84/8b"
+base0="97/a0/a6"
+base1="a6/ae/b3"
+base2="df/e3/e3"
+base3="f2/f4/f3"
 yellow="b5/89/00"
 orange="cb/4b/16"
 red="dc/32/2f"
 magenta="d3/36/82"
-violet="6c/71/c4"
-blue="26/8b/d2"
-cyan="2a/a1/98"
+violet="7b/80/c0"
+blue="4b/88/b8"
+cyan="4f/9b/95"
 green="85/99/00"
 
 # if [ -n "$TMUX" ]; then
@@ -58,15 +59,15 @@ put_template 11 $yellow # bryellow
 put_template 12 $blue # brblue
 put_template 13 $magenta # brmagenta
 put_template 14 $cyan # brcyan
-put_template 61 $violet
-put_template 234 $base03
-put_template 235 $base02
-put_template 240 $base01
-put_template 66 $base00
-put_template 244 $base0
-put_template 245 $base1
+put_template 104 $violet
+put_template 235 $base03
+put_template 236 $base02
+put_template 243 $base01
+put_template 244 $base00
+put_template 247 $base0
+put_template 145 $base1
 put_template 254 $base2
-put_template 230 $base3
+put_template 255 $base3
 
 if [ ! -z $SOLAR_LIGHT ] && [ $SOLAR_LIGHT = true ]; then
   color_background=$base3
