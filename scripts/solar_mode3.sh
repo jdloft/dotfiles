@@ -20,9 +20,9 @@ yellow="b5/89/00"
 orange="cb/4b/16"
 red="dc/32/2f"
 magenta="d3/36/82"
-violet="7b/80/c0"
-blue="4b/88/b8"
-cyan="4f/9b/95"
+violet="6c/71/c4"
+blue="26/8b/d2"
+cyan="2a/a1/98"
 green="85/99/00"
 
 # if [ -n "$TMUX" ]; then
