@@ -1,6 +1,7 @@
 # Shell options
 # https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html
 shopt -s globstar >/dev/null 2>&1
+shopt -s checkwinsize >/dev/null 2>&1
 shopt -s histappend >/dev/null 2>&1
 shopt -s hostcomplete >/dev/null 2>&1
 shopt -s interactive_comments >/dev/null 2>&1
