@@ -14,6 +14,7 @@ patch_cobra() {
 cache_completion() {
     local force=false
     local completion_file="$ZSH_CACHE_DIR/completions/_$1"
+    local cmd="$1"
 
     if [[ "$1" == "--force" ]]; then
         force=true
@@ -21,10 +22,10 @@ cache_completion() {
     fi
 
     # If the command exists, process completions
-    if (( $+commands[$1] )); then
+    if (( $+commands[$cmd] )); then
         if [[ ! -f "$completion_file" || "$force" == true ]]; then
-            $1 completion zsh | tee "$completion_file" >/dev/null
-            patch_cobra $1
+            $cmd completion zsh | tee "$completion_file" >/dev/null
+            patch_cobra $cmd
         fi
 
         source "$completion_file"

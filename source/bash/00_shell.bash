@@ -42,3 +42,7 @@ if [[ $- == *i* ]]; then
     CLR_CYAN=`tput setaf 6`
     CLR_WHITE=`tput setaf 7`
 fi
+
+# Cache
+BASH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/bash"
+mkdir -p "$BASH_CACHE_DIR/completions"
