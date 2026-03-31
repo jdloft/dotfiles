@@ -148,7 +148,12 @@ set nofoldenable
 " set directory=~/.cache//
 
 " remove insert delay
-set timeoutlen=1000 ttimeoutlen=10
+set timeoutlen=1000
+if $SLOW_SSH != ""
+    set ttimeoutlen=200
+else
+    set ttimeoutlen=10
+endif
 
 " mark trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -419,3 +424,7 @@ xnoremap <C-q> <C-v>
 
 syntax match TempKeyword /\<TEMP\>/
 highlight link TempKeyword Todo
+
+" Window swapping keys
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
