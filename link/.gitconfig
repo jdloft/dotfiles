@@ -21,6 +21,7 @@
   rv = review
   st = status
   sub = !"echo 'Sync'; git submodule sync; echo 'Update'; git submodule update --init --recursive"
+  sub-reset = !"echo 'Sync'; git submodule sync; echo 'Update'; git submodule update --init --recursive; echo 'Reset'; git submodule foreach git hard-reset"
   ff = merge --ff-only @{u}
   hard-reset = !"echo 'Reverting modified files'; git reset --hard; echo 'Removing untracked files and directories'; git clean -id"
   ane = commit --amend --no-edit
