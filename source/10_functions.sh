@@ -350,3 +350,14 @@ if is_mac; then
     }
 fi
 
+n() {
+    local path="${1:-$HOME}"
+
+    if is_mac; then
+        open "$path"
+    elif is_wsl; then
+        explorer.exe "$path"
+    else
+        (nohup nautilus -w "$path" &) > /dev/null 2>&1
+    fi
+}

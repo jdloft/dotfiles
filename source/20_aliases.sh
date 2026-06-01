@@ -7,18 +7,12 @@ if is_mac; then
     else
         alias ls='ls -GF' # -G is colorized output, -F is to show trailing slashes and other file info
     fi
-    alias n='open .'
     alias rm_quarantine='sudo xattr -r -d com.apple.quarantine'
     alias sha256sum='shasum -a 256'
 elif is_bsd; then
     ls -G > /dev/null 2>&1 && alias ls='ls -GF' || alias ls='ls -F'
 else
     alias ls='ls --color=auto'
-    if is_wsl; then
-        alias n='explorer.exe .'
-    else
-        alias n='(nohup nautilus -w . &) > /dev/null 2>&1'
-    fi
 fi
 
 alias ll='ls -ahlF'
