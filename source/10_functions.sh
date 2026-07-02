@@ -8,10 +8,10 @@ function genpass() {
 # Open keys
 function unlock-keys() {
     if [[ -e ~/.ssh/id_rsa || -e ~/.ssh/id_dsa ]]; then
-        if [ -z "$SSH_AUTH_SOCK" ]; then
-            eval `ssh-agent -s`
-            ssh-add
-        fi
+        eval `ssh-agent -s`
+        ssh-add
+    else
+        echo "No keys to unlock (does one of .ssh/id_rsa or .ssh/id_dsa exist?)"
     fi
 }
 
