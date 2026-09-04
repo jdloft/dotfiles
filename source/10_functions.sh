@@ -256,7 +256,7 @@ if is_mac; then
       fi
       cmd=$1
 
-      # Create 
+      # Create
       if [[ $cmd == create ]]; then
 	# require exactly two args
 	if (( $# != 2 )); then
@@ -308,7 +308,7 @@ if is_mac; then
 	return 0
       fi
 
-      # Destroy 
+      # Destroy
       if [[ $cmd == destroy ]]; then
 	# no extra args
 	if (( $# != 1 )); then
@@ -351,13 +351,13 @@ if is_mac; then
 fi
 
 n() {
-    local path="${1:-$HOME}"
+    local dest="${1:-$HOME}"
 
     if is_mac; then
-        open "$path"
+        open "$dest"
     elif is_wsl; then
-        explorer.exe "$path"
+        explorer.exe "$dest"
     else
-        (nohup nautilus -w "$path" &) > /dev/null 2>&1
+        (nohup nautilus -w "$dest" &) > /dev/null 2>&1
     fi
 }
