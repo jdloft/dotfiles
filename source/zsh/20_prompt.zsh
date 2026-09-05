@@ -1,5 +1,6 @@
 function _dotfiles-prompt() {
     local host="%m"
+    local host_name="${DOTFILES_HOST:-$HOST}"
     local clr_user="%F{blue}"
     local clr_host="%F{yellow}"
 
@@ -8,14 +9,14 @@ function _dotfiles-prompt() {
         clr_user="%F{red}"
     fi
 
-    if [[ "$host" == "toolbox" ]]; then
+    if [[ "$host_name" == "toolbox" ]]; then
         clr_host="%F{red}"
     fi
 
     # Actual prompt code
     # %n = username
     # Keep exit code segment zsh-native (see _dotfiles-exit_code)
-    print -nr -- "%f$(_dotfiles-exit_code)${clr_user}%n%f@${clr_host}${host}%f$(_dotfiles-chroot-prompt) %F{blue}${PWD/#$HOME/~}%f"
+    print -nr -- "%f$(_dotfiles-exit_code)${clr_user}%n%f@${clr_host}${host}%f$(_dotfiles-chroot-prompt) %F{blue}%~%f"
 }
 
 function _dotfiles-prompt2() {
@@ -36,7 +37,11 @@ function _dotfiles-chroot-prompt() {
 
     if [[ -z "$debian_chroot" && -r /etc/debian_chroot ]]; then
         debian_chroot="$(< /etc/debian_chroot)"
-        print -nr -- "${CLR_CHROOT_CLS} (${debian_chroot})%f"
+    fi
+
+    if [[ -n "$debian_chroot" ]]; then
+        local escaped_chroot="${debian_chroot//\%/%%}"
+        print -nr -- "${CLR_CHROOT_CLS} (${escaped_chroot})%f"
     fi
 }
 
@@ -65,6 +70,7 @@ function _dotfiles-git-prompt() {
     fi
 
     branch="$(git branch --no-color 2>/dev/null | sed -n 's/^\* //p')"
+    branch="${branch//\%/%%}"
     print -nr -- "${CLR_GITST_CLS} (${CLR_GITST_BR}${branch}${indicator}${CLR_GITST_CLS})%f"
 }
 
@@ -81,6 +87,7 @@ function _dotfiles-virtualenv-prompt() {
         return 1
     fi
 
+    environment="${environment//\%/%%}"
     print -nr -- "${CLR_VE_CLS} (${CLR_VE_ENV}${environment}${CLR_VE_CLS})%f"
 }
 
@@ -98,6 +105,7 @@ function _dotfiles-k8s-prompt() {
     current_context="$(kubectl config current-context 2>/dev/null)" || return 1
     [[ -z "$current_context" ]] && return 1
 
+    current_context="${current_context//\%/%%}"
     print -nr -- "${CLR_K8S_CLS} (${CLR_K8S_ENV}${current_context}${CLR_K8S_CLS})%f"
 }
 

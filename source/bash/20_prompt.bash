@@ -1,6 +1,7 @@
 function _dotfiles-prompt() {
     local ec="$?"
     local host="\h"
+    local host_name="${DOTFILES_HOST:-${HOSTNAME%%.*}}"
     local clr_user="$CLR_BLUE"
     local clr_host="$CLR_YELLOW"
     local prompt="\$"
@@ -12,7 +13,7 @@ function _dotfiles-prompt() {
         prompt="#"
     fi
 
-    if [ "$host" = "toolbox" ]; then
+    if [ "$host_name" = "toolbox" ]; then
         clr_host="$CLR_RED"
     fi
 
@@ -23,11 +24,11 @@ function _dotfiles-prompt() {
 
     # Actual prompt code
     if [[ -n $supports_color ]]; then
-        PS1="\[$CLR_NONE\]"
+        PS1="$(_dotfiles-bash-np "$CLR_NONE")"
         PS1+="$(_dotfiles-exit_code "$ec")"
-        PS1+="\[$clr_user\]\u\[$CLR_NONE\]@\[$clr_host\]$host"
-        PS1+="\[$CLR_NONE\]$(_dotfiles-chroot-prompt) "
-        PS1+="\[$CLR_BLUE\]\w"
+        PS1+="$(_dotfiles-bash-np "$clr_user")\u$(_dotfiles-bash-np "$CLR_NONE")@$(_dotfiles-bash-np "$clr_host")$host"
+        PS1+="$(_dotfiles-bash-np "$CLR_NONE")$(_dotfiles-chroot-prompt) "
+        PS1+="$(_dotfiles-bash-np "$CLR_BLUE")\w"
 
         if command -v git >/dev/null 2>&1; then
             PS1+="$(_dotfiles-git-prompt)"
@@ -37,21 +38,28 @@ function _dotfiles-prompt() {
         if [[ -n $K8S_PROMPT ]]; then
             PS1+="$(_dotfiles-k8s-prompt)"
         fi
-        PS1+="\[$CLR_NONE\] $prompt "
+        PS1+="$(_dotfiles-bash-np "$CLR_NONE") $prompt "
     else
         PS1="\u@$host:\w$prompt "
     fi
 }
 
+function _dotfiles-bash-np() {
+    printf '\001%s\002' "$1"
+}
+
 function _dotfiles-exit_code() {
     local ec="$1"
-    [[ $ec != 0 ]] && printf '\[%s\]%s\[%s\] ' "$CLR_RED" "$ec" "$CLR_NONE"
+    [[ $ec != 0 ]] && printf '%s%s%s ' "$(_dotfiles-bash-np "$CLR_RED")" "$ec" "$(_dotfiles-bash-np "$CLR_NONE")"
 }
 
 function _dotfiles-chroot-prompt() {
     if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
         debian_chroot=$(< /etc/debian_chroot)
-        printf '\[%s\] (%s)\[%s\]' "$CLR_YELLOW" "$debian_chroot" "$CLR_NONE"
+    fi
+
+    if [[ -n $debian_chroot ]]; then
+        printf '%s (%s)%s' "$(_dotfiles-bash-np "$CLR_YELLOW")" "$debian_chroot" "$(_dotfiles-bash-np "$CLR_NONE")"
     fi
 }
 
@@ -75,17 +83,17 @@ function _dotfiles-git-prompt() {
     if git diff-index --cached HEAD -- >/dev/null 2>&1 && [[ -n "$(git diff-index --cached HEAD -- 2>/dev/null)" ]]; then
         # ls-files has no way to list files that are staged, we have to use the
         # significantly slower (for large repos)  diff-index command instead
-        indicator+='\['"$CLR_GITST_SC"'\]+' # Staged changes
+        indicator+="$(_dotfiles-bash-np "$CLR_GITST_SC")+" # Staged changes
     fi
     if [[ -n "$(git ls-files --modified 2>/dev/null)" ]]; then
-        indicator+='\['"$CLR_GITST_USC"'\]*' # Unstaged changes
+        indicator+="$(_dotfiles-bash-np "$CLR_GITST_USC")*" # Unstaged changes
     fi
     if [[ -n "$(git ls-files --others --exclude-standard 2>/dev/null)" ]]; then
-        indicator+='\['"$CLR_GITST_UT"'\]?' # Untracked files
+        indicator+="$(_dotfiles-bash-np "$CLR_GITST_UT")?" # Untracked files
     fi
 
     branch="$(git branch --no-color 2>/dev/null | sed -n 's/^\* //p')"
-    printf '\[%s\] (\[%s\]%s%s\[%s\])' "$CLR_GITST_CLS" "$CLR_GITST_BR" "$branch" "$indicator" "$CLR_GITST_CLS"
+    printf '%s (%s%s%s%s)' "$(_dotfiles-bash-np "$CLR_GITST_CLS")" "$(_dotfiles-bash-np "$CLR_GITST_BR")" "$branch" "$indicator" "$(_dotfiles-bash-np "$CLR_GITST_CLS")"
 }
 
 function _dotfiles-virtualenv-prompt() {
@@ -97,14 +105,14 @@ function _dotfiles-virtualenv-prompt() {
     else
         return 1
     fi
-    printf '\[%s\] (%s)\[%s\]' "$CLR_YELLOW" "$environment" "$CLR_YELLOW"
+    printf '%s (%s)%s' "$(_dotfiles-bash-np "$CLR_YELLOW")" "$environment" "$(_dotfiles-bash-np "$CLR_NONE")"
 }
 
 function _dotfiles-k8s-prompt() {
     local current_context=""
     current_context="$(kubectl config current-context 2>/dev/null)" || return 1
     [[ -z $current_context ]] && return 1
-    printf '\[%s\] (%s)\[%s\]' "$CLR_BLUE" "$current_context" "$CLR_BLUE"
+    printf '%s (%s)%s' "$(_dotfiles-bash-np "$CLR_BLUE")" "$current_context" "$(_dotfiles-bash-np "$CLR_NONE")"
 }
 
 PROMPT_COMMAND="_dotfiles-prompt"
